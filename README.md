@@ -1,37 +1,18 @@
-## Welcome to GitHub Pages
+# COS 301 DiGital BlackSmiths
 
-You can use the [editor on GitHub](https://github.com/DannR11/DiGital-BlackSmiths/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+## Project Name: Entelect - Thutong LMS
+The Project is a response to the problem that Thutong Site Learning Centre was formed to make a meaningful difference to South Africa’s education rank by developing and producing remarkable educational results through ICT initiatives.
+## Project Decription: 
+Create a mobile friendly and easily maintainable website for all learners that follow the SA School Curriculum in order to improve learners’ subject results and ICT skills, by providing free and accessible educational information via technological devices.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Our mission: Therefor we strive towards perfection in aiming to produce a world class software tool to serve as a patch on to the learning gab in Mathematics and Science in South Africa on a global scale.
 
-### Markdown
+### Team Members
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Lebogang Ntlatleng		u15016715	
+Fiwa	Lekhulani		u15187145	
+Daniel	 Rocha		u14347980
+Oluwatosin Botti		u13208642	
+Tlou Lebelo			u15209190	
+Lesego Mabe		u15055214 	
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/DannR11/DiGital-BlackSmiths/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
