@@ -15,5 +15,5 @@ The Project is a response to the problem that Thutong Site Learning Centre was f
 Create a mobile friendly and easily maintainable website for all learners that follow the SA School Curriculum in order to improve learners’ subject results and ICT skills, by providing free and accessible educational information via technological devices.
 
 # Our mission: 
-*Therefor we strive towards perfection in aiming to produce a world class software tool to serve as a patch on to the learning gab in Mathematics and Science in South Africa to a global scale.*	
+*Therefor we strive towards perfection in aiming to produce a world class software tool to serve as a patch on to the learning gap in Mathematics and Science in South Africa to a global scale.*	
 
