@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<!--Insert your own name and surname-->
+		<meta name="author" content="" />
+		<title>IMY 220 - A3</title> 
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+	</head>
+	<body>
+	
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-sm-12 col-xs-12">
+				
+				<div class="panel panel-default">
+				<div class="panel-body">
+				
+					<form action="login.php" method="post">
+						<fieldset>
+							<legend>Log in</legend>
+							<div class="form-group">
+								<label for="email">Email address:</label>
+								<input type="email" class="form-control" name="email" id="email" placeholder="john.doe@gmail.com"/>
+							</div>
+							<div class="form-group">
+								<label for="pass">Password:</label>
+								<input type="password" class="form-control" name="pass" id="pass" placeholder="********"/>
+							</div>
+							<input type="submit" value="Log in" class="btn btn-default" />
+						</fieldset>
+					</form>
+					
+				</div><!--/panel-body-->
+				</div><!--/panel-->
+				
+				</div> <!--/col1-->
+				<div class="col-md-6 col-sm-12 col-xs-12">
+				
+				<div class="panel panel-default">
+				<div class="panel-body">
+				
+					<form action="register.php" method="post">
+						<fieldset>
+							<legend>Register</legend>
+							<div class="form-group">
+								<label for="fname">First name:</label>
+								<input type="text" class="form-control" name="fname" id="fname" placeholder="John"/>
+							</div>
+							<div class="form-group">
+								<label for="lname">Last name:</label>
+								<input type="text" class="form-control" name="lname" id="lname" placeholder="Doe"/>
+							</div>
+							<div class="form-group">
+								<label for="email1">Email address:</label>
+								<input type="email" class="form-control" name="email1" id="email1" placeholder="john.doe@gmail.com"/>
+							</div>
+							<div class="form-group">
+								<label for="date">Date of birth:</label>
+								<input type="date" class="form-control" name="date" id="date"/>
+							</div>
+							<div class="form-group">
+								<label for="pass1">Create password:</label>
+								<input type="password" class="form-control" name="pass1" id="pass1" placeholder="********"/>
+							</div>
+							<div class="form-group">
+								<label for="pass1">Confirm password:</label>
+								<input type="password" class="form-control" name="pass2" id="pass2" placeholder="********"/>
+							</div>
+							<input type="submit" value="Register" class="btn btn-default"  />
+						</fieldset>
+					</form>
+					
+				</div><!--/panel-body-->
+				</div><!--/panel-->
+				
+				</div><!--/col2-->
+			</div><!--/row-->
+		</div><!--/container-->
+		
+	</body>
+</html>
