@@ -17,3 +17,5 @@ Create a mobile friendly and easily maintainable website for all learners that f
 # Our mission: 
 *Therefor we strive towards perfection in aiming to produce a world class software tool to serve as a patch on to the learning gap in Mathematics and Science in South Africa to a global scale.*	
 
+##Group Meetings 
+![alt text](https://github.com/DannR11/DiGital-BlackSmiths/blob/master/Meeting%20time%20table.png)
