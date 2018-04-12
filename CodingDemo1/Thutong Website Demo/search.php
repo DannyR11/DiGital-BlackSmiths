@@ -1,25 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php session_start();
+?><!DOCTYPE>
+    <html>
+    
     <head>
-
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <meta name="author" content="Daniel Rocha u14347980">
-
-            <title>Search</title>
-            <link rel="shortcut icon" href="css/favicon.ico" type="image/x-icon">
-            
-           
-            <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-            <link rel="icon" type="image/gif" href="favicon/animated_favicon1.gif">
-            <link href="css/home-style.css" rel="stylesheet">
-            <link rel="stylesheet" type="text/css" href="style.css">
-            <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-            <script src="js/jquery.js"></script>
-            <script src="js/bootstrap.min.js"></script>
-
-
-<style>
+        <meta charset="UTF-8" />
+        <!--Insert your own name and surname-->
+        <meta name="author" content="Daniel Rocha u14347980" />
+        <title>Home Page</title> 
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script type="text/javascript" src="jquery-3.1.0.min.js"></script>
+        <script type="text/javascript" src="jquery-ui.min.js"></script>
+        <script type="text/javascript" src="ImageScript.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+        <script type="text/javascript" src="jqcloud/jqcloud-1.0.4.js"></script>
+        <link rel="icon" type="image/gif" href="favicon/animated_favicon1.gif">
+        <style>
 
         /* fonts */
 
@@ -43,7 +39,7 @@ div.jqcloud span.w5 { font-size: 300%; }
 div.jqcloud span.w4 { font-size: 250%; }
 div.jqcloud span.w3 { font-size: 200%; }
 div.jqcloud span.w2 { font-size: 150%; }
-div.jqcloud span.w1 { font-size: 100%; }
+div.jqcloud span.w1 { font-size: 200%; }
 
 /* colors */
 
@@ -65,6 +61,19 @@ div.jqcloud span.w1 { color: #00ffcc; }
 
 /* layout */
 
+
+    .pop-out
+    {
+        transition: transform .5s;
+    }
+
+    .pop-out:hover
+    {
+        -ms-transform: scale(1.5, 1.5);
+        -webkit-transform: scale(1.5, 1.5);
+        transform: scale(1.5, 1.5);
+    }
+
 div.jqcloud {
   overflow: hidden;
   position: relative;
@@ -72,40 +81,56 @@ div.jqcloud {
 
 div.jqcloud span { padding: 0; }
 
-@font-face {
+    @font-face {
            font-family: myFonta;
-           src: url(blackchancery/neuropol.ttf);
+           src: url(blackchancery/Aerospace.ttf);
         }
 
-        legend, label, a {
+         nav {
            font-family: myFonta;
            color: #00008B;
+        }
+
+.navbar {
+    color: #FFFFFF;
+    background-color: maroon;
 }
 
 
 
 
 
-h1, h4, p, li {
-   font-family: mySecondFont;
-}
+
 
 </style>
+<script>
+    $(document).ready(function(){
+        $("button").click(function(){
+            $.ajax({url: "demoo_test.txt", success: function(result){
+                $("#dunca").html(result);
+            }});
+        });
+    });
+</script>
 
 
-<SCRIPT TYPE="text/javascript">
+
+
+
+
+<SCRIPT TYPE="text/javascript">  // Cloud
                                  
 
       var word_array = [
-          {text: "Sci-fi", weight: 15, link: "Cloudsearch.php?tag=SciFi"},
-          {text: "Adventure", weight: 9, link: "Cloudsearch.php?tag=Adventure"},
-          {text: "Drama", weight: 6, link: "Cloudsearch.php?tag=Drama"},
-          {text: "Action", weight: 7, link: "Cloudsearch.php?tag=Action"},
-          {text: "Mystery", weight: 12, link: "Cloudsearch.php?tag=Mystery"},
-          {text: "Romance", weight: 5, link: "Cloudsearch.php?tag=Romance"},
-          {text: "Horror", weight: 8, link: "Cloudsearch.php?tag=Horror"},
+          {text: "Biology", weight: 15, link: "Cloudsearch.php?tag=Biology"},
+          {text: "Science", weight: 9, link: "Cloudsearch.php?tag=Science"},
+          {text: "Geography", weight: 6, link: "Cloudsearch.php?tag=Geography"},
+          {text: "Lo", weight: 7, link: "Cloudsearch.php?tag=Lo"},
+          {text: "English", weight: 12, link: "Cloudsearch.php?tag=English"},
+          {text: "Drama", weight: 5, link: "Cloudsearch.php?tag=Drama"},
+          {text: "Technology", weight: 8, link: "Cloudsearch.php?tag=Technology"},
           {text: "Art", weight: 10, link: "Cloudsearch.php?tag=Art"},
-          {text: "Fantasy", weight: 9, link: "Cloudsearch.php?tag=Fantasy"}
+          {text: "Culture", weight: 9, link: "Cloudsearch.php?tag=Culture"}
           // ...as many words as you want
 
           // https://www.w3schools.com/search.php?tag=Action
@@ -117,44 +142,69 @@ h1, h4, p, li {
         getText( document.getElementById('exampless') ); // 'My Text'
       });
 
-                             
+
+                                              function popup(mylink, windowname)
+                                              { 
+                                                    if (! window.focus)return true;
+                                                    var href;
+                                                    if (typeof(mylink) == 'string') href=mylink;
+                                                    else href=mylink.href; 
+                                                    window.open(href, windowname, 'width=600,height=600,scrollbars=yes'); 
+                                                    return false; 
+                                                }
+                    
 </SCRIPT>
 
-    </head>
-
-   <body <body background="Pictures/water.jpg">
 
 
-<?php
-        session_start();
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "dbbooks";
 
-        $db = mysqli_connect($servername, $username, $password, $dbname);
 
-        $sql = "SELECT * FROM tbUser WHERE user_id=".$_SESSION["user"];
+
+</head>
+    <body <body background="blur-backgrounds/blur-background03.jpg">
+
+
+
+
+    <?php
+        //session_start();
+                                $servername = "localhost";
+                                $username = "root";
+                                $password = "";
+                                $dbname = "ThutongDB";
+
+                                $db = mysqli_connect($servername, $username, $password, $dbname);
+
+        $sql = "SELECT * FROM UsersTB WHERE UserID=".$_SESSION["user"];
 
         $result = mysqli_query($db, $sql);
 
-        $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
-        $surname = $row["surname"];
+        $surname = $row["UserSurname"];
+        $admin = $row["UserLevel"];
         
+
+                            echo "<div style='font-weight: bold; type='hidden font-size:20px' class='panel-heading'>".$row["UserName"]."
+                            <label  type='hidden' style='padding-left:50px; font-size:6px'name='admin' id='admin' class='admin'  value='$admin'>" . $admin . "</label></div>";
+                           
 
     ?>
 
 
-         <div class="container" >
+
+
+                </br>
+
+
+                <div class="container" >
                         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                             <div class="container">
                                 <!-- Brand and toggle get grouped for better mobile display -->
-                                <div class="navbar-header">
+                                <div class="navbar-header"  style="padding-right: 10%;" >
 
                                 
-                                <img src="logoo.png" style="width:44px; height:44px;" >
-                                <a href="profile.php" style="padding-left: 0.4cm; color:#3399ff; font-size:30px;"> User: : : <?php echo " " .$_SESSION["username"]. " " .$surname. " ";  ?></a>
+                                <img src="logoo.png" style="width:44px;height:44px;">
 
                                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                                         <span class="sr-only">Toggle navigation</span>
@@ -162,23 +212,44 @@ h1, h4, p, li {
                                         <span class="icon-bar"></span>
                                         <span class="icon-bar"></span>
                                     </button>
-                                    <a class="navbar-brand" href="main.php" id="colour" style="padding-left: 2cm;"> LUCID </a>
+                                    <a class="navbar-brand" href="#" style="font-size: 36px"> THUTONG </a>
+                                     <a  style="font-size: 26px"> Learning platform </a>
                                 </div>
                                 <!-- Collect the nav links, forms, and other content for toggling -->
 
-                                <div class="collapse navbar-collapse"  id="bs-example-navbar-collapse-1" >
+                                <div>
 
-                                    <ul class="nav navbar-nav">
+                                    <ul  class="nav navbar-nav">
 
-                                       
+                                        <li style="background-color:maroon;">
+                                            <a href="profile.php" style="font-size:20px;"> <?php echo " " . $admin . ": " .$_SESSION["username"]. " " .$surname. " ";  ?></a>
+                                        </li>
+
+                                        <li>
+                                            
+                                        </li>
+
+                                        <li>
+                                            <a href="usersfeed.php" style=" color:purple; font-size:20px;"> | Search </a>
+                                        </li>
+
+                                        <li>
+                                           
+                                        </li>
                                     </ul>
-                                         
-                                       
-                                
-                                    <ul class="nav navbar-nav navbar-right" onclick="self.close()">
-                                      <li ><a href="index.html" id="clacc" >
+
+
+                                    <ul  class="nav navbar-nav">
+                                        <li style="background-color:maroon;">
+                                            <a href="showMainCategory.php" style=" color:grey; font-size:20px;"> | Main </a>    
+                                        </li>
+                                    </ul>
+
+
+                                    <ul style="background-color:maroon;" class="nav navbar-nav navbar-right" onclick="self.close()">
+                                      <li ><a href="index.html" >
                                         <span class="glyphicon glyphicon-log-out" id="colourr" >
-                                        </span> Logout</a>
+                                        </span> Logout </a>
                                       </li>
                                     </ul>
                                    
@@ -192,38 +263,46 @@ h1, h4, p, li {
                             <!-- /.container -->
                         </nav>
                     </div>
-                    <br/>
-                    <br/>
+                
+                
+
 
 
 
                     <div class="col-md-3 col-sm-3 col-xs-3">
-                        <div class='Add'>
+                        <div class="panel panel-default" style="background-color: rgba(255, 255, 285, 0.3); " onmouseover="this.style.background='maroon';" onmouseout="this.style.background='rgba(255, 255, 285, 0.5)';">
                                 <fieldset style="color:red">
-                                    <form action="" method="post" style="color:red;"> 
+                                    <form action="" method="post" style="color:purple;"> 
                                     <legend style="color:red; font-size:60px;"> 
-                                    Search: </legend><input type="text" name="term" style="width: 160px"/> <br/>  
+                                    Search: </legend><input type="text" name="term" style="width: 200px"/> <br/>  
 
 
                                     <div class="form-group">
-                                    <label for="genre" style="color:aqua; font-size:30px;"> Search by: </label>
-                                    <select class="form-control" name="genres" id="genres" style="width: 160px" >
-                                          <option value="name"> name </option>
-                                          <option value="username"> username </option>
-                                          <option value="surname"> surname </option>
-                                          <option value="email"> email </option>
-                                          <option value="genres"> genres </option>
-                                          <option value="checkedIn"> checkedIn </option>
+                                    <label for="SubjectArea" style="color:purple; font-size:30px;"> Search by: </label>
+                                    <select class="form-control" name="genres" id="genres" style="width: 200px" >
+                                          <option value="Subject Area"> Subject Area </option>
+                                          <option value="Grade"> Grade </option>
+                                          <option value="Criteria"> Lesson </option>
+                                          <option value="Criteria"> Topic </option>
+                                          <option value="Criteria"> Quiz </option>
                                     </select>
 
+                                </br>
 
-                                    <input type="submit" value="Submit" />  
+
+                                    <input type="submit" style="width: 200px" value="Search" />  
+
                                     </form>
                                 </fieldset>
-                        </div> <div class="panel panel-default" id="exampless" style="width: 150px; height: 150px;" style="background-color: rgba(255, 255, 285, 0.3); " onmouseover="this.style.background='maroon';" onmouseout="this.style.background='rgba(255, 255, 285, 0.5)';">
-                    
-                    </div></div>
+                      
+                </div>
+            </div>
 
+             <div class="col-md-3 col-sm-3 col-xs-3">
+                <div class="panel panel-default" id="exampless" style="width: 200px; height: 150px; background-color: rgba(255, 255, 285, 0.3); " onmouseover="this.style.background='maroon';" onmouseout="this.style.background='rgba(255, 255, 285, 0.5)';">
+                </div>
+                <img style="width: 198px; height: 104px; padding-top: 6px;" src="CategoryPictures/ipad.jpeg"/>
+            </div> 
 
 
 <?php
@@ -250,13 +329,13 @@ h1, h4, p, li {
                 mysqli_SELECT_db($conn, $dbname);
 
 
-                if ( $tag == "name" )
+                if ( $tag == "Subject Area" )
                 {
 
-                    echo "<a> NAME </a>";
+                    echo "<a> SUBJECT </a>";
 
 
-                    $sql = "SELECT * FROM tbuser WHERE name LIKE '%".$term."%' AND name != '" . $_SESSION["username"] . "'"; 
+                    $sql = "SELECT * FROM subjecttb WHERE SubArea LIKE '%".$term."%'"; 
                     $result = mysqli_query($conn, $sql);
 
                     $count = 0;
@@ -266,42 +345,68 @@ h1, h4, p, li {
                     // output data of each row
                         while ( $row = mysqli_fetch_array( $result ) )
                         {   
-
-                            $imagePr = $row['userImage'];
-                                                // $imagePro = $row['userImage'];
+							
+                            $imagePr = $row['SubPic'];
+               
             
                             echo "<form action='ratingPopup.php' method='POST'><div class='col-md-3 col-sm-3 col-xs-3' class='container' class='panel panel-default' id='col' style='background-color: rgba(0, 255, 285, 0.8); ' onmouseover='this.style.background='maroon'; onmouseout='this.style.background='rgba(255, 255, 285, 0.5)';'>
                             <div class='panel-body'>";
-                            echo "<div style='font-weight: bold; font-size:20px'class='panel-heading' id='tail' class='tail' name='tail'>".$row["username"]."</div>";
-                            echo "<p>Name  -". " ". " ". " ". " ". $row["name"]. "</p>";
-                            echo "<p>Surname  -". " ". " ". " ". " ". $row["surname"]. "</p>";
+                            echo "<div style='font-weight: bold; font-size:20px'class='panel-heading' id='tail' class='tail' name='tail'>".$row["SubArea"]."</div>";
+							echo "<img class='img img-default' height='140'  src='$imagePr' alt='Uploads/anon.jpg' /></form>";
+                            echo "<p>Description  -". " ". " ". " ". " ". $row["SubDescription"]. "</p>";
+							$subID = $row['SubID'];
+							$sqlss = "SELECT * FROM GradeTb WHERE SubID = ".$subID;
+    				$resultss = mysqli_query($db, $sqlss);
+
+			
+							if (mysqli_num_rows($resultss) >= 0) 
+				    		{
+				    			// output data of each row						    
+				    			while ($rowss = mysqli_fetch_array($resultss, MYSQLI_ASSOC)) 
+								{
+
+									
+									echo " 
+												<a font-size:16px;'>* $rowss[GradeName] </a>
+												<p style='font-size:10px;'> - > $rowss[GradeDescription] </p>
+										  ";
+								
+
+								
+				    			}
+
+				    			 echo "       </div></div>";
+				    		} 
+				    		else 
+				    		{
+				    			echo "0 results";
+				    		}
+                            /*echo "<p>Surname  -". " ". " ". " ". " ". $row["surname"]. "</p>";
                             
                             echo "<p>Description    -". " ". " ". " ". " ". $row["description"]. "</p>";
                             echo "<p>Work    -". " ". " ". " ". " ". $row["work"]. "</p>";
                             echo "<p>Email -". " ". " ". " ". " ". $row["email"]. "</p>";
-                            $image = $row["userImage"];
-
-                            echo "<img class='img img-default' height='140'  src='$image' alt='Uploads/anon.jpg' /></form>";
+                            $image = $row["userImage"];*/
                             
-                            echo "<form action='friendReq.php' method='POST'>
+                            /*echo "<form action='friendReq.php' method='POST'>
                             <input type='hidden' name='user' value='$row[user_id]'>" . $row["user_id"] . "</input> </br>
                             <button type='submit' value='Update profile'> Send Friend Request </button>
                             </form>";
                           
-                            echo "</div></div>";
+                            echo "</div></div>";*/
                                         
                         }
 
                 }
 
 
-                if ( $tag == "surname")
+                if ( $tag == "Grade")
                 {
 
-                    echo "<a> NAME </a>";
+                    echo "<a> GRADE </a>";
 
 
-                    $sql = "SELECT * FROM tbuser WHERE surname LIKE '%".$term."%' AND name != '" . $_SESSION["username"] . "'"; 
+                    $sql = "SELECT * FROM gradetb WHERE GradeName LIKE '%".$term."%'"; 
                     $result = mysqli_query($conn, $sql);
 
                     $count = 0;
@@ -312,13 +417,35 @@ h1, h4, p, li {
                         while ( $row = mysqli_fetch_array( $result ) )
                         {   
 
-                            $imagePr = $row['userImage'];
+                            //$imagePr = $row['userImage'];
                                                 // $imagePro = $row['userImage'];
             
-                            echo "<form action='ratingPopup.php' method='POST'><div class='col-md-3 col-sm-3 col-xs-3' class='container' class='panel panel-default' id='col' style='background-color: rgba(255, 255, 0, 0.8); ' onmouseover='this.style.background='maroon'; onmouseout='this.style.background='rgba(255, 255, 285, 0.5)';'>
+							echo "<form action='ratingPopup.php' method='POST'><div class='col-md-3 col-sm-3 col-xs-3' class='container' class='panel panel-default' id='col' style='background-color: rgba(255, 255, 0, 0.8); ' onmouseover='this.style.background='maroon'; onmouseout='this.style.background='rgba(255, 255, 285, 0.5)';'>
                             <div class='panel-body'>";
-                            echo "<div style='font-weight: bold; font-size:20px'class='panel-heading' id='tail' class='tail' name='tail'>".$row["username"]."</div>";
-                            echo "<p>Name  -". " ". " ". " ". " ". $row["name"]. "</p>";
+							$subj = $row["SubID"];
+							$sql2 = "SELECT * FROM subjecttb WHERE SubID = " .$subj;
+							$resultss = mysqli_query($db, $sql2);
+
+			
+							if (mysqli_num_rows($resultss) >= 0) 
+				    		{
+				    			// output data of each row						    
+				    			while ($rowss = mysqli_fetch_array($resultss, MYSQLI_ASSOC)) 
+								{
+									echo "<div style='font-weight: bold; font-size:20px'class='panel-heading' id='tail' class='tail' name='tail'>".$rowss["SubArea"]."</div>";
+									$imagePr = $rowss["SubPic"];
+									echo "<img class='img img-default' height='140'  src='$imagePr' alt='Uploads/anon.jpg' /></form>";
+									echo "<p>Description  -". " ". " ". " ". " ". $rowss["SubDescription"]. "</p>";
+								}
+							//}
+								
+				    		} 
+							echo " 
+												<a font-size:16px;'>* $row[GradeName] </a>
+												<p style='font-size:10px;'> - > $row[GradeDescription] </p>
+										  ";
+				    			 echo "       </div></div>";
+                            /*echo "<p>Name  -". " ". " ". " ". " ". $row["name"]. "</p>";
                             echo "<p>Surname  -". " ". " ". " ". " ". $row["surname"]. "</p>";
                             
                             echo "<p>Description    -". " ". " ". " ". " ". $row["description"]. "</p>";
@@ -333,7 +460,7 @@ h1, h4, p, li {
                             <button type='submit' value='Update profile'> Send Friend Request </button>
                             </form>";
                           
-                            echo "</div></div>";
+                            echo "</div></div>";*/
                                         
                         }
 
@@ -341,10 +468,10 @@ h1, h4, p, li {
 
 
 
-                if ( $tag == "username")
+                if ( $tag == "Lesson")
                 {
 
-                    echo "<a> NAME </a>";
+                    echo "<a> LESSONS </a>";
 
 
                     $sql = "SELECT * FROM tbuser WHERE username LIKE '%".$term."%' AND name != '" . $_SESSION["username"] . "'"; 
@@ -386,10 +513,10 @@ h1, h4, p, li {
                 }
 
 
-                if ( $tag == "email")
+                if ( $tag == "Topic")
                 {
 
-                    echo "<a> NAME </a>";
+                    echo "<a> TOPICS </a>";
 
 
                     $sql = "SELECT * FROM tbuser WHERE email LIKE '%".$term."%'"; 
@@ -431,10 +558,10 @@ h1, h4, p, li {
                 }
 
 
-                if ( $tag == "genres")
+                if ( $tag == "Quiz")
                 {
 
-                    // echo "<a> NAME </a>";
+                    // echo "<a> Quizzes </a>";
 
 
                     $sql = "SELECT * FROM tbbooks WHERE genres LIKE '%".$term."%'"; 

@@ -28,10 +28,12 @@
 
 
 		<script type="text/javascript">
-			(function(){
-			   setTimeout(function(){
+			(function()
+			{
+			   setTimeout(function()
+			   {
 			     window.location="index.html";
-			   },4000); /* 1000 = 1 second*/
+			   }, 4000); /* 1000 = 1 second*/
 			})();
 		</script>
 
@@ -40,6 +42,8 @@
 		<?php 
 
 		$nothing = "No Categories visited";
+		$noPic = "ProfilePictures/anon.png";
+
 			if($pass1!=$pass2 || $email=="" || $pass1=="")
 			{
 				echo "<div class='alert alert-danger'>Error check details.</div>";
@@ -47,7 +51,22 @@
 			else
 			{
 				echo "<div class='alert alert-success'>Passwords and email are correct (check). You will be re - directed. </br>";
-				$query = "INSERT INTO UsersTb (Name, Surname, Email, AdminConsultStatus, Password, AccessedCategories) VALUES ('$name', '$surname', '$email', '$AdminConsultStatus', '$pass1', '$nothing')";
+
+				$query = "INSERT INTO UsersTb (UserName, 
+					UserSurname, 
+					UserEmail, 
+					UserLevel, 
+					UserPassword, 
+					UserPic, 
+					ShowLessonsCompleted)
+				VALUES
+				('$name', 
+					'$surname', 
+					'$email', 
+					'$AdminConsultStatus', 
+					'$pass1', 
+					'$noPic', 
+					'$nothing')";
 				
 				$res = mysqli_query($mysqli, $query) == TRUE;
 				echo $res ? "The account has been created" : "The account could not be created</div>";
