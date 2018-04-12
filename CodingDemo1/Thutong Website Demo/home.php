@@ -13,10 +13,12 @@
 
 
 <script type="text/javascript">
-			(function(){
-			   setTimeout(function(){
-			     window.location="index.php";
-			   }, 2000); /* 1000 = 1 second*/
+			(function()
+			{
+			   setTimeout(function()
+			   {
+			     window.location="showMainCategory.php";
+			   }, 4000); /* 1000 = 1 second*/
 			})();
 		</script>
 
@@ -34,15 +36,15 @@
 					define('DB_PASSWORD', "");
 					define('DB_DATABASE', 'ThutongDB');
 					 
-					$db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
+					$db = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 										
 					$email = mysqli_real_escape_string($db, $email);
 					$password = mysqli_real_escape_string($db, $password);
 					
-					$sql = "SELECT UserID, Name, Email FROM UsersTB WHERE Email='$email' AND Password='$password'";
+					$sql = "SELECT * FROM UsersTB WHERE UserEmail = '$email' AND UserPassword = '$password'";
 					
-					$result = mysqli_query($db,$sql);
-					$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+					$result = mysqli_query($db, $sql);
+					$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 					 
 					if(mysqli_num_rows($result) == 0)
 					{
@@ -57,10 +59,12 @@
 							This username or password is correct!
 							<a href='index.html'><button class='btn btn-default'>Return to Login</button></a>
 						</div>";
+
 						session_start();
 						$_SESSION["user"] = $row['UserID'];
-						$_SESSION["username"]= $row['Name'];
+						$_SESSION["username"]= $row['UserName'];
 						// header('Location: index.php');
+
 					}
 					
 				?>
