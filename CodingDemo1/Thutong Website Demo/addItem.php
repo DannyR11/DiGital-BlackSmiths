@@ -1,143 +1,108 @@
+<?php
+       session_start();
+	   ?>
 <!DOCTYPE html>
-<!---->
 <html>
 	<head>
-		<meta charset="UTF-8"></meta>
-		<meta name="author" content=""></meta>
-		<title> Imy Project addItem </title>
-		<link href="css/home-style.css" rel="stylesheet">
-	</head>
-	
-	<body>
-		<div class="container">
-			<div class ="row">
-				<form method="post">
-					<fieldset>
-						<legend>Checking database components</legend>
-						</fieldset>
-						<br/>
+		<meta charset="UTF-8" />
+		<!--Insert your own name and surname-->
+		<meta name="author" content="Daniel Rocha" />
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<title>Profile Page</title> 
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="icon" type="image/gif" href="favicon/animated_favicon1.gif">
 
+
+<style>
+		@font-face {
+		   font-family: myFonta;
+		   src: url(blackchancery/yonder.ttf);
+		}
+
+		legend, label {
+		   font-family: myFonta;
+		   color: white;
+		}
+</style>
+<script type="text/javascript">
+			(function()
+			{
+			   setTimeout(function()
+			   {
+			     window.location="showMainCategory.php";
+			   }, 3000); /* 1000 = 1 second*/
+			})();
+		</script>
+		
+</head>
+<body>
+<?php
+
+	$subj = $_POST["SubjectArea"];
+	$desc = $_POST["Description"];
+	$grade = $_POST["SubjectGrade"];
+	$gradeDesc = $_POST["Bdescription"];
 	
+	$conn = mysqli_connect("localhost", "root", "", "thutongdb");
+	if(!$conn)
+		die("Connection failed: ". mysqli_connect_error());
+	
+	//$pass1 = $_POST["pass1"];
+	//$pass2 = $_POST["pass2"];
+	
+	 $sql = "SELECT * FROM subjecttb WHERE SubArea = '$subj'"; 
+	 $result = mysqli_query($conn, $sql);
+			//echo($result);
+			if(mysqli_num_rows($result) > 0)
+			{
+				while($row = mysqli_fetch_assoc($result)) 
+				{
+					$SubID = $row["SubID"];
+					//echo($SubID);
+				}
 				
-						<?php
-
-
-							session_start( );
-							  	$servername = "localhost";
-				                $username = "root";
-				                $password = "";
-				                $dbname = "dbbooks";
-
-				       		$db = mysqli_connect($servername, $username, $password, $dbname);
-							
-
-							$output = '';
-
-
-							if (isset($_POST['title']) && isset($_POST['author']))
-							{
-
-
-								mysqli_SELECT_db($db, "dbbooks");
-
-
-								$sql = "CREATE TABLE IF NOT EXISTS tbbooks (
-								book_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-								title VARCHAR(100) NOT NULL,
-								author VARCHAR(100) NOT NULL,
-								yearPub DATE,
-								description VARCHAR(100), 
-								genres VARCHAR(100) NOT NULL, 
-								bookImage VARCHAR(100), 
-								rating INT,
-								checkedIn VARCHAR(100),
-								DateChecked DATE
+				$query = "INSERT INTO gradetb (SubID, 
+								GradeName, 
+								GradeDescription)
+							VALUES
+							('$SubID', 
+								'$grade', 
+								'$gradeDesc' 
 								)";
-
-
-
-								if (mysqli_query($db, $sql))
-								{
-									echo "<a>Table tbuser created successfully<br></a>";
-								}
-								else
-								{
-									echo "<a>Error creating table: <br> </a>" . mysqli_error($db);
-								}
-
-
-							
-								$title = $_POST['title'];
-								$author = $_POST['author'];
-								$date = date("Y/m/d");
-								$description = $_POST['Bdescription'];
-								$genres = $_POST['genres'];
-								$bookImage = "Uploads/anon.jpg";
-								
-								
-								$seller = $_SESSION["username"];
-
-								$title = mysqli_real_escape_string($db, $title);
-								$author = mysqli_real_escape_string($db, $author);
-								// $itemPrice = mysqli_real_escape_string($db, $itemPrice);
-
-
-								echo "<a> $title...... </a>";
-								echo "<a> $author...... </a>";
-								echo "<a> $description...... </a>";
-								echo "<a> $date...... </a>";
-								echo "<a> $genres...... </a>";
-								echo "<a> $bookImage...... </a>";
+					$res = mysqli_query($conn, $query) == TRUE;
+					echo $res ? "The grade has been added</div></br></br>" : "The grade could not be added</div></br></br>";
+	 }
+	 else
+	 {
+		$query1 = "INSERT INTO subjecttb (SubArea, SubDescription) VALUES('$subj','$desc')";
+					$res = mysqli_query($conn, $query1) == TRUE;
+					echo $res ? "The subject has been added</div></br></br>" : "The subject could not be added</div></br></br>";
 					
-
-								$sql = "INSERT INTO tbbooks (title, author, yearPub, description, genres, BookImage)
-								VALUES ('$title', '$author', '$date', '$description', '$genres', '$bookImage')" ;
-								
-
-								$query = mysqli_query($db,$sql);
-								
-
-								if(session_id() == '')
-								{
-									// session_start();
-								    echo "<a> Session Start. </a>";
-								}
-								
-								
-								// $_SESSION["user"] = $row['user_id'];
-								// $_SESSION["username"] = $row['name'];
-								header('Location: main.php');
-
-
-								if ($query)
-								{
-									header('Location: main.php');
-								}
-		
-									
-								 
-							}
-						   
-						?>
-				<form>
-			
-			</div>
-			
-			<div class="row">
-		</div>
-
-		</div>
-		
-
+					
+					$sql = "SELECT * FROM subjecttb WHERE SubArea = '$subj'"; 
+					$result = mysqli_query($conn, $sql);
+					if(mysqli_num_rows($result) > 0)
+					{
+						while($row = mysqli_fetch_assoc($result)) 
+						{
+							$SubID = $row["SubID"];
+					//echo($SubID);
+						}
+					}	
+					
+		$query2 = "INSERT INTO gradetb (SubID, 
+					GradeName, 
+					GradeDescription)
+				VALUES
+				('$SubID', '$grade', '$gradeDesc')";
+					$ress = mysqli_query($conn, $query2) == TRUE;
+					echo $ress ? "The grade has been added</div></br></br>" : "The grade could not be added</div></br></br>";
+			}
+			//echo 'We no get";
 		
 		
-		<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	</body>
+ 
+?>
+		</body>
 </html>
