@@ -101,5 +101,17 @@ The requirement will be categorized according to performance, quality, security 
 \item An administrator can perform the same actions as both the marketing and expert cpnsultants
 \end{itemize}
 
+\section*{Architectural System}
+\subsection*{Introduction}
+We have chosen to work with a 3 Tier system with the layers of that system being firstly, the User Interface Layer, secondly the Server Layer and thirdly the database layer.
+
+\subsection*{Presentation Layer}
+The UI layer is our “presentation layer.” It organizes what each kind of user will see and have available for interaction. It will be responsible for handling the presentation in a format that is suitable for each one of the user types in our system. Technologies used to implement this layer will include: HTML5, CSS3, JavaScript, Ajax, Bootstrap, jQuery and PHP. The UI layer and the server layer will be communicating using the HTTP protocol.
+\subsection*{Server Layer}
+The Server layer is where have our business logic and processing and coordination of the system. It will handle interfacing between the user interface layer and the data layer as well as handling advertising logic as well, and technologies used to implement this layer include: PHP, Apache HTTP Server. The Server layer will be communicating with the Database Layer through PHP's mysqli connector. 
+\subsection*{Database Layer}
+The Database layer will be working hand in hand with the Server layer as the Server layer will be supplying it with data for the UI layer (inputted by the users) and will also obtain data from the database layer as required by user requests (queries). The data layer will house a database implemented in MySQL and communicating through PHP's mysqli connector. 
+
+
 \end{document}
 
