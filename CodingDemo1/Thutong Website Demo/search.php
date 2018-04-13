@@ -241,7 +241,7 @@ div.jqcloud span { padding: 0; }
 
                                     <ul  class="nav navbar-nav">
                                         <li style="background-color:maroon;">
-                                            <a href="showMainCategory.php" style=" color:grey; font-size:20px;"> | Main </a>    
+                                            <a href="Lesson.php" style=" color:grey; font-size:20px;"> Lessons </a>    
                                         </li>
                                     </ul>
 
@@ -266,11 +266,14 @@ div.jqcloud span { padding: 0; }
                 
                 
 
+<br/>  <br/>  
+<br/>  <br/>  
 
+            <a style="color:red;" href="ShowQuiz.php" onclick="location.href='search.php?';"> Quiz Mockup </a></br>
+            <a style="color:red;" href="ViewJobs.php" onclick="location.href='search.php?';"> Jobs Mockup </a></br>
 
-
-                    <div class="col-md-3 col-sm-3 col-xs-3">
-                        <div class="panel panel-default" style="background-color: rgba(255, 255, 285, 0.3); " onmouseover="this.style.background='maroon';" onmouseout="this.style.background='rgba(255, 255, 285, 0.5)';">
+                    <div style="padding-left: 50px;" class="col-md-3 col-sm-3 col-xs-3">
+                        <div style="padding-left: 20px;"  class="panel panel-default" style="background-color: rgba(255, 255, 285, 0.3); "  onmouseout="this.style.background='rgba(255, 255, 285, 0.5)';">
                                 <fieldset style="color:red">
                                     <form action="" method="post" style="color:purple;"> 
                                     <legend style="color:red; font-size:60px;"> 

@@ -234,8 +234,8 @@ div.jqcloud span { padding: 0; }
 					                         <a href="usersfeed.php" style=" color:purple; font-size:20px;"> | Learning feed </a>
 					                    </li>
 
-					                    <li>
-					                      
+					                    <li style="background-color:maroon;">
+					                      	 <a href="lesson.php" style=" font-size:20px;"> Lessons </a>
 					                    </li>
 					                </ul>
 					                     
