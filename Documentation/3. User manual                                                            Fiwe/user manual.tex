@@ -1,5 +1,5 @@
 \documentclass[12pt,a4paper]{article}
-
+\usepackage{graphicx}
 \begin{document}
 	\begin{titlepage}
 		\centering
@@ -45,15 +45,22 @@
 		\end{itemize} 
 		  
 		\subsection{The student}
-		 The first user of the system is the student. This user needs to login with either their google, facebook or email account in order to access any content from the system. As seen from the figure (a) below, the student also needs to be able to search for a specific subject and be able to view content within that subject.
+		 The first user of the system is the student. This user needs to login with either their google, facebook or email account in order to access any content from the system. The student also needs to be able to search for a specific subject and be able to view content within that subject. Only one of the login options is shown above, which is registration before login\\
+		 
 		 %imagee to be loaded here(screenshot)
 		 
+		 \begin{figure}
+		 	\includegraphics[width=\linewidth]{login.jpg}
+		 	\caption{User Registration and Login.}
+		 	\label{fig:user login}
+		 \end{figure}
+		 
 		 \subsection{The Expert Consultant}
-		 The Expert consultant needs to be able to, besides logging in, add course content intended for students on the system. They should also be able to create quizzes for students and be able to remove all of the above-mentioned entities. See Figure (b) for examples of the Expert consultants interaction with the system.
-		 %Figure B to be added here
+		 The Expert consultant needs to be able to, besides logging in, add course content intended for students on the system. They should also be able to create quizzes for students and be able to remove all of the above-mentioned entities. Figure 1 also shows on the right pane, the expert consultants registration, which will need to be validated by the administrator.
+		
 		\subsection{The Marketing Consultant}
 		 This user needs to be able to add, remove and update marketing content on the system like vacancies, advertisements and donation request. A depiction of their interaction with the system is shown below.
-		 %Figure (C) added here
+		 
 		 
 		 \subsection{The Administrator}
 		 Also known as the superuser, this user will have all the powers of all the users, and will also be responsible for the addition, validation and removal of Expert and Marketing consultant accounts since these two users may be outsourced throughout the lifetime of the system. An example of the Admin interacting with the system is shown below.
@@ -61,7 +68,45 @@
 	\section{Using the System}
 	 This section discusses the use cases of the system in detail, please refer to the subsections below for each use case by the various users of the system.
 	 	\subsection{Login}
-	 	 From figure (d) below, the 
+	 	 From figure (d) below, the user is welcomed by the home oage and then enters their details to login.
+	 	 
+	 	 \subsection{Searching for a course or subject}
+	 	 To search for a specific course or subject, the user enters text in the textbox on the left and then clicks search, they will then be taken to Figure 3 where they enter whatever topic they which to search for, and the result will be displayed in Figure 4 below.
+	 	 
+	 	 
+	 	 
+	 	 \subsection{Adding a course or subject}
+		 As seen on Figure 5 below, adding a course or subject requires the subject name, description and which grade it is intended for. 
 		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 \begin{figure}
+		 	\includegraphics[width=\linewidth]{Home.jpg}
+		 	\caption{home page}
+		 	\label{fig:home page}
+		 \end{figure}
+		 
+		 \begin{figure}
+		 	\includegraphics[width=\linewidth]{Search.jpg}
+		 	\caption{Search}
+		 	\label{fig:Searching for subject}
+		 \end{figure}
+	 
+	 	\begin{figure}
+	 		\includegraphics[width=\linewidth]{Search2.jpg}
+	 		\caption{Search}
+	 		\label{fig:Searching for subject continued..}
+	 	\end{figure}
+ 	
+ 		 \begin{figure}
+ 			\includegraphics[width=\linewidth]{AddSubject.jpg}
+ 			\caption{adding a subject}
+ 			\label{fig:Adding a subject or course}
+ 		\end{figure}
 	
 \end{document}
