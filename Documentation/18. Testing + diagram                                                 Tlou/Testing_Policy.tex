@@ -54,7 +54,61 @@
 		\item Accomplish test coverage. 
 	\end{enumerate}
 	\section{Test Evaluation}
-	Use Case-Based Testing word serve as the testing objective throughout the testing phases of the systems life cycle
+	Use Case-Based Testing serve as the testing objective throughout the testing phases of the systems life cycle.
+	
+	Use Case-Based Testing  serve as the testing objective throughout the testing phases of the systems life cycle. This allows the team to measure progress.
+
+\begin{table}
+\centering
+\caption{UC1: Register a New User}
+\begin{tabular}{|l|l|} 
+\hline
+\textcolor[rgb]{0.2,0.2,0.2}{Actor: New User}                                                                                                                                                               & \textcolor[rgb]{0.2,0.2,0.2}{System: Web Application}                                                                                                                                                                                                                                              \\ 
+\hline
+\begin{tabular}[c]{@{}l@{}}\\\end{tabular}                                                                                                                                                                  & \textcolor[rgb]{0.2,0.2,0.2}{0. System displays homepage with a Register }\\\textcolor[rgb]{0.2,0.2,0.2}{User link}                                                                                                                                                                                                              \\ 
+\hline
+\begin{tabular}[c]{@{}l@{}}\textcolor[rgb]{0.2,0.2,0.2}{1. User fills in the login ID (email or ~}\\\textcolor[rgb]{0.2,0.2,0.2}{ Facebook), password, retyped password,}\\\textcolor[rgb]{0.2,0.2,0.2}{ and Click Submit button}\end{tabular} & \begin{tabular}[c]{@{}l@{}}\textcolor[rgb]{0.2,0.2,0.2}{2. System displays a new User Registration}\\\textcolor[rgb]{0.2,0.2,0.2}{ Form with options.}\\\textcolor[rgb]{0.2,0.2,0.2}{~2.1. Register via email}\\\textcolor[rgb]{0.2,0.2,0.2}{~2.2. Register via Facebook}\end{tabular}                                              \\ 
+\hline
+                                                                                                                                                                                                            & \begin{tabular}[c]{@{}l@{}}\textcolor[rgb]{0.2,0.2,0.2}{3. System verifies the login ID and passwords, }\\\textcolor[rgb]{0.2,0.2,0.2}{3.1. Display the Registration Success page, or}\\\textcolor[rgb]{0.2,0.2,0.2}{3.2. Display an error massage and ask the user }\\\textcolor[rgb]{0.2,0.2,0.2}{to try again.}\end{tabular}                                                                                                                           \\ 
+\hline
+\textcolor[rgb]{0.2,0.2,0.2}{4. User sees the Registration Successful ~}\\\textcolor[rgb]{0.2,0.2,0.2}{page.}                                                                                                                           &                                                                                                                                                                                                                                                                                                    \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}
+\centering
+\caption{UC2: Login User}
+\begin{tabular}{|l|l|} 
+\hline
+\textcolor[rgb]{0.2,0.2,0.2}{Actor: User}                                                                                                                                            & \textcolor[rgb]{0.2,0.2,0.2}{System: Web Application}                                                                                                                                                                                                                                           \\ 
+\hline
+\begin{tabular}[c]{@{}l@{}}\\\end{tabular}                                                                                                                                               & \begin{tabular}[c]{@{}l@{}}\textcolor[rgb]{0.2,0.2,0.2}{0. System displays homepage with a login User~}\\\textcolor[rgb]{0.2,0.2,0.2}{0.1.~}\textcolor[rgb]{0.2,0.2,0.2}{Login via email}\\\textcolor[rgb]{0.2,0.2,0.2}{0.2.~}\textcolor[rgb]{0.2,0.2,0.2}{Login via Facebook}\end{tabular}  \\ 
+\hline
+\begin{tabular}[c]{@{}l@{}}\textcolor[rgb]{0.2,0.2,0.2}{1. User fills in the login ID,~}\\\textcolor[rgb]{0.2,0.2,0.2}{password and Click Login button}\end{tabular} & \begin{tabular}[c]{@{}l@{}}\textcolor[rgb]{0.2,0.2,0.2}{2. System verifies the login ID and passwords}\\\textcolor[rgb]{0.2,0.2,0.2}{2.1. Display the Login Success page, or}\\\textcolor[rgb]{0.2,0.2,0.2}{2.2. Display an error massage and}\\\textcolor[rgb]{0.2,0.2,0.2}{ ask user to try again}\\\end{tabular}    \\ 
+\hline
+\textcolor[rgb]{0.2,0.2,0.2}{3. The user sees the Login Successful page}                                                                                                                 & \begin{tabular}[c]{@{}l@{}}\\\end{tabular}                                                                                                                                                                                                                                                      \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}
+\centering
+\caption{UC3: Write Quiz}
+\begin{tabular}{|l|l|} 
+\hline
+\textcolor[rgb]{0.2,0.2,0.2}{Actor: User}                                                 & \textcolor[rgb]{0.2,0.2,0.2}{System: Web Application}                                                                                                                                                                       \\ 
+\hline
+0. User browse a coarse content topic                                                     & \begin{tabular}[c]{@{}l@{}}\textcolor[rgb]{0.2,0.2,0.2}{1. System displays a subtopic page with a Write~}\\\textcolor[rgb]{0.2,0.2,0.2}{Quiz button}\\\end{tabular}                                                         \\ 
+\hline
+\textcolor[rgb]{0.2,0.2,0.2}{1. User click the}\textcolor[rgb]{0.2,0.2,0.2}{~Quiz button} & \begin{tabular}[c]{@{}l@{}}\textcolor[rgb]{0.2,0.2,0.2}{2. System Displays the quiz (and allow user~}\\\textcolor[rgb]{0.2,0.2,0.2}{interaction)~}\textcolor[rgb]{0.2,0.2,0.2}{with a submit or exit button.}\end{tabular}  \\ 
+\hline
+\textcolor[rgb]{0.2,0.2,0.2}{3. The user write the quiz and submit~}                      & \begin{tabular}[c]{@{}l@{}}4. System marks the quiz and return,~\\accumulated~score.\end{tabular}                                                                                                                           \\ 
+\hline
+5. User receives accumulated results                                                      &                                                                                                                                                                                                                             \\
+\hline
+\end{tabular}
+\end{table}
 	
 	\section{Quality Level to be achieved}
 	\subsection{Performance}
