@@ -2,74 +2,82 @@
 \usepackage{graphicx}
 \graphicspath{ {images/} }
 \begin{document}
-
-\title{	{\Huge Thutong LMS Testing Policy}  }
-\author{ \textbf{By Digital BlackSmiths}
-	\\
-	\\members:
-	\\\noindent\rule{\textwidth}{1pt}
-	\\Lebogang Ntlatleng	u15016715
-	\\Fiwa Lekhulani	u15187145
-	\\Daniel Rocha u14347980
-	\\Oluwatosin Botti u13208642
-	\\Tlou Lebelo u15209190
-	\\Lesego Mabe	u15055214
-}
-
-
-\date{\textbf{\today}}
-\maketitle
-\pagenumbering{roman}
-\noindent\rule{\textwidth}{1pt}
-\pagebreak
-\tableofcontents
-\newpage
-\pagenumbering{arabic}
-
-\section{Definition of Testing}
-
+	
+	\begin{titlepage}
+		\centering
+		\vspace*{\fill}
+		
+		\vspace*{0.5cm}
+		
+		\huge\bfseries
+		\rule{\textwidth}{1.6pt}\\[\baselineskip]
+		Thutong Site Learning Center Testing Policy
+		
+		\vspace*{0.5cm}
+		
+		\large Edited by: \\[\baselineskip]
+		
+		{Fiwa Lekhulani\\Daniel Rocha\\lebogang Ntatleng\\Lesego Mabe\\Tlou Lebelo\\Oluwatosin Botti}
+		
+		\rule{\textwidth}{1.6pt}\\[\baselineskip]
+		
+		
+		\vspace*{\fill}
+	\end{titlepage}
+	
+	
+	\date{\textbf{\today}}
+	\pagenumbering{roman}
+	%\noindent\rule{\textwidth}{1pt}
+	\pagebreak
+	\tableofcontents
+	\newpage
+	\pagenumbering{arabic}
+	
+	\section{Definition of Testing}
+	
 	\subsection{Purpose}
-Testing serves as the basic measure of progress within the softaware development process. Therefore without testing software throughout the develpment cycle there is no form of progress which prove that developers have made an attempt to solving the problems specified by the customer or user. \\ 
-
-Also, in situations where products need to ensure compliance with regulatory requirements, software testing can safeguard the organization from legal liabilities by verifying compliance. Such as protecting user data.
-
+	Testing serves as the basic measure of progress within the softaware development process. Therefore without testing software throughout the develpment cycle there is no form of progress which prove that developers have made an attempt to solving the problems specified by the customer or user. \\ 
+	
+	Also, in situations where products need to ensure compliance with regulatory requirements, software testing can safeguard the organization from legal liabilities by verifying compliance. Such as protecting user data.
+	
 	\subsection{Goal}
-The main goal to testing is ensuring that Thutong LMS system software fulfills its requirements as stipulated in the systems requirement documentation. The requiements to be meet include both functional and nonfunctional requirements which might way down the performance, security or any other system qualities.
-
-\section{Description of the test process}
+	The main goal to testing is ensuring that Thutong LMS system software fulfills its requirements as stipulated in the systems requirement documentation. The requiements to be meet include both functional and nonfunctional requirements which might way down the performance, security or any other system qualities.
+	
+	\section{Description of the test process}
 	Test-Driven Developement (TDD) would serve of as our testing machanism which would be applied throughout the development cycle to allow a continous testing. This in turn allows a better measure to the development progress.
 	\begin{enumerate}
-	\item Prepare for test driven development.
-	\item Write tests.
-	\item Implement and test the features.
-	\item Repeat until all the features are correctly implemented.
-	\item Accomplish test coverage. 
+		\item Prepare for test driven development.
+		\item Write tests.
+		\item Implement and test the features.
+		\item Repeat until all the features are correctly implemented.
+		\item Accomplish test coverage. 
 	\end{enumerate}
-\section{Test Evaluation}
-Use Case-Based Testing word serve as the testing objective throughout the testing phases of the systems life cycle
-
-\section{Quality Level to be achieved}
+	\section{Test Evaluation}
+	Use Case-Based Testing word serve as the testing objective throughout the testing phases of the systems life cycle
+	
+	\section{Quality Level to be achieved}
 	\subsection{Performance}
-		\begin{itemize}
+	\begin{itemize}
 		\item Able to load under weak network signal i.e. 2g network.
 		\item Less data bandwidth required to load and browse.
-		\end{itemize}
+	\end{itemize}
 	\subsection{Availability}
-		\begin{itemize}
+	\begin{itemize}
 		\item System functionalities must be up and available at all times 24 hours a day and 7 days a week. this includes the server, database and browser web interface.
 		\item Aways accessable through web browser dispite the type of device be used. Whether desktop or mobile devices.
-		\end{itemize}
+	\end{itemize}
 	\subsection{Usability}
-		\begin{itemize}
+	\begin{itemize}
 		\item The system must be efficient to use: takes less time to accomplish a particular task. This sould take less than a minute
 		\item Easier to learn: operation can be learned by observing the object i.e. the names of different functionalities is intuitive.
 		\item More satisfying to use: student users comfort in using the system for educational purposes i.e. the user friendly
-		\end{itemize}
-		
-\section{Approach to Test Process Improvement}
+	\end{itemize}
+	
+	\section{Approach to Test Process Improvement}
 	
 	Travis CI is well enough tool to aid with the TDD. It 
 	Why travis CI? \\
 	Travis ci provides a syncing functionality to github. 
-  This allows the Team (Digital BlackSmiths) to use whats already in place without having to learn new optimizing tools which might make software testing a baden. 
+	This allows the Team (Digital BlackSmiths) to use whats already in place without having to learn new optimizing tools which might make software testing a baden. 
 \end{document}
