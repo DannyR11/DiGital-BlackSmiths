@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<!--Insert your own name and surname-->
+		<meta name="Daniel Rocha 15" content="" />
+		<title> Login Demo Use Case </title> 
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+		<link rel="icon" type="image/gif" href="favicon/animated_favicon1.gif">
+
+	<style>
+		@font-face {
+		   font-family: myFonta;
+		   src: url(blackchancery/Aerospace.ttf);
+		}
+
+		legend, label {
+		   font-family: myFonta;
+		   color: #00008B;
+		}
+
+.navbar {
+    color: #FFFFFF;
+    background-color: maroon;
+}
+
+	</style>
+
+	
+
+	</head>
+	<body background="blur-backgrounds/blur-background08.jpg">
+
+
+		<div class="container" style="color:white">
+						<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+					        <div class="container">
+					            <!-- Brand and toggle get grouped for better mobile display -->
+					            <div class="navbar-header">
+
+								
+								<img src="logoo.png" style="width:44px;height:44px;">
+
+					                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					                    <span class="sr-only">Toggle navigation</span>
+					                    <span class="icon-bar"></span>
+					                    <span class="icon-bar"></span>
+					                    <span class="icon-bar"></span>
+					                </button>
+					                <a class="navbar-brand" href="#" style="font-size: 36px">THUTONG</a>
+					                 <a id="fl" style="font-size: 26px"> Learning platform</a>
+					            </div>
+					            <!-- Collect the nav links, forms, and other content for toggling -->
+
+					            <div class="collapse navbar-collapse" id="clac" id="bs-example-navbar-collapse-1">
+
+					                <ul id="clac" class="nav navbar-nav" >
+
+					                    <li style="align:center; padding-left: 80px;">
+
+					                        <a id="clac" href="popup.html" onClick="return popup(this, 'notes')"> About </a>
+					                    </li>
+
+					                    <li>
+					                        <a  id="clac" href="popupS.html" onClick="return popup(this, 'notes')">Services</a>
+					                    </li>
+
+					                    <li>
+					                        <a  id="clac" href="popupC.html" onClick="return popup(this, 'notes')">Contact</a>
+					                    </li>
+
+					                    <li>
+					                      
+					                    </li>
+					                </ul>
+					                     
+					                    
+								
+					                <ul class="nav navbar-nav navbar-right" onclick="self.close()">
+					                  <li ><a href="#" id="clacc" >
+					                  	<span class="glyphicon glyphicon-log-out" id="colourr" >
+					                  	</span> Login Page </a>
+					                  </li>
+					                </ul>
+					               
+					            </div>
+
+					            
+
+
+					            <!-- /.navbar-collapse -->
+					        </div>
+					        <!-- /.container -->
+					    </nav>
+					</div>
+					<br/>
+					<br/>
+					<br/>
+					<br/>
+
+			
+
+
+	
+	
+		<div class="container" style="background-color: transparent; ">
+			
+			<div class="row" >
+				<div class="col-md-4 col-sm-4 col-xs-4">
+				
+					<div class="panel panel-default" id="col" style="background-color: rgba(255, 255, 285, 0.3); " onmouseover="this.style.background='maroon';" onmouseout="this.style.background='rgba(255, 255, 285, 0.5)';">
+						<div class="panel-body"  id="cray">
+						
+							<form action="home.php" method="post" >
+								<fieldset>
+
+									<legend>Log in to see Content</legend>
+									<div class="form-group">
+										<label for="email">Email address:</label>
+										<input type="email" class="form-control" name="email" id="email" placeholder="john.doe@gmail.com"/>
+									</div>
+									<div class="form-group">
+										<label for="pass">Password:</label>
+										<input type="password" class="form-control" name="pass" id="pass" placeholder="********"/>
+									</div>
+
+									<input type="submit" value="Log in" class="btn btn-default" />
+
+								</fieldset>
+							</form>
+							
+						</div><!--/panel-body-->
+					</div><!--/panel-->
+				
+				</div> <!--/col1-->
+
+				<div class="col-md-4 col-sm-4 col-xs-4" >
+					
+					
+						<img src="LearningQuotesImages/Learning-Quotes-5-of-16.jpg" height="100%" width="100%"  style="padding-down: 10px;"/>
+						
+						<img style="width: 100%; height: 220px; padding-top: 20px;" src="CategoryPictures/ipad.jpeg"/>
+
+					
+					
+				</div>
+
+
+				<div class="col-md-4 col-sm-4 col-xs-4">
+				
+				<div class="panel panel-default" style="background-color: rgba(255, 255, 285, 0.5); " onmouseover="this.style.background='maroon';" onmouseout="this.style.background='rgba(255, 255, 285, 0.3)';">
+				<div class="panel-body" id="cray">
+				
+					<form action="signup.php" method="post">
+						<fieldset>
+							<legend>Register</legend>
+							<div class="form-group">
+								<label for="fname">First name:</label>
+								<input type="text" class="form-control" name="fname" id="fname" placeholder="John"/>
+							</div>
+							<div class="form-group">
+								<label for="lname">Last name:</label>
+								<input type="text" class="form-control" name="lname" id="lname" placeholder="Doe"/>
+							</div>
+							<div class="form-group">
+								<label for="email1">Email address:</label>
+								<input type="email" class="form-control" name="email1" id="email1" placeholder="john.doe@gmail.com"/>
+							</div>
+							<div class="form-group">
+								<label for="admin">0-Stud 1-Admin 2-Consult 3-Marketing Status Example:</label>
+								<input type="text" class="form-control" name="admin" id="admin"/>
+							</div>
+							<div class="form-group">
+								<label for="pass1">Create password:</label>
+								<input type="password" class="form-control" name="pass1" id="pass1" placeholder="********"/>
+							</div>
+							<div class="form-group">
+								<label for="pass1">Confirm password:</label>
+								<input type="password" class="form-control" name="pass2" id="pass2" placeholder="********"/>
+							</div>
+							<input type="submit" value="Register" class="btn btn-default"  />
+						</fieldset>
+					</form>
+					
+				</div><!--/panel-body-->
+				</div><!--/panel-->
+				
+				</div><!--/col2-->
+
+
+
+
+			</div><!--/row-->
+		</div><!--/container-->
+		
+	</body>
+</html>
