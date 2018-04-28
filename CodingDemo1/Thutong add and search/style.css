@@ -1,0 +1,88 @@
+@font-face {
+font-family: DeliciousRomanRegular;
+src: url(/Quicksand-Bold.otf);
+           font-family: myFonto;
+           src: url(halo3/Halo3.tff);
+        }
+
+        legend, label, input, a, b, li {
+           font-family: myFont;
+        }
+
+h2, strong {
+font-family: DeliciousRomanRegular, Helvetica, Arial, sans-serif;
+}
+
+b {
+    font-size: 25px;
+    font-weight:normal;
+}
+
+#example:after {
+   content: ".";
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #f3f3f3;
+    background-color: #808080;
+}
+
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #808080;
+}
+
+
+
+#colour {
+   color: red;
+   font-size: 40px;
+}
+#colourr {
+   color: red;
+}
+
+#imagepre {
+        width: 10px;
+        height: 10px;
+        margin-top: 500px;
+}
+.img1 {
+        float: right;
+        width: 6.2%;
+        height: 6.2%;
+}
+.img12 {
+        float: right;
+        width: 5%;
+        height: 15%; 
+}
+.img111 {
+        width: 50%;
+        height: 50%;
+        float: left;
+}
+.shit {
+    padding-left: 100px;
+    margin-top: 500px;
+}
+.shitt {
+    padding-left: 100px;
+    margin-bottom: 500px;
+}
