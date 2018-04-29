@@ -86,12 +86,14 @@
                         <div class="col-sm-5 sm-margin-b-30">
                             <h2 class="color-white"> Login Details</h2>
                             <!-- FORM TAGS MISSING!!!!!!!! -->
+							<form action="./login" method="post">
                             <input type="text" class="form-control footer-input margin-b-20" placeholder="Email" required>
                             <input type="text" class="form-control footer-input margin-b-20" placeholder="Password" required>
 
                             <!--These buttons should just submit, but should not have onclick, page will be triggered by form "action" and "target" -->
-                            <button type="submit" onclick="window.location.href='ShowMainLoggedInMain.html'" class="btn-theme btn-theme-sm btn-base-bg text-uppercase"> Login </button>
+                            <button type="submit" class="btn-theme btn-theme-sm btn-base-bg text-uppercase"> Login </button>
                             <button type="submit" onclick="window.location.href='ShowLoginResetPassword.html'" class="btn-theme btn-theme-sm btn-base-bg text-uppercase"> Reset </button>
+                            </form>
                         </div>
                         <div class="col-sm-5 sm-margin-b-30">
                             <h2 class="color-white"> Register via</h2>
