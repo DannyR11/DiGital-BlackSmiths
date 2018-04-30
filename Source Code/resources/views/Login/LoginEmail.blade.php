@@ -82,12 +82,12 @@
             <div class="footer-seperator">
                 <div class="content-lg container">   
                     <div class="row"style="padding-left:100px;">
-					<form action="./register/email" method="post">
                         <div class="col-sm-5 sm-margin-b-30">
                             <h2 class="color-white"> Register</h2>
                             <!--========== FORM TAG MISSING ==========-->
-                            <input type="text" class="form-control footer-input margin-b-20" placeholder="Name" required>
-                            <input type="text" class="form-control footer-input margin-b-20" placeholder="Surname" required>
+							<form action="./register/email" method="post">
+                            <input type="text" name="name" id="name" class="form-control footer-input margin-b-20" placeholder="Name" required>
+                            <input type="text" name="surname" id="surname" class="form-control footer-input margin-b-20" placeholder="Surname" required>
                              <!--========== TEXTAREA(bio), PHONE NUMBER NOT NEEDED  ==========-->
                               <!--========== ADD EXTRA TAG FOR CONFRIM PASSWORD, THIS USER IS REGISTERING!!!!!  ==========-->
                             <!--textarea class="form-control footer-input margin-b-30" rows="6" placeholder="Bio" required></textarea-->
@@ -97,9 +97,9 @@
                         <div class="col-sm-5 sm-margin-b-30">
                             <h2 class="color-white"> Picture</h2>
                             <img  height="300" src="img/ProfilePictures/lady.jpg" alt="ThutongLogoSize"> </br-->
-                            <input type="email" class="form-control footer-input margin-b-20" placeholder="Email" required>
+                            <input type="email" name =email" id="email" class="form-control footer-input margin-b-20" placeholder="Email" required>
                             <input type="password" name="password" id="password" class="form-control footer-input margin-b-20" maxLength="25" placeholder="Password" required>
-							<input type="password" class="form-control footer-input margin-b-20" placeholder="Confirm Password" required>
+							<input type="password" name="confirmPassword" id="confirmPassword" class="form-control footer-input margin-b-20" placeholder="Confirm Password" required>
 							<button type="submit" class="btn-theme btn-theme-sm btn-base-bg text-uppercase"> Register</button>
                         </div>
 						</form>
