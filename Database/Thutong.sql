@@ -139,7 +139,7 @@ TO DO:
 */
 
 CREATE TABLE Topic (
-TopicID int(8) usigned not null auto_increment primary key,
+TopicID int(8) unsigned not null auto_increment primary key
 
 );
 
@@ -205,7 +205,7 @@ CREATE TABLE AcademicContent
 Type varchar(50) null,
 Name varchar(50) null,
 Description text null,
-DateCreated datetime(7) not null,
+DateCreated datetime(6) not null,
 TopicID int(8) unsigned null,
 constraint fk_topic2 foreign key (TopicID) references Topic(TopicID)
 );
