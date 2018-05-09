@@ -69,7 +69,8 @@
          <footer class="footer" style="width:100; background: url(img/MainPics/05.jpg);">
             <!-- Links -->
             <div class="footer-seperator">
-                <div class="content-lg container">   
+                <div class="content-lg container"> 
+                <form action="./login" method="post">  
                     <div class="row"style="padding-left:100px;">
                         <div class="col-sm-5 sm-margin-b-30">
                             <h2 class="color-white"> Profile</h2>
@@ -91,6 +92,7 @@
                         </div>
                     </div>
                     <!--// end row -->
+                    </form>
                 </div>
             </div>
         </footer>

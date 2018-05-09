@@ -22,8 +22,11 @@
                 </div>
                 
             </div>
+
+            <!-- button go to add forms etc -->
             <a href="./jobsAdd" class="btn-theme btn-theme-sm btn-base-bg text-uppercase"> Jobs Add</a>
             <a href="./jobsManage" class="btn-theme btn-theme-sm btn-base-bg text-uppercase"> Jobs Manage</a>
+
         </footer>
             <!-- End Links -->
 @endsection

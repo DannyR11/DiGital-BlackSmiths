@@ -15,7 +15,7 @@
             <div class="footer-seperator">
                 <div class="content-lg container">
                     <div class="row" style="padding-left:100px;">
-                    <form action="./profileSave" method="post">
+                    <form action="./       " method="post">
                         <div class="col-sm-5 sm-margin-b-30">
                             <h2 class="color-white"> Profile</h2>
                             <input type="text" class="form-control footer-input margin-b-20" placeholder="Name" required>
