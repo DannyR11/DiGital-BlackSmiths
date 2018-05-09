@@ -88,15 +88,6 @@
 							<form action="./register/email" method="post">
                             <input type="text" name="name" id="name" class="form-control footer-input margin-b-20" placeholder="Name" required>
                             <input type="text" name="surname" id="surname" class="form-control footer-input margin-b-20" placeholder="Surname" required>
-                             <!--========== TEXTAREA(bio), PHONE NUMBER NOT NEEDED  ==========-->
-                              <!--========== ADD EXTRA TAG FOR CONFRIM PASSWORD, THIS USER IS REGISTERING!!!!!  ==========-->
-                            <!--textarea class="form-control footer-input margin-b-30" rows="6" placeholder="Bio" required></textarea-->
-                            <!--This button should just submit, but should not have onclick, page will be triggered by form "action" and "target" -->
-                            
-                        <!--/div>
-                        <div class="col-sm-5 sm-margin-b-30">
-                            <h2 class="color-white"> Picture</h2>
-                            <img  height="300" src="img/ProfilePictures/lady.jpg" alt="ThutongLogoSize"> </br-->
                             <input type="email" name =email" id="email" class="form-control footer-input margin-b-20" placeholder="Email" required>
                             <input type="password" name="password" id="password" class="form-control footer-input margin-b-20" maxLength="25" placeholder="Password" required>
 							<input type="password" name="confirmPassword" id="confirmPassword" class="form-control footer-input margin-b-20" placeholder="Confirm Password" required>
