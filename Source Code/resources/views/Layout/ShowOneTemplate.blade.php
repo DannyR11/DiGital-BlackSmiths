@@ -1,15 +1,4 @@
 <!DOCTYPE html>
-<!-- ==============================
-    Project:        Metronic "Asentus" Frontend Freebie - Responsive HTML Template Based On Twitter Bootstrap 3.3.4
-    Version:        1.0
-    Author:         KeenThemes
-    Primary use:    Corporate, Business Themes.
-    Email:          support@keenthemes.com
-    Follow:         http://www.twitter.com/keenthemes
-    Like:           http://www.facebook.com/keenthemes
-    Website:        http://www.keenthemes.com
-    Premium:        Premium Metronic Admin Theme: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
-================================== -->
 <html lang="en" class="no-js">
     <!-- BEGIN HEAD -->
     <head>
@@ -20,15 +9,29 @@
         <meta content="" name="description"/>
         <meta content="" name="author"/>
 
-        @extends('layout.app')
-        
+        <!-- GLOBAL MANDATORY STYLES -->
+        <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+        <link href="{{ asset('vendor/simple-line-icons/simple-line-icons.min.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
+
+        <!-- PAGE LEVEL PLUGIN STYLES -->
+        <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+
+        <!-- THEME STYLES -->
+        <link href="{{ asset('css/layout.min.css') }}" rel="stylesheet" type="text/css"/>
+
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="favicon.ico"/>
     </head>
     <!-- END HEAD -->
+
+
+
 
     <!-- BODY -->
     <body>
 
-         <!--========== HEADER ==========-->
+        <!--========== HEADER ==========-->
          @extends('layout.Navbar')
         <!--========== END HEADER ==========-->
 
@@ -54,28 +57,41 @@
         </div>
         <!-- End Contact List -->
        
-           
 
-       
-
-        <!--========== FOOTER ==========-->
-        <footer class="footer">
-            <!-- Links -->
-            
-            
-            <!-- End Links -->
-
-           
-        </footer>
-        <!--========== END FOOTER ==========-->
+        <!-- Back To Top -->
+        <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
 
         <!-- Back To Top -->
         <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
 
         <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
         <!-- CORE PLUGINS -->
-        @extends('layout.endLinks')
+        <script src="{{ asset('vendor/jquery.min.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('vendor/jquery-migrate.min.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js')}}" type="text/javascript"></script>
+
+        <!-- PAGE LEVEL PLUGINS -->
+        <script src="{{ asset('vendor/jquery.easing.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('vendor/jquery.back-to-top.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('vendor/jquery.smooth-scroll.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('vendor/jquery.wow.min.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('vendor/jquery.parallax.min.js')}}" type="text/javascript"></script>
+
+        <!-- PAGE LEVEL SCRIPTS -->
+        <script src="{{ asset('js/layout.min.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('js/components/wow.min.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('js/components/gmap.min.js')}}" type="text/javascript"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsXUGTFS09pLVdsYEE9YrO2y4IAncAO2U&amp;callback=initMap" async defer></script>
 
     </body>
     <!-- END BODY -->
 </html>
+
+
+
+
+ <!-- External Links Ignore ///////////////////////////////////////////////////////////////////// -->
+ <!-- External Links Ignore ///////////////////////////////////////////////////////////////////// -->
+ <!-- External Links Ignore ///////////////////////////////////////////////////////////////////// -->
+ <!-- External Links Ignore ///////////////////////////////////////////////////////////////////// -->
+

@@ -1,15 +1,4 @@
 <!DOCTYPE html>
-<!-- ==============================
-    Project:        Metronic "Asentus" Frontend Freebie - Responsive HTML Template Based On Twitter Bootstrap 3.3.4
-    Version:        1.0
-    Author:         KeenThemes
-    Primary use:    Corporate, Business Themes.
-    Email:          support@keenthemes.com
-    Follow:         http://www.twitter.com/keenthemes
-    Like:           http://www.facebook.com/keenthemes
-    Website:        http://www.keenthemes.com
-    Premium:        Premium Metronic Admin Theme: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
-================================== -->
 <html lang="en" class="no-js">
     <!-- BEGIN HEAD -->
     <head>
@@ -84,11 +73,14 @@
                     <div class="row"style="padding-left:100px;">
                         <div class="col-sm-5 sm-margin-b-30">
                             <h2 class="color-white"> Profile</h2>
+                            <!--========== FORM TAG MISSING ==========-->
                             <input type="text" class="form-control footer-input margin-b-20" placeholder="Name" required>
                             <input type="text" class="form-control footer-input margin-b-20" placeholder="Surname" required>
-                            
+                             <!--========== TEXTAREA(bio), PHONE NUMBER NOT NEEDED  ==========-->
+                              <!--========== ADD EXTRA TAG FOR CONFRIM PASSWORD, THIS USER IS REGISTERING!!!!!  ==========-->
                             <input type="text" class="form-control footer-input margin-b-20" placeholder="Phone" required>
                             <textarea class="form-control footer-input margin-b-30" rows="6" placeholder="Bio" required></textarea>
+                            <!--This button should just submit, but should not have onclick, page will be triggered by form "action" and "target" -->
                             <button type="submit" class="btn-theme btn-theme-sm btn-base-bg text-uppercase"> Register</button>
                         </div>
                         <div class="col-sm-5 sm-margin-b-30">
@@ -148,3 +140,12 @@
     </body>
     <!-- END BODY -->
 </html>
+
+
+
+
+ <!-- External Links Ignore ///////////////////////////////////////////////////////////////////// -->
+ <!-- External Links Ignore ///////////////////////////////////////////////////////////////////// -->
+ <!-- External Links Ignore ///////////////////////////////////////////////////////////////////// -->
+ <!-- External Links Ignore ///////////////////////////////////////////////////////////////////// -->
+

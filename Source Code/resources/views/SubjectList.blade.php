@@ -1,6 +1,7 @@
 @extends('Layout.ShowOneTemplate')      
-      
+
       @section('showContent')
+      <h1 style="color:white"> Subject List <h1>
       @endsection
       
       

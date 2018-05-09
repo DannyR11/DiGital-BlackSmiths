@@ -11,23 +11,27 @@
 |
 */
 
+//------------Login related Routes, Focus for today---------------------
 
-// Login route
 Route::get('/', function () { // **
     return view('Login/Login');
 });
 
-Route::get('/facebookR', function(){ 
-    return view('Login/LoginFacebook');
+Route::post('/login', 'LoginController@validateLogin'); //user tries to login, check credentials against db
+
+Route::get('/fbLogin', function(){ //login via facebook, implemented at a later stage
+    return "<h1>Under construction</h1>";
 });
 
-Route::get('/emailR', function(){ // **
+Route::get('/register', function(){
     return view('Login/LoginEmail');
 });
 
+Route::post('/register/email','loginController@saveUserInfo'); //call save user info to register User
 
 
-// Main heading directory
+//-----------End of login related routes-----------------------------------
+
 Route::post('/main', function(){ // **
     return view('Main');
 });
