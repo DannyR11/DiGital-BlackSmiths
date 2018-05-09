@@ -41,16 +41,17 @@
                             
 
                                     <div class="form-group">
-                                        <label for="SubjectArea" style="color:purple; font-size:30px;"> SEARCH: </label>
+                                        <label for="SubjectArea" style="color:purple; font-size:50px;"> SEARCH: </label>
                                         <input type="text" class="form-control footer-input margin-b-20" placeholder="Keywords" required>
+                                        <!-- MAKE THIS REQUIRED ********************************************************** BEFORE SUBMITTING -->
                                             <select class="form-control" name="genres" id="genres" style="width: 200px" >
                                                   <option value="Subject Area"> Subject </option>
                                                   <option value="Grade"> Grade </option>
-                                                  <option value="Criteria"> Lesson </option>
-                                                  <option value="Criteria"> Topic </option>
-                                                  <option value="Criteria"> Quiz </option>
-                                                  <option value="Criteria"> Job Name </option>
-                                                  <option value="Criteria"> Job Location </option>
+                                                  <option value="Lesson"> Lesson </option>
+                                                  <option value="Topic"> Topic </option>
+                                                  <option value="Quiz"> Quiz </option>
+                                                  <option value="JobName"> Job Name </option>
+                                                  <option value="JobLocation"> Job Location </option>
                                             </select>
                                     </div>
                                                         
