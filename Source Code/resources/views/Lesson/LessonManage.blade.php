@@ -8,6 +8,7 @@
       
       
       @section('showListContent')
+      
                <!--========== FOOTER ==========-->
                <footer class="footer" style="width:100; background-color:#E3E9EE">
                   <!-- Links -->
@@ -37,5 +38,6 @@
                   </div>
               </footer>
                   <!-- End Links -->
-                  
+
+
       @endsection
