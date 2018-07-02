@@ -1,0 +1,7 @@
+s:450:"<p>Users may be uploaded (and optionally enrolled in courses) via text file. The format of the file should be as follows:</p>
+
+<ul><li>Each line of the file contains one record</li>
+<li>Each record is a series of data separated by commas (or other delimiters)</li>
+<li>The first record contains a list of fieldnames defining the format of the rest of the file</li>
+<li>Required fieldnames are username, password, firstname, lastname, email</li>
+</ul>";

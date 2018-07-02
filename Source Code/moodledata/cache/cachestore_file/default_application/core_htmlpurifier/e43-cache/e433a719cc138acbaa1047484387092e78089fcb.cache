@@ -1,0 +1,6 @@
+s:389:"<p>If "Full screen pop-up with some JavaScript security" is selected,</p>
+
+<ul><li>The quiz will only start if the student has a JavaScript-enabled web-browser</li>
+<li>The quiz appears in a full screen popup window that covers all the other windows and has no navigation controls</li>
+<li>Students are prevented, as far as is possible, from using facilities like copy and paste</li>
+</ul>";
