@@ -1,0 +1,130 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\hypersetup{      
+    urlcolor=blue,
+}
+\urlstyle{same}
+
+
+\begin{document}
+	\begin{titlepage}
+		\centering
+		\vspace*{\fill}
+		
+		\vspace*{0.5cm}
+		
+		\huge\bfseries
+		\rule{\textwidth}{1.6pt}\\[\baselineskip]
+		Thutong Site Learning Center User Manual
+		
+		\vspace*{0.5cm}
+		
+		\large Contributors: \\[\baselineskip]
+		
+			{Fiwa Lekhulani\\Daniel Rocha\\lebogang Ntatleng\\Lesego Mabe\\Tlou Lebelo\\Oluwatosin Botti}
+		
+		\rule{\textwidth}{1.6pt}\\[\baselineskip]
+		
+		
+		\vspace*{\fill}
+	\end{titlepage}
+
+
+	\date{\textbf{\today}}
+	\pagenumbering{roman}
+	%\noindent\rule{\textwidth}{1pt}
+	\pagebreak
+	\tableofcontents
+	\newpage
+	\pagenumbering{arabic}
+
+
+	This document contains the coding conventions created by the Digital Blacksmiths team, based on the various languages used to create the Thutong Learning Centre.
+	\newline
+	As the team makes use of Laravel Web Framwork it makes use of PSR-4, PSR-4, PHP Code Sniffer and Style CI, which all helps simplify and ensure that the code is of good quality, readable and easy to maintain.
+	
+	\section{General}
+	
+	\subsection{File Header}
+	Each file has a description of what is coded within that specific file, whom it was made and/or edited by. This to make any other programmer of the core purpose of the file.
+	
+	
+	\subsection{Description of Classes}
+	This is a description of what a selected class and it's function implements and how to do so as seen in Figure 1.
+	
+	\begin{figure}[ht]
+		 	\includegraphics[width=0.7\columnwidth]{vs2.png}
+		 	\caption{File header and description}
+		 	\label{fig: File header}
+		 \end{figure}
+	
+	\section{Coding Conventions}
+	\subsection{Naming Conventions}
+	All variable, file and function names sould be easy to understand yet descriptive for what its purpose is.Names should also use camel casing so they are more descriptive and easy to read.
+	
+	\begin{enumerate}
+		\item Classes
+			\newline e.g. class StudentDetails {...} ;
+		\item Functions and Methods
+			\newline e.g. getStudentId();
+		\item Variables
+			\newline e.g. var studentId;
+	\end{enumerate}
+	
+	\subsection{Formatting Conditions}
+	Formatting Conditions are rules used to arrange program statements.
+	
+	\subsubsection{line breaks}
+	\begin{itemize}
+	\item Programmers should  avoid lines that are more than 150 characters; if so proceed to a new line.
+	\end{itemize}
+	
+	\subsubsection{Indentation and Alignment}
+	\begin{itemize}
+	\item Lines of code that are not dependant on each other should be aligned. function or loop implementations are indented and those are aligned with each other.
+	\item Indentation should be used to make code more clear, easy to read, understand, enhance and maintain.
+	\item One line should be indented a minimum of one tab space or  four spaces.
+	\end{itemize}
+	
+	\subsubsection{In-Code comment Conventions}
+	\begin{enumerate}
+		\item Block Comments
+		\begin{itemize}
+		\item Block comments are used to provide descriptions of files, methods, data structures and
+algorithms.They are usually used in file headers.
+		\item A block comment should be preceded by a blank line to set it apart from the rest of the code.
+	\end{itemize}	
+	\item Single-line Commments
+	\begin{itemize}
+		\item Short comments can appear on a single line indented to the level of the code that follows.
+		\item They can describe the purpose of a variable or why a particular action is being done.
+	\end{itemize}
+	\item Multi-line Commments
+	\begin{itemize}
+		\item Multi-line comments are multiple lines of comments for the same use as single-line comments.
+	\end{itemize}				 
+	\end{enumerate}
+	
+	\begin{figure}[ht]
+		 	\begin{minipage}[b]{0.45 \linewidth}
+		 	\centering
+		 	\includegraphics[width=\textwidth]{multiline.png}
+		 	\caption{Multi-line commment}
+		 	\label{Commenting}
+		 	\end{minipage}
+			\begin{minipage}[b]{0.45 \linewidth}
+		 	\centering
+		 	\includegraphics[width=\textwidth]{phpblock.png}
+		 	\caption{Block and descriptive commenting}
+		 	\label{Block and descriptive commenting}
+		 	\end{minipage}
+		 \end{figure}
+	
+
+	\section{Laravel and it's coding Stnadards}
+	Laravel makes use of PSR-2 Coding Standards which give rules as to the most ideal way to implement coding stnadrds for PHP. \newline These can be found at:  \href{https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md}{StyleCI}
+\newline Larvel also makes use of StyleCI. Which will automatically merge any style fixes into the Laravel repository after pull requests are merged on Github. This allows us to focus on the content of the contribution and not the code style.
+\newline StyleCI take whtever rules you choose to have implemented in  your coding standards and checks the code via terminal or Travis if it meets the requirements set out; if a file has errors it will make the approiate changes for you.	
+\end{document}
