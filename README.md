@@ -5,9 +5,8 @@
 1. Lebogang Ntlatleng		u15016715	
 2. Fiwa	Lekhulani		u15187145	
 3. Daniel	 Rocha		u14347980
-4. Oluwatosin Botti		u13208642	
-5. Tlou Lebelo			u15209190	
-6. Lesego Mabe		u15055214 
+4. Tlou Lebelo			u15209190	
+5. Lesego Mabe		u15055214 
 
 ## Project Name: Entelect - Thutong LMS
 The Project is a response to the problem that Thutong Site Learning Centre was formed to make a meaningful difference to South Africa’s education rank by developing and producing remarkable educational results through ICT initiatives.
@@ -16,4 +15,7 @@ Create a mobile friendly and easily maintainable website for all learners that f
 
 # Our mission: 
 *Therefor we strive towards perfection in aiming to produce a world class software tool to serve as a patch on to the learning gap in Mathematics and Science in South Africa to a global scale.*	
+
+## Moodle
+Moodle is an open source softawre framework for LMS system which will be used to render the Thutong site.
 
