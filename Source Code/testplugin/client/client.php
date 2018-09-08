@@ -24,12 +24,12 @@ $domainname = 'http://139.215.42.239/moodle';
 /// FUNCTION NAME
 $functionname = 'test_plugin_obtain_token';
 /// PARAMETERS
-$welcomemsg = 'Hello, ';
+$tokenmsg = 'Hello, ';
 ///// XML-RPC CALL
 header('Content-Type: text/plain');
 $serverurl = $domainname . '/webservice/xmlrpc/server.php'. '?wstoken=' . $token;
 require_once('./curl.php');
 $curl = new curl;
-$post = xmlrpc_encode_request($functionname, array($welcomemsg));
+$post = xmlrpc_encode_request($functionname, array($tokenmsg));
 $resp = xmlrpc_decode($curl->post($serverurl, $post));
 print_r($resp);

@@ -23,8 +23,8 @@ $functions = array(
         'test_plugin_obtain_token' => array(
                 'classname'   => 'test_plugin_external',
                 'methodname'  => 'obtain_token',
-                'classpath'   => 'local/wstemplate/externallib.php',
-                'description' => 'Return Hello World FIRSTNAME. Can change the text (Hello World) sending a new text as parameter',
+                'classpath'   => 'local/testplugin/externallib.php',
+                'description' => 'Return the token belonging to the authenticated user for web services use.',
                 'type'        => 'read',
         )
 );
