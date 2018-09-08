@@ -2,19 +2,20 @@
 ## Team name: DiGital BlackSmiths
 ## Team Members
 
-1. Lebogang Ntlatleng		u15016715	
-2. Fiwa	Lekhulani		u15187145	
-3. Daniel	 Rocha		u14347980
-4. Tlou Lebelo			u15209190	
-5. Lesego Mabe		u15055214 
+1. Lebogang Ntlatleng		
+2. Fiwa	Lekhulani		
+3. Daniel	 Rocha		
+4. Tlou Lebelo			
+5. Lesego Mabe		
 
-## Project Name: Entelect - Thutong LMS
-The Project is a response to the problem that Thutong Site Learning Centre was formed to make a meaningful difference to South Africa’s education rank by developing and producing remarkable educational results through ICT initiatives.
+## Project Name: Thutong LMS
+The Project is a response to the growth in technology within the educational space, hereby using an online Learning Management Tool  to develop and produce better educational results for South African pupils.
+
 # Project Decription: 
-Create a mobile friendly and easily maintainable website for all learners that follow the SA School Curriculum in order to improve learners’ subject results and ICT skills, by providing free and accessible educational information via technological devices.
+An online platform to assist school learners with their academics as stipulated by the South African Curriculum in the form of lessons, quizzes and virtual classrooms and tutoring.
 
 # Our mission: 
-*Therefor we strive towards perfection in aiming to produce a world class software tool to serve as a patch on to the learning gap in Mathematics and Science in South Africa to a global scale.*	
+*Therefor we strive towards perfection in aiming to produce a world class software tool to serve as a platform to help students reach the best of their ability.*	
 
 ## Moodle
 Moodle is an open source softawre framework for LMS system which will be used to render the Thutong site.
