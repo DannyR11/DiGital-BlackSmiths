@@ -20,7 +20,7 @@
  */
 // We defined the web service functions to install.
 $functions = array(
-        'test_plugin_obtain_token' => array(
+        'local_testplugin_obtain_token' => array(
                 'classname'   => 'local_testplugin_external',
                 'methodname'  => 'obtain_token',
                 'classpath'   => 'local/testplugin/externallib.php',
