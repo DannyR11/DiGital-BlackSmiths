@@ -20,9 +20,9 @@
 // 5- Run this script directly from your browser: you should see 'Hello, FIRSTNAME'
 /// SETUP - NEED TO BE CHANGED
 $token = 'dff3bc6a9368d3b0db1ef59f6760ef7c';
-$domainname = 'http://YOURMOODLE';
+$domainname = 'http://139.215.42.239/moodle';
 /// FUNCTION NAME
-$functionname = 'local_wstemplate_hello_world';
+$functionname = 'test_plugin_obtain_token';
 /// PARAMETERS
 $welcomemsg = 'Hello, ';
 ///// XML-RPC CALL

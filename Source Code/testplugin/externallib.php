@@ -15,16 +15,16 @@
  * External Web Service Template
  *
  * @package    testplugin
- * @copyright  2011 Moodle Pty Ltd (http://moodle.com)
+ * @copyright  2018 Moodle Pty Ltd (http://moodle.com)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 require_once($CFG->libdir . "/externallib.php");
-class local_wstemplate_external extends external_api {
+class test_plugin_external extends external_api {
     /**
      * Returns description of method parameters
      * @return external_function_parameters
      */
-    public static function hello_world_parameters() {
+    public static function obtain_token_parameters() {
         return new external_function_parameters(
                 array('welcomemessage' => new external_value(PARAM_TEXT, 'The welcome message. By default it is "Hello world,"', VALUE_DEFAULT, 'Hello world, '))
         );
@@ -33,11 +33,11 @@ class local_wstemplate_external extends external_api {
      * Returns welcome message
      * @return string welcome message
      */
-    public static function hello_world($welcomemessage = 'Hello world, ') {
+    public static function obtain_token($welcomemessage = 'Hello world, ') {
         global $USER;
         //Parameter validation
         //REQUIRED
-        $params = self::validate_parameters(self::hello_world_parameters(),
+        $params = self::validate_parameters(self::obtain_token_parameters(),
                 array('welcomemessage' => $welcomemessage));
         //Context validation
         //OPTIONAL but in most web service it should present
@@ -54,7 +54,7 @@ class local_wstemplate_external extends external_api {
      * Returns description of method result value
      * @return external_description
      */
-    public static function hello_world_returns() {
+    public static function obtain_token_returns() {
         return new external_value(PARAM_TEXT, 'The welcome message + user first name');
     }
 }
