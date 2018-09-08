@@ -18,7 +18,7 @@ $plugin->version  = 2018090801;   // The (date) version of this module + 2 extra
                                   // need then a $plugin->release human friendly date. For the moment, we use
                                   // display this version number with userdate (dev friendly)
 $plugin->requires = 2018051701;  // Requires this Moodle version - at least 2.0
-$plugin->component = 'testplugin';
+$plugin->component = 'local_testplugin';
 $plugin->cron     = 0;
 $plugin->release = '1.0 (Build: 2018090801)';
 $plugin->maturity = MATURITY_STABLE;

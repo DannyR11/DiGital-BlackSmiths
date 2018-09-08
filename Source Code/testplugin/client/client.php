@@ -24,7 +24,7 @@ $token = 'dff3bc6a9368d3b0db1ef59f6760ef7c';
 $domainname = 'http://139.215.42.239/moodle';
 
 /// FUNCTION NAME
-$functionname = 'test_plugin_obtain_token';
+$functionname = 'local_testplugin_obtain_token';
 
 /// PARAMETERS
 $tokenmsg = 'Your token is, ';
