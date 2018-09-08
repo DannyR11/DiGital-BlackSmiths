@@ -26,35 +26,41 @@ class test_plugin_external extends external_api {
      */
     public static function obtain_token_parameters() {
         return new external_function_parameters(
-                array('welcomemessage' => new external_value(PARAM_TEXT, 'The welcome message. By default it is "Hello world,"', VALUE_DEFAULT, 'Hello world, '))
+                array('tokenmessage' => new external_value(PARAM_TEXT, 'The token message. By default it is "Your token is,"', VALUE_DEFAULT, 'Your token is, '))
         );
     }
     /**
      * Returns welcome message
      * @return string welcome message
      */
-    public static function obtain_token($welcomemessage = 'Hello world, ') {
+    public static function obtain_token($tokenmessage = 'Your token is, ') {
         global $USER;
         //Parameter validation
         //REQUIRED
         $params = self::validate_parameters(self::obtain_token_parameters(),
-                array('welcomemessage' => $welcomemessage));
+                array('tokenmessage' => $tokenmessage));
         //Context validation
         //OPTIONAL but in most web service it should present
         $context = get_context_instance(CONTEXT_USER, $USER->id);
         self::validate_context($context);
         //Capability checking
         //OPTIONAL but in most web service it should present
+
+        //right now, let me just return every property of $USER as a start to see its attributes.
+
+
+
         if (!has_capability('moodle/user:viewdetails', $context)) {
             throw new moodle_exception('cannotviewprofile');
         }
-        return $params['welcomemessage'] . $USER->firstname ;;
-    }
+        //return $params['tokenmessage'] . $USER->firstname ;;
+        return $params['tokenmessage'] . print_r($USER) ;;
+    }   
     /**
      * Returns description of method result value
      * @return external_description
      */
     public static function obtain_token_returns() {
-        return new external_value(PARAM_TEXT, 'The welcome message + user first name');
+        return new external_value(PARAM_TEXT, 'Your token is + user token');
     }
 }
