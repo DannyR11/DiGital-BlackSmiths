@@ -14,7 +14,7 @@
 /**
  * External Web Service Template
  *
- * @package    testplugin
+ * @package    localtestplugin
  * @copyright  2018 Moodle Pty Ltd (http://moodle.com)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -53,8 +53,8 @@ class local_testplugin_external extends external_api {
         if (!has_capability('moodle/user:viewdetails', $context)) {
             throw new moodle_exception('cannotviewprofile');
         }
-        //return $params['tokenmessage'] . $USER->firstname ;;
-        return $params['tokenmessage'] . print_r($USER) ;;
+        return $params['tokenmessage'] . $USER->firstname ;;
+        //return $params['tokenmessage'] . print_r($USER) ;;
     }   
     /**
      * Returns description of method result value
