@@ -5,10 +5,12 @@
   - admin and instance settings stubs: Different Users
   - a renderer.php : To render UI 
   - module.js : For Javascript module/subsystem 
-2. It also contains activity completion on grade, grade book logic, backup and restore and adhoc/scheduled tasks
+2. It also contains 
+  - activity completion on grade 
+  - grade book logic 
+  - backup and restore 
+  - adhoc/scheduled tasks
 
-i) Replace all instances of THUTONG with your uppercase module name eg WIDGET
-There are about 3 of these.
 
 ### i) Coding Standard:
 Follows Moodle Coding Style and architecture style.
@@ -24,5 +26,5 @@ Uses instances of Moodles' module frankenstyle component: MOD_THUTONG_
 Enjoy.
 
 ## Additions
-By default the thutong plugin supports grading, but since there is nothing to grade ... yet ... when you do update a gradable item, you will need to call: [modulename]_update_grades($moduleinstance, $userid_of_student);
+By default the thutong plugin supports grading, but since there is nothing to grade ... yet ... when you do update a gradable item, you will need to call: thutong_update_grades($moduleinstance, $userid_of_student);
 
