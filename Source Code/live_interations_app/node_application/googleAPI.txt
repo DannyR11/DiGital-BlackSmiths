@@ -1,0 +1,5 @@
+Client ID = 680204429652-s7b32lav0joajocl4vlj0d923ji1c2hn.apps.googleusercontent.com
+
+client secret = CNXKqo3nU6FwTvgLwzDQKXUP
+
+apikey=3sPy1W41IpC0j43Vfytz
