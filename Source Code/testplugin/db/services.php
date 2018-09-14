@@ -14,7 +14,7 @@
 /**
  * Web service local plugin template external functions and service definitions.
  *
- * @package    testplugin
+ * @package    localtestplugin
  * @copyright  2018 Lesego Mabe
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
