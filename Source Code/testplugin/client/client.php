@@ -20,8 +20,8 @@
 // 5- Run this script directly from your browser: you should see 'Hello, FIRSTNAME'
 
 /// SETUP - NEED TO BE CHANGED
-$token = 'dff3bc6a9368d3b0db1ef59f6760ef7c';
-$domainname = 'http://139.215.42.239/moodle';
+$token = '50cb0573aa8a26901ec9162974dc4453';
+$domainname = 'http://137.215.42.239/moodle';
 
 /// FUNCTION NAME
 $functionname = 'local_testplugin_obtain_token';
