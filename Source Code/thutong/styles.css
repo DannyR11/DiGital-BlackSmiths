@@ -1,0 +1,11 @@
+
+.mod_thutong_listbuttons input[type="submit"]{
+	width: 400px;
+	/*float: left;*/
+}
+
+.mod_thutong_actionbuttons {
+	display: flex;
+	float: right;
+}
+
