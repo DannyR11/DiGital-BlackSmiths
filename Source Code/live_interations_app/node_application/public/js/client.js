@@ -11,31 +11,42 @@ conn.onopen = function () {
   
 //when we got a message from a signaling server 
 conn.onmessage = function (msg) { 
-   console.log("Got message", msg.data);
+	console.log("Got message", msg.data);
 	
-   var data = JSON.parse(msg.data); 
+	var data = JSON.parse(msg.data); 
 	
-   switch(data.type) { 
-      case "login": 
-         handleLogin(data.success); 
-         break; 
-      //when somebody wants to call us 
-      case "offer": 
-         handleOffer(data.offer, data.name); 
-         break; 
-      case "answer": 
-         handleAnswer(data.answer); 
-         break; 
-      //when a remote peer sends an ice candidate to us 
-      case "candidate": 
-         handleCandidate(data.candidate); 
-         break; 
-      case "leave": 
-         handleLeave(); 
-         break; 
-      default: 
-         break; 
-   }
+	switch(data.type) { 
+		case "login": 
+			handleLogin(data.success); 
+			break; 
+		//when somebody wants to call us 
+		case "videoOffer": 
+			//console.log('Hanfling video offer');
+			handleVideoOffer(data.offer, data.name); 
+			break;
+		case "canvasOffer": 
+			handleCanvasOffer(data.offer, data.name); 
+			break;			
+		case "videoAnswer": 
+			handleVideoAnswer(data.answer); 
+			break; 
+		case "canvasAnswer": 
+			handleCanvasAnswer(data.answer); 
+			break; 
+		//when a remote peer sends an ice candidate to us 
+		case "videoCandidate": 
+		console.log('Handling ice candidate');
+			handleVideoCandidate(data.candidate); 
+			break; 
+		case "canvasCandidate": 
+			handleCanvasCandidate(data.candidate); 
+			break; 	
+		case "leave": 
+			handleLeave(); 
+			break; 
+		default: 
+			break; 
+	}
 };
   
 conn.onerror = function (err) { 
@@ -72,6 +83,8 @@ remoteCanvas.width = 500;
 remoteCanvas.height = 500;
 
 var yourConn; 
+var vidConn;
+var vidStream;
 var stream;
   
 callPage.style.display = "none";
@@ -82,17 +95,12 @@ loginBtn.addEventListener("click", function (event) {
 	
    if (name.length > 0) { 
       send({ 
-         type: "login", 
-         name: name 
+			type: "login", 
+			name: name 
       }); 
    }
 	
 });
-
-function hasUserMedia() {  
-	return !!(navigator.getUserMedia || navigator.webkitGetUserMedia || 
-		navigator.mozGetUserMedia); 
-} 
 
 function handleLogin(success) { 
 	if (success === false) { 
@@ -107,92 +115,128 @@ function handleLogin(success) {
         }; 
 			
         yourConn = new RTCPeerConnection(configuration);  
-			
-         //when a remote user adds stream to the peer connection, we display it 
-        yourConn.ontrack = function (e) { 
-            remoteCanvas.srcObject = e.streams[0]; 
-        };
+		vidConn = new RTCPeerConnection(configuration);
+         //when a remote user adds stream to the peer connection, we display it
 			
         // Setup ice handling 
         yourConn.onicecandidate = function (event) { 
             if (event.candidate) { 
                send({ 
-					type: "candidate", 
+					type: "canvasCandidate", 
 					candidate: event.candidate 
                }); 
             } 
-         };  
+         };
+		 
+		vidConn.onicecandidate = function (event) { 
+            if(event.candidate) { 
+               send({ 
+					type: "videoCandidate", 
+					candidate: event.candidate 
+               }); 
+            } 
+         };
+
+		yourConn.ontrack = function (e) { 
+			 if (remoteCanvas.srcObject !== e.streams[0]) {
+				remoteCanvas.srcObject = e.streams[0];
+				//remoteCanvas.backgroundColor = 'blue';
+				console.log('Received remote canvas stream');
+			 }				
+        };
+		
+		vidConn.ontrack = function (e) { 
+			 if (remoteVideo.srcObject !== e.streams[0]) {
+				remoteVideo.srcObject = e.streams[0];
+				console.log('Received remote video stream');
+			 }				
+        };
 		
    } 
 };
   
-//initiating a call 
-callBtn.addEventListener("click", function () { 
-   var callToUsername = callToUsernameInput.value;
-	
-   if (callToUsername.length > 0) { 
-	
-      connectedUser = callToUsername;
-		
-      // create an offer 
-      yourConn.createOffer(function (offer) { 
-         send({ 
-            type: "offer", 
-            offer: offer 
-         }); 
-			
-         yourConn.setLocalDescription(offer); 
-      }, function (error) { 
-         alert("Error when creating an offer"); 
-      });
-		
-   } 
-});
   
 //when somebody sends us an offer 
-function handleOffer(offer, name) { 
-   connectedUser = name; 
-   yourConn.setRemoteDescription(new RTCSessionDescription(offer));
+function handleCanvasOffer(offer, name) { 
+	connectedUser = name; 
+	yourConn.setRemoteDescription(new RTCSessionDescription(offer));
 	
-   //create an answer to an offer 
-   yourConn.createAnswer(function (answer) { 
-      yourConn.setLocalDescription(answer); 
+	//create an answer to an offer 
+	if(!yourConn){
+		console.log('Connection dead');
+	}
+	yourConn.createAnswer(function (answer) { 
+	
+		yourConn.setLocalDescription(answer); 
 		
-      send({ 
-         type: "answer", 
-         answer: answer 
-      }); 
+		send({ 
+			type: "canvasAnswer", 
+			answer: answer 
+		}); 
+		console.log('Send canvas answer');
+	}, function (error) { 
+		alert("Error when creating canvas answer: ", error); 
+	}); 
+};
+
+function handleVideoOffer(offer, name) { 
+	connectedUser = name;
+	vidConn.setRemoteDescription(new RTCSessionDescription(offer));
+	
+	//create an answer to an offer 
+	vidConn.createAnswer(function (answer) { 
+		vidConn.setLocalDescription(answer); 
 		
-   }, function (error) { 
-      alert("Error when creating an answer"); 
-   }); 
+		send({ 
+			type: "videoAnswer", 
+			answer: answer 
+		}); 
+		console.log('Sent video Answer');
+	}, function (error) { 
+	console.log("Error when creating video answer: ", error);
+		alert("Error when creating video answer: ", error); 
+	}); 
 };
   
 //when we got an answer from a remote user
-function handleAnswer(answer) { 
-   yourConn.setRemoteDescription(new RTCSessionDescription(answer)); 
+function handleVideoAnswer(answer) { 
+	vidConn.setRemoteDescription(new RTCSessionDescription(answer)); 
+};
+
+//when we got an answer from a remote user
+function handleCanvasAnswer(answer) { 
+	yourConn.setRemoteDescription(new RTCSessionDescription(answer)); 
 };
   
 //when we got an ice candidate from a remote user 
-function handleCandidate(candidate) { 
-   yourConn.addIceCandidate(new RTCIceCandidate(candidate)); 
+function handleVideoCandidate(candidate) { 
+	console.log('Handled vid candidate');
+	vidConn.addIceCandidate(new RTCIceCandidate(candidate)); 
+};
+
+//when we got an ice candidate from a remote user 
+function handleCanvasCandidate(candidate) { 
+	yourConn.addIceCandidate(new RTCIceCandidate(candidate)); 
 };
    
 //hang up 
-/*hangUpBtn.addEventListener("click", function () { 
-
-   send({ 
-      type: "leave" 
-   });  
+hangUpBtn.addEventListener("click", function () { 
+	send({ 
+		type: "leave" 
+	});  
 	
-   handleLeave(); 
-});*/
+	handleLeave(); 
+});
   
 function handleLeave() { 
-   connectedUser = null; 
-  // remoteCanvas.src = null; 
-	
-   yourConn.close(); 
-   yourConn.onicecandidate = null; 
-   yourConn.onaddstream = null; 
+	connectedUser = null; 
+	// remoteCanvas.src = null; 
+		
+	yourConn.close(); 
+	yourConn.onicecandidate = null; 
+	yourConn.ontrack = null; 
+   
+    vidConn.close(); 
+	vidConn.onicecandidate = null; 
+	vidConn.ontrack = null; 
 };
