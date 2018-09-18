@@ -1,0 +1,5 @@
+https://moodle.org/mod/forum/discuss.php?d=358724
+
+Setting up php unit https://www.jetbrains.com/help/phpstorm/enabling-php-unit-support.html
+
+https://docs.moodle.org/dev/PHPUnit
