@@ -14,15 +14,14 @@
 			\includegraphics[scale=0.5, height=2cm, width=10cm]{ThutongLogo.png}
 		\end{figure}
 		\centering
-		\rule{\textwidth}{1.6pt}\\[\baselineskip]
-		
-		Thutong LMS
+		\textbf{\LARGE Digital BlackSmiths: Thutong LMS}
 		\newline
+		\rule{\textwidth}{1.6pt}\\[\baselineskip]
 		Testing Policy Document
 		
 		\vspace*{0.5cm}
 		
-		\large Contributors: \\[\baselineskip]
+		\large Group Members: \vspace*{0.3cm}
 		
 			{Fiwa Lekhulani\\Daniel Rocha\\Lebogang Ntatleng\\Lesego Mabe\\Tlou Lebelo}
 		
@@ -34,16 +33,25 @@
 	
 	\pagenumbering{roman}
 	\pagebreak
-	
+	\section*{Definition}
+		 \textit{Purpose} \newline
+		 Testing serves as the basic measure of progress within the software development process. Therefore without testing software throughout the development cycle there is no form of progress which proves that developers have made an attempt to solving the problems specified by the customer, user or encountered during the process. \newline 
+Also in situations where products need to ensure compliance with regulatory requirements, software testing can safeguard the organization from legal liabilities by verifying compliance  {\footnotesize (i.e.) Such as protecting user data.}
+	\newline
+	\newline
+	\textit{Goal} \newline
+	 Our main goal in testing is ensuring that Thutong LMS system software fulfils its requirements as stipulated in the systems requirement documentation.
+The requirements to be meet include both functional and non-functional requirements which might way down the performance, security or any other system qualities.
+
+
 	\section*{Testing Process} %what is tested, how often code is tested, incl. functional and non-functional requirements
 		\subsection*{Unit Test}
 		Unit test are performed on the following use cases:
 		\begin{itemize}
-			\item Registration
-			\item Login
+			\item Registration  and Login
 			\item Lesson Completion
 			\item Quizzing and grading
-			\item Virtual classrom joining
+			\item Virtual classrom (booking, connectivity and speed)
 			\item Notification sending/receiving
 		\end{itemize}
 		
@@ -55,10 +63,8 @@
 		\begin{itemize}
 			\item
 		\end{itemize}
-		\newline
 		Integration tests are performed every ***
 		
-		\newline
 		\subsection*{Performance Test}
 		The following are points were choosen to test for speed  and effectiveness:
 		\begin{itemize}
@@ -70,6 +76,13 @@
 		
 	\section*{Tools} %tools and frameworks used to automate, how they're configured, why tools were choosen
 		This section will discuss the tools and frameworks used to test the system; it will also describe how to configure them and reasons for the specified tools.
+		\subsection*{Moodle Benchmark} 
+		\begin{itemize}
+			\item this tool is a Moodle plugin that performs various performance factors of the system such as Server, Processor, Hard drive, Database and Loading page speed
+			\item the tool is downloaded from the Moodle website and is added as plugin \url{https://moodle.org/plugins/report_benchmark}
+			\item The tool simply requires one to go to \url{Site_ Administration-> Reports-> Benchmark" and select “Run Test”}
+		\end{itemize}
+		
 		\subsection{PHP Unit}
 			\begin{itemize}
 				\item PHP Unit is an advanced unit testing framework for PHP; it is best suited for Moodle as it is written in PHP predominately. It a has basic suite of unit tests for ****.
