@@ -48,7 +48,7 @@ function send(message) {
    if (connectedUser) { 
       message.name = connectedUser; 
    } 
-	
+	//this sends the string into the pipe
    conn.send(JSON.stringify(message)); 
 };
   
@@ -77,7 +77,8 @@ callPage.style.display = "none";
 // Login when the user clicks the button 
 loginBtn.addEventListener("click", function (event) { 
    name = usernameInput.value;
-	
+
+   
    if (name.length > 0) { 
       send({ 
          type: "login", 
@@ -109,8 +110,12 @@ function handleLogin(success) {
 		//return whichever is supported
 		navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 	}
-     //getting local video stream 
-    navigator.getUserMedia({ video: true, audio: true }, function (myStream) { 
+        //getting local video stream 
+        /*
+        Info:
+        - This is like "document", something that has not been 'declared' but is usable
+        */
+        navigator.getUserMedia({ video: true, audio: true }, function (myStream) { 
 		//stream = myStream; 
 		stream = localCanvas.captureStream();
 		

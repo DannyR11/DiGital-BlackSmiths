@@ -3,8 +3,22 @@ var name;
 var connectedUser;
   
 //connecting to our signaling server
+/*
+Info: var conn = new WebSocket('ws://localhost:9090');
+- The constructor takes in the IP, Port and scheme/protocol, and sends data
+  through to the server listening on the other side of the address.
+
+  This also sends a WebSocket object as well as calls an event named
+  'connection'.
+*/
 var conn = new WebSocket('ws://localhost:9090');
-  
+
+/*
+Info: conn.onopen = function ()
+- This sets up what needs to be executed when the "onopen" event is triggered.
+  It seems to bind the user created function to the "onopen" even that may be
+  declared in the "conn" (Websocket) class.
+*/
 conn.onopen = function () { 
    console.log("Connected to the signaling server"); 
 };
@@ -48,7 +62,12 @@ function send(message) {
    if (connectedUser) { 
       message.name = connectedUser; 
    } 
-	
+    
+   /*
+   Info:
+   - This here send function triggers a 'message' event, which is defined to accept a
+     parameter that is a JSON text/object.
+   */
    conn.send(JSON.stringify(message)); 
 };
   

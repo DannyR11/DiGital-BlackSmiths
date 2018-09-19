@@ -28,7 +28,13 @@ var wss = new WebSocketServer({port: 9090});
 //all connected to the server users 
 var users = {};
   
-//when a user connects to our sever 
+//when a user connects to our sever
+/*
+Info: wss.on('connection', function(connection) {});
+- This sets up the connection, and the "connection" parameter seen
+  in this function header is a pointer to the actual webSocket object
+  in the client's side.
+*/ 
 wss.on('connection', function(connection) {
   
    console.log("User connected");
