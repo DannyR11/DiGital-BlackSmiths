@@ -1,0 +1,34 @@
+LowerSubjects = [
+	{
+		"value" : "MathL",
+		"name" : "Mathematics"
+	},
+
+	{
+		"value" : "EMS",
+		"name" : "EMS"
+	},
+
+	{
+		"value" : "NS",
+		"name" : "Natural Science"
+	},
+
+]
+
+HigherSubjects = [
+	{
+		"value" : "MathH",
+		"name" : "Mathematics"
+	},
+
+	{
+		"value" : "PHY",
+		"name" : "Physcial Science"
+	},
+
+	{
+		"value" : "BIO",
+		"name" : "Life Science"
+	},
+]
