@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Student Welcome</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+    
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/home/lainey/Documents/WindowsSF/301/_select.js"></script> 
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="inlayout.css">
+</head>
+
+<body>
+
+<div class="image">
+
+<nav class="navbar navbar-default">
+    <div class="container text-center">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"> <img src="/home/lainey/Documents/WindowsSF/301/thutong t - Copy.png"> </a>
+        </div>
+        <div id="navbar" class="navbar-collapse">
+            <ul class="nav navbar-nav" id="centeredNav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">Dashboard</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+               <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<br>
+<br>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-4" id="RequestDiv">
+     <h3>Virtual Tutoring</h3>
+      <p>
+        Need Help with a particular subject or topic?
+        <br> Request a tutor to give you the best available help
+      </p>
+      <br>
+
+      <button type="button" id="requestButton" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">Request Tutor</button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" role="dialog" >
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Request Tutor</h4>
+            </div>
+
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" method="post">
+                      <div class="form-group">
+                        <label  class="col-sm-2 control-label" for="Name">Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="Name" placeholder="Name and Surname"/>
+                        </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label  class="col-sm-2 control-label" for="Grade">Grade</label>
+                          <div class="col-sm-10">
+                            <select class="form-control" name="Grade" id="Grade">
+                              <option value="Empty" selected="select"> --Select --</option>
+                              <option value="8">8</option>
+                              <option value="9">9</option>
+                              <option value="10">10</option>
+                              <option value="11">11</option>
+                              <option value="12">12</option>
+                            </select>
+                         </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label  class="col-sm-2 control-label" for="Subject">Subject</label>
+                        <div class="col-sm-10">
+                          <select class="form-control" name="Subject" id="Subject">
+                            <option value="Empty" selected> --Select --</option>
+                          </select>
+                        </div>
+                      </div>
+
+                        <div class="form-group">
+                        <label  class="col-sm-2 control-label" for="Topic">Topic</label>
+                        <div class="col-sm-10">
+                          <select class="form-control" name="Topic" id="Topic">
+                        </select>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label  class="col-sm-2 control-label" for="problemArea"> Problem Area</label>
+                        <div class="col-sm-10">
+                          <textarea class="form-control rounded-0" name="problemArea" rows="3" placeholder="What would you like help with?"></textarea>
+                        </div>
+                      </div>
+                      
+                      <div class="form-group">
+                        <div class="col-sm-offset-2">
+                          <button type="submit" class="btn btn-default">Submit</button>
+                        </div>
+                      </div>
+                </form>
+            </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div> <!-- modal dialog ending -->
+        </div> <!-- modal ending -->
+    </div> <!-- col-3 ending-->
+
+    <div class="col-sm-4">
+      <h3>Virtual Classrooms</h3>
+      <br>
+      Virtual calssroom hosted by Prof X on Linear Alegbra
+      <br>Presented 12/06/2018
+      <br>
+      <button type="button" class="btn btn-primary btn-sm pull-right">Join Class</button>
+
+      <br>
+      Virtual calssroom hosted by Prof X on Economics
+      <br>Presented 20/06/2018
+      <br>
+      <button type="button" class="btn btn-primary btn-sm pull-right">Join Class</button>
+
+      <br>
+      Virtual calssroom hosted by Prof X on Artifical Intelligence
+      <br>Presented 20/06/2018
+      <br>
+      <button type="button" class="btn btn-primary btn-sm pull-right">Join Class</button>
+    </div>
+
+    <div class="col-sm-4">
+      <h3>Personal Dashboard</h3>
+    </div>
+
+  </div><!--row div ending--> 
+</div> <!--container fluid div ending-->
+
+</div> <!-- for background image-->
+</body>
+</html>
