@@ -127,7 +127,7 @@ function handleLogin(success) {
 			"iceServers": [{ "url": "stun:stun2.1.google.com:19302" }]
         }; 
 		
-        yourConn = new RTCPeerConnection(null); 
+        yourConn = new RTCPeerConnection(configuration); 
 		//stream = new MediaStream(stream.audioTracks, stream.videoTracks);
         // setup stream listening 
         yourConn.addStream(stream); 
