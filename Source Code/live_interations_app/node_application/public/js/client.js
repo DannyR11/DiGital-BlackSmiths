@@ -1,55 +1,44 @@
 //our username 
-var name; 
 var connectedUser;
-  
+//person we want to call
+var callToUsername; 
+
 //connecting to our signaling server
-/*
-Info: var conn = new WebSocket('ws://localhost:9090');
-- The constructor takes in the IP, Port and scheme/protocol, and sends data
-  through to the server listening on the other side of the address.
-
-  This also sends a WebSocket object as well as calls an event named
-  'connection'.
-*/
 var conn = new WebSocket('ws://localhost:9090');
-
-/*
-Info: conn.onopen = function ()
-- This sets up what needs to be executed when the "onopen" event is triggered.
-  It seems to bind the user created function to the "onopen" even that may be
-  declared in the "conn" (Websocket) class.
-*/
+  
 conn.onopen = function () { 
    console.log("Connected to the signaling server"); 
 };
   
 //when we got a message from a signaling server 
 conn.onmessage = function (msg) { 
-   console.log("Got message", msg.data);
+	console.log("Got message", msg.data);
 	
-   var data = JSON.parse(msg.data); 
-	
-   switch(data.type) { 
-      case "login": 
-         handleLogin(data.success); 
-         break; 
-      //when somebody wants to call us 
-      case "offer": 
-         handleOffer(data.offer, data.name); 
-         break; 
-      case "answer": 
-         handleAnswer(data.answer); 
-         break; 
-      //when a remote peer sends an ice candidate to us 
-      case "candidate": 
-         handleCandidate(data.candidate); 
-         break; 
-      case "leave": 
-         handleLeave(); 
-         break; 
-      default: 
-         break; 
-   }
+	var data = JSON.parse(msg.data); 
+	switch(data.type) { 
+		case "login": 
+			handleLogin(data.success); 
+			break; 
+		//when somebody wants to call us and send a canvas and video 
+		case "videoOffer": 
+			handleVideoOffer(data.offer); 
+			break;
+		case "canvasOffer": 
+			handleCanvasOffer(data.offer); 
+			break;			 
+		case "videoCandidate": 
+			handleVideoCandidate(data.candidate); 
+			break; 
+		case "canvasCandidate": 
+			handleCanvasCandidate(data.candidate); 
+			break; 	
+		case "leave": 
+		//when the other peer(student) has ended the call
+			handleLeave(); 
+			break; 
+		default: 
+			break; 
+	}
 };
   
 conn.onerror = function (err) { 
@@ -58,16 +47,12 @@ conn.onerror = function (err) {
   
 //alias for sending JSON encoded messages 
 function send(message) { 
-   //attach the other peer username to our messages 
+   //attach our name and the other peer username(who to send message) to our messages 
    if (connectedUser) { 
-      message.name = connectedUser; 
+		message.name = connectedUser;
+		message.target = callToUsername;
    } 
-    
-   /*
-   Info:
-   - This here send function triggers a 'message' event, which is defined to accept a
-     parameter that is a JSON text/object.
-   */
+	
    conn.send(JSON.stringify(message)); 
 };
   
@@ -91,27 +76,30 @@ remoteCanvas.width = 500;
 remoteCanvas.height = 500;
 
 var yourConn; 
+var vidConn;
+var vidStream;
 var stream;
   
 callPage.style.display = "none";
-
+//set up stun servers
+var configuration = { 
+	"iceServers": [{ "url": "stun:stun2.1.google.com:19302" }]
+}; 
 // Login when the user clicks the button 
 loginBtn.addEventListener("click", function (event) { 
-   name = usernameInput.value;
+   connectedUser = usernameInput.value;
 	
-   if (name.length > 0) { 
+   if (connectedUser.length > 0) { 
       send({ 
-         type: "login", 
-         name: name 
+			type: "login", 
+			name: connectedUser 
       }); 
+   }
+   else{
+	   alert('Please enter a name before signing in');
    }
 	
 });
-
-function hasUserMedia() {  
-	return !!(navigator.getUserMedia || navigator.webkitGetUserMedia || 
-		navigator.mozGetUserMedia); 
-} 
 
 function handleLogin(success) { 
 	if (success === false) { 
@@ -119,99 +107,150 @@ function handleLogin(success) {
 	} else { 
 		loginPage.style.display = "none"; 
 		callPage.style.display = "block";
-
-		//using Google public stun server 
-        var configuration = { 
-			"iceServers": [{ "url": "stun:stun2.1.google.com:19302" }]
-        }; 
-			
-        yourConn = new RTCPeerConnection(configuration);  
-			
-         //when a remote user adds stream to the peer connection, we display it 
-        yourConn.ontrack = function (e) { 
-            remoteCanvas.srcObject = e.streams[0]; 
-        };
-			
-        // Setup ice handling 
-        yourConn.onicecandidate = function (event) { 
-            if (event.candidate) { 
-               send({ 
-					type: "candidate", 
-					candidate: event.candidate 
-               }); 
-            } 
-         };  
-		
+		//create our peer objects for receiving streams
+		createCanvasPeerObject();
+		createVideoPeerObject();
    } 
 };
   
-//initiating a call 
-callBtn.addEventListener("click", function () { 
-   var callToUsername = callToUsernameInput.value;
+function createVideoPeerObject(){
 	
-   if (callToUsername.length > 0) { 
+	vidConn = new RTCPeerConnection(configuration);
+	vidConn.onicecandidate = function (event) { 
+        if(event.candidate) { 
+			send({ 
+				type: "videoCandidate", 
+				candidate: event.candidate 
+			});
+			console.log('Sent video Candidate');
+        } 
+    };
+		 
+	vidConn.ontrack = function (e) { 
+		if(remoteVideo.srcObject !== e.streams[0]) {
+			remoteVideo.srcObject = e.streams[0];
+			console.log('Received remote video stream');
+		}				
+    };
 	
-      connectedUser = callToUsername;
-		
-      // create an offer 
-      yourConn.createOffer(function (offer) { 
-         send({ 
-            type: "offer", 
-            offer: offer 
-         }); 
-			
-         yourConn.setLocalDescription(offer); 
-      }, function (error) { 
-         alert("Error when creating an offer"); 
-      });
-		
-   } 
-});
-  
+}
+
+function createCanvasPeerObject(){
+	
+	yourConn = new RTCPeerConnection(configuration);
+	yourConn.onicecandidate = function (event) {
+		console.log('Inside');
+		if (event.candidate) { 
+			send({ 
+				type: "canvasCandidate", 
+				candidate: event.candidate 
+            });
+			;			
+        } 
+    };
+
+	yourConn.ontrack = function (e) { 
+		if (remoteCanvas.srcObject !== e.streams[0]) {
+			remoteCanvas.srcObject = e.streams[0];
+			console.log('Received remote canvas stream');
+		}				
+    };
+}
 //when somebody sends us an offer 
-function handleOffer(offer, name) { 
-   connectedUser = name; 
-   yourConn.setRemoteDescription(new RTCSessionDescription(offer));
+function handleCanvasOffer(offer){
+	yourConn.setRemoteDescription(new RTCSessionDescription(offer));
 	
-   //create an answer to an offer 
-   yourConn.createAnswer(function (answer) { 
-      yourConn.setLocalDescription(answer); 
+	//create an answer to an offer 
+	if(!yourConn){
+		console.log('Connection dead');
+	}
+	yourConn.createAnswer(function (answer) { 
+
+		yourConn.setLocalDescription(answer); 
 		
-      send({ 
-         type: "answer", 
-         answer: answer 
-      }); 
-		
-   }, function (error) { 
-      alert("Error when creating an answer"); 
-   }); 
+		send({ 
+			type: "canvasAnswer", 
+			answer: answer 
+		}); 
+	}, function (error) { 
+		alert("Error when creating canvas answer: ", error); 
+	}); 
+};
+
+function handleVideoOffer(offer) { 
+
+	vidConn.setRemoteDescription(new RTCSessionDescription(offer));
+	//create an answer to an offer 
+	vidConn.createAnswer(function (answer) { 
+		vidConn.setLocalDescription(answer); 		
+		send({ 
+			type: "videoAnswer", 
+			answer: answer 
+		}); 
+	}, function (error) { 
+	console.log("Error when creating video answer: ", error);
+		alert("Error when creating video answer: ", error); 
+	}); 
 };
   
 //when we got an answer from a remote user
-function handleAnswer(answer) { 
-   yourConn.setRemoteDescription(new RTCSessionDescription(answer)); 
+function handleVideoAnswer(answer) { 
+	vidConn.setRemoteDescription(new RTCSessionDescription(answer)); 
+};
+
+//when we got an answer from a remote user
+function handleCanvasAnswer(answer) { 
+	yourConn.setRemoteDescription(new RTCSessionDescription(answer)); 
 };
   
 //when we got an ice candidate from a remote user 
-function handleCandidate(candidate) { 
-   yourConn.addIceCandidate(new RTCIceCandidate(candidate)); 
+function handleVideoCandidate(candidate) { 
+	vidConn.addIceCandidate(new RTCIceCandidate(candidate)); 
 };
-   
-//hang up 
-/*hangUpBtn.addEventListener("click", function () { 
 
-   send({ 
-      type: "leave" 
-   });  
+//when we got an ice candidate from a remote user 
+function handleCanvasCandidate(candidate) { 
+	yourConn.addIceCandidate(new RTCIceCandidate(candidate)); 
+};
+
+callBtn.addEventListener("click", function () { 
+   callToUsername = callToUsernameInput.value;
 	
-   handleLeave(); 
-});*/
+   if (callToUsername.length > 0) { 
+		//if name is valid, send message to ask peer(teacher) to call us
+		sendPleaseCallMe();
+	} 
+});
+ 
+ 
+function sendPleaseCallMe(){
+	//send a please call me. Note!! Send will attach user name, and name of the target
+	send({
+		type: "pleaseCallMe"
+	});
+}
+
+//hang up 
+hangUpBtn.addEventListener("click", function () {
+	//tell remote user we want to end call
+	send({ 
+		type: "studentLeft" 
+	});  
+	//clear our objects
+	handleLeave(); 
+});
   
 function handleLeave() { 
-   connectedUser = null; 
-  // remoteCanvas.src = null; 
 	
-   yourConn.close(); 
-   yourConn.onicecandidate = null; 
-   yourConn.onaddstream = null; 
+	connectedUser = null; 
+	callToUsername = null;
+	yourConn.close(); 
+	yourConn.onicecandidate = null; 
+	yourConn.ontrack = null; 
+   
+    vidConn.close(); 
+	vidConn.onicecandidate = null; 
+	vidConn.ontrack = null;
+	remoteCanvas.srcObject = null;
+	remoteVideo.srcObject = null;
 };
