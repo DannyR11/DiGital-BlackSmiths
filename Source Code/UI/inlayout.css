@@ -1,0 +1,74 @@
+#centeredNav {
+        float:none;
+        display:inline-block;
+        vertical-align: top;
+
+}
+
+.navbar-brand {
+	padding: 0;
+}
+.navbar-brand img {
+
+  height: 50px;
+  width: 50px;
+  display: inline-block;
+}
+.nav {
+	overflow: auto;
+}
+body, html {
+    height: 100%;
+}
+.image
+{
+	background-image: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url("/home/lainey/Documents/WindowsSF/301/backdrop.jpg");
+
+   
+    height: 100vh;
+    width: 100vw; 
+
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
+
+
+#formDiv{
+	background-color: white;
+	padding: 20px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: grey;
+	border-radius: 8px;
+	left: 28%;
+}
+
+#requestButton{
+  position: absolute;
+  top: 15;
+  left:35;
+  padding-left: 35;
+}
+
+#RequestDiv{
+ /* padding-left: 50;
+  border-style: solid;
+  border-width: 1px;
+  border-color: green;
+  border-radius: 8px;*/
+
+  display:table-cell;
+  align-content:center;
+  vertical-align:middle; 
+
+}
+#classroom {
+  padding-right: 35;
+  margin-left: 20;
+}
+
+#exClasses{
+  padding-left: 10;
+
+}
