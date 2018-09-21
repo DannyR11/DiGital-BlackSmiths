@@ -4,6 +4,22 @@
 	/*float: left;*/
 }
 
+.mod_thutong_sessionbuttons input[type="submit"]{
+	width: 400px;
+	background-color: #20DF19;
+	color: white;
+	
+	/*float: left;*/
+}
+
+.mod_thutong_deletebuttons input[type="submit"]{
+	width: 400px;
+	background-color: #20DF19;
+	color: white;
+	
+	/*float: left;*/
+}
+
 .mod_thutong_actionbuttons {
 	display: flex;
 	float: right;

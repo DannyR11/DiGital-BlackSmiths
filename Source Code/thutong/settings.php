@@ -29,9 +29,9 @@ require_once($CFG->dirroot.'/mod/thutong/lib.php');
 
 if ($ADMIN->fulltree) {
 
-
-
-	  $settings->add(new admin_setting_configtext('mod_thutong/someadminsetting',
-        get_string('someadminsetting', 'thutong'), get_string('someadminsetting_details', MOD_THUTONG_LANG), 'default text', PARAM_TEXT));
+	$settings->add(new admin_setting_configtext('mod_thutong/someadminsetting',
+        get_string('someadminsetting', 'thutong'), 
+		get_string('someadminsetting_details', MOD_THUTONG_LANG), 
+		'default text', PARAM_TEXT));
 
 }

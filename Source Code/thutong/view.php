@@ -29,10 +29,21 @@
 
 require_once(dirname(dirname(dirname(__FILE__))).'/config.php');
 require_once(dirname(__FILE__).'/lib.php');
+require_once(dirname(__FILE__).'/scheduleclasses.php');
+
 
 
 $id = optional_param('id', 0, PARAM_INT); // course_module ID, or
 $n  = optional_param('n', 0, PARAM_INT);  // thutong instance ID - it should be named as the first character of the module
+$showschedule = optional_param('schedule', 'menu', PARAM_TEXT); // schedule type
+$showiframe = optional_param('view', 'no', PARAM_TEXT); // schedule type
+
+
+//paging details
+$paging = new stdClass();
+$paging->perpage = optional_param('perpage',5, PARAM_INT);
+$paging->pageno = optional_param('pageno',1, PARAM_INT);
+$paging->sort  = optional_param('sort','iddsc', PARAM_TEXT);
 
 if ($id) {
     $cm         = get_coursemodule_from_id('thutong', $id, 0, false, MUST_EXIST);
@@ -111,12 +122,48 @@ $PAGE->requires->js_init_call('M.mod_thutong.helper.init', array($opts),false,$j
 //theme developers can override classes there, so it makes it customizable for others
 //to do it this way.
 $renderer = $PAGE->get_renderer('mod_thutong');
+//---------------------------------------------------------------------------------------------------------
+//From here we actually display the page. This is core renderer stuff
+switch($showiframe){
+	case 'start':
+		if(has_capability('mod/thutong:preview',$modulecontext)){
+			echo $renderer->header($moduleinstance, $cm, $mode, null, get_string('view', MOD_THUTONG_LANG));
+		}else{
+			echo $renderer->notabsheader();
+		}
+		//$liveurl = 'localhost:8080/client' . $USER->id ;
+		$liveurl =  "https://docs.moodle.org" ;
+		echo '<iframe height="600" width="1000" src="'. $liveurl .'"> Your browser does not diplay iFrames</iframe>';
+		echo $renderer->footer();
+		return;
+	case 'join':
+		if(has_capability('mod/thutong:preview',$modulecontext)){
+			echo $renderer->header($moduleinstance, $cm, $mode, null, get_string('view', MOD_THUTONG_LANG));
+		}else{
+			echo $renderer->notabsheader();
+		}
+		//$liveurl = 'localhost:8080' . $USER->id ;
+		$liveurl = "https://docs.moodle.org" ; 
+		echo '<iframe height="600" width="1000" src="'. $liveurl .'"> Your browser does not diplay iFrames</iframe>';
+		echo $renderer->footer();
+		return;
+	case 'delete':
+		//call some methods to delete schedule from database ;
+		break;
+	default:
+		break;
+}
+$mode = "basicviews";
+$extraheader="<h2>Schedules</h2>";
+$basicview = new mod_thutong_basic_schedule();
+$formdata = new stdClass();
+$basicview->process_raw_data($formdata);
+$basicviewheading = $basicview->fetch_formatted_heading();
+$basicviewrows = $basicview->fetch_formatted_rows(true);
+$allrowscount = $basicview->fetch_all_rows_count();
+$pagingbar = $renderer->show_paging_bar($allrowscount, $paging,$PAGE->url);
 
-//From here we actually display the page.
-//this is core renderer stuff
-
-
-//if we are teacher we see tabs. If student we just see the quiz
+//if we are teacher we see tabs. If student we just see the basicview
 if(has_capability('mod/thutong:preview',$modulecontext)){
 	echo $renderer->header($moduleinstance, $cm, $mode, null, get_string('view', MOD_THUTONG_LANG));
 }else{
@@ -133,9 +180,16 @@ if($moduleinstance->maxattempts > 0){
 	}
 }
 
+//Here we output the basicview as it is from the database
+//echo $extraheader;
+echo $pagingbar;
+echo $renderer->render_section_html($basicviewheading, $basicview->fetch_name(), $basicview->fetch_head(), $basicviewrows, $basicview->fetch_fields(),$moduleinstance,$cm,$modulecontext);
+echo $pagingbar;
+//echo $renderer->show_view_footer($moduleinstance,$cm,$formdata,$showschedule);
+
 //This is specfic to our renderer
-echo $renderer->show_something($someadminsetting);
-echo $renderer->show_something($someinstancesetting);
+//echo $renderer->show_something($someadminsetting);
+//echo $renderer->show_something($someinstancesetting);
 
 // Finish the page
 echo $renderer->footer();

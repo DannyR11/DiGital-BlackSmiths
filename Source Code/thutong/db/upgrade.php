@@ -66,10 +66,39 @@ function xmldb_thutong_upgrade($oldversion) {
     //   http://docs.moodle.org/en/Development:XMLDB_Documentation
     // and to play with the XMLDB Editor (in the admin menu) and its
     // PHP generation posibilities.
+	
+	 if ($oldversion < 2018040600) {
+        // Add new fields to thutong_attempt table.
+        $table = new xmldb_table('thutong_attempt');
+        $field = new xmldb_field('time');
+        $field->set_attributes(XMLDB_TYPE_INTEGER, '10', XMLDB_UNSIGNED, XMLDB_NOTNULL, null, '0', 'timemodified');
+        if (!$dbman->field_exists($table, $field)) {
+            $dbman->add_field($table, $field);
+        }
+		
+		// Add new fields to thutong_attempt table.
+		$table = new xmldb_table('thutong_attempt');
+        $field = new xmldb_field('duration');
+        $field->set_attributes(XMLDB_TYPE_INTEGER, '4', XMLDB_UNSIGNED, XMLDB_NOTNULL, null, '0', 'time');
+        if (!$dbman->field_exists($table, $field)) {
+            $dbman->add_field($table, $field);
+        }
+		
+        // Add new fields to thutong_attempt table.
+        $table = new xmldb_table('thutong_attempt');
+        $field = new xmldb_field('decription');
+        $field->set_attributes(XMLDB_TYPE_TEXT, '50', null, null, null, null, 'duration');
+        if (!$dbman->field_exists($table, $field)) {
+            $dbman->add_field($table, $field);
+        }
+ 
+        // Certificate savepoint reached.
+        upgrade_mod_savepoint(true, 2018040600, 'thutong');
+    }
 
     // First example, some fields were added to install.xml on 2007/04/01
     if ($oldversion < 2007040100) {
-
+		
         // Define field course to be added to thutong
         $table = new xmldb_table('thutong');
         $field = new xmldb_field('course', XMLDB_TYPE_INTEGER, '10', XMLDB_UNSIGNED, XMLDB_NOTNULL, null, '0', 'id');

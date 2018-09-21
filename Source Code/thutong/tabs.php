@@ -47,6 +47,7 @@ $tabs = $row = $inactive = $activated = array();
 
 
 $row[] = new tabobject('view', "$CFG->wwwroot/mod/thutong/view.php?id=$cm->id", get_string('view', MOD_THUTONG_LANG), get_string('preview', MOD_THUTONG_LANG, format_string($moduleinstance->name)));
+$row[] = new tabobject('schedules', "$CFG->wwwroot/mod/thutong/schedules.php?id=$cm->id", get_string('schedules', MOD_THUTONG_LANG), get_string('viewschedules', MOD_THUTONG_LANG));
 $row[] = new tabobject('reports', "$CFG->wwwroot/mod/thutong/reports.php?id=$cm->id", get_string('reports', MOD_THUTONG_LANG), get_string('viewreports', MOD_THUTONG_LANG));
 
 $tabs[] = $row;

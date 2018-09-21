@@ -36,6 +36,9 @@
 		<FIELD NAME="sessionscore" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" COMMENT="the score for this session"/>
         <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" />
         <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false"/>
+		<FIELD NAME="time" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" />
+		<FIELD NAME="duration" TYPE="int" LENGTH="4" NOTNULL="true" UNSIGNED="true" SEQUENCE="false"/>
+		<FIELD NAME="decription" TYPE="text" LENGTH="100" NOTNULL="true" SEQUENCE="false"/>
       </FIELDS>
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
