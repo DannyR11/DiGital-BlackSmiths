@@ -141,6 +141,7 @@ function captureAndSendCanvas(){
 	};
 	
 	canvasStream = localCanvas.captureStream();
+	//localVideo.srcObject = canvasStream;
 	console.log('sending canvas streams');
 	canvasStream.getTracks().forEach(function(track) {
 		canvasPeerObjects[remoteUser].addTrack(track, canvasStream);
