@@ -2,7 +2,7 @@
 const express = require('express');
 
 const app = express();
-const port = 8080;
+const port = 443;
 
 // Set public folder as root
 app.use(express.static('public'));
