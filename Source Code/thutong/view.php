@@ -132,7 +132,7 @@ switch($showiframe){
 			echo $renderer->notabsheader();
 		}
 		//$liveurl = 'localhost:8080/client' . $USER->id ;
-		$liveurl =  "https://docs.moodle.org" ;
+		$liveurl =  "https://137.215.42.239:8443" ;
 		echo '<iframe height="600" width="1000" src="'. $liveurl .'"> Your browser does not diplay iFrames</iframe>';
 		echo $renderer->footer();
 		return;
@@ -143,7 +143,7 @@ switch($showiframe){
 			echo $renderer->notabsheader();
 		}
 		//$liveurl = 'localhost:8080' . $USER->id ;
-		$liveurl = "https://docs.moodle.org" ; 
+		$liveurl = "https://137.215.42.239:8443/client" ; 
 		echo '<iframe height="600" width="1000" src="'. $liveurl .'"> Your browser does not diplay iFrames</iframe>';
 		echo $renderer->footer();
 		return;
