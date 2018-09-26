@@ -8,7 +8,7 @@ var canvasStream;
 //student that sends a message
 var remoteUser;
 //connecting to our signaling server
-var conn = new WebSocket('ws://localhost:9090');
+var conn = new WebSocket('ws://137.215.42.239:9090');
 
 conn.onopen = function () { 
    console.log("Connected to the signaling server"); 
