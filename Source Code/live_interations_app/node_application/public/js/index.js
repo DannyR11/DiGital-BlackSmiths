@@ -3,6 +3,8 @@ var teacherName;
 //store student peer connection objects
 var canvasPeerObjects = {};
 var videoPeerObjects = {};
+var videoStream;
+var canvasStream;
 //student that sends a message
 var remoteUser;
 //connecting to our signaling server

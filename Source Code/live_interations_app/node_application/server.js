@@ -1,8 +1,21 @@
 /*------------------Handle basic get requests---------------------*/
 const express = require('express');
+var fs = require('fs');
+var https = require('https');
+var privateKey  = fs.readFileSync('https/privateKey.key', 'utf8');
+var certificate = fs.readFileSync('https/certificate.crt', 'utf8');
 
 const app = express();
-const port = 8080;
+const httpsPort = 8443;
+var credentials = {key: privateKey, cert: certificate};
+
+var httpsServer = https.createServer(credentials, app);
+
+//httpServer.listen(httpPort);
+httpsServer.listen(httpsPort, () => {
+	console.info('listening on port %d', httpsPort);
+});
+
 
 // Set public folder as root
 app.use(express.static('public'));
@@ -13,9 +26,9 @@ app.use('/client', express.static(`${__dirname}/public/client.html`));
 // Redirect all traffic to index.html
 app.use((req, res) => res.sendFile(`${__dirname}/public/index.html`));
 
-app.listen(port, () => {
+/*app.listen(port, () => {
   console.info('listening on %d', port);
-});
+});*/
 
 //hello world!
 /*----------------------------Handling web sockets-----------------------------*/
