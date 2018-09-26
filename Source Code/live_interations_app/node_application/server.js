@@ -6,7 +6,6 @@ var privateKey  = fs.readFileSync('https/privateKey.key', 'utf8');
 var certificate = fs.readFileSync('https/certificate.crt', 'utf8');
 
 const app = express();
-<<<<<<< HEAD
 const httpsPort = 8443;
 var credentials = {key: privateKey, cert: certificate};
 
@@ -17,9 +16,6 @@ httpsServer.listen(httpsPort, () => {
 	console.info('listening on port %d', httpsPort);
 });
 
-=======
-const port = 443;
->>>>>>> c9ac01379424300fc912de74f5c089961a516fc3
 
 // Set public folder as root
 app.use(express.static('public'));
