@@ -110,11 +110,11 @@ function loadName() {
 	xhttp.onreadystatechange = 
 		function() {
 			if (this.readyState == 4 && this.status == 200) {
-				teacherName = this.responseText;
+				teacherName = x.responseText;
 			}
 		};
 	
-	xhttp.open("GET", "137.215.42.239/moodle/local/testplugin/client/client.php?", false);
+	xhttp.open("GET", "client.php", false);
 	xhttp.send();
 
 	window.alert("This is response: " + teacherName);
