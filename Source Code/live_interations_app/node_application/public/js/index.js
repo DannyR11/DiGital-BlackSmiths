@@ -114,7 +114,7 @@ function loadName() {
 			}
 		};
 	
-	xhttp.open("GET", "client.php?n=" + "name", false);
+	xhttp.open("GET", "client.php?n=" + "name", true);
 	xhttp.send();
 
 	window.alert("This is response: " + teacherName);
