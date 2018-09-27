@@ -114,7 +114,7 @@ function loadName() {
 			}
 		};
 	
-	xhttp.open("GET", "client.php?n=" + "name", true);
+	xhttp.open("GET", "https://137.215.42.239/moodle/local/testplugin/client/client.php", false);
 	xhttp.send();
 
 	window.alert("This is response: " + teacherName);
