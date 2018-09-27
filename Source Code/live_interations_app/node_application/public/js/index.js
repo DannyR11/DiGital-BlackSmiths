@@ -125,7 +125,7 @@ function loadName() {
 			}
 		};
 	
-	xhttp.open("GET", "http://137.215.42.239/moodle/local/testplugin/client/client.php", true);
+	xhttp.open("GET", "https://137.215.42.239/moodle/local/testplugin/client/client.txt", true);
 	xhttp.send();
 }
   
