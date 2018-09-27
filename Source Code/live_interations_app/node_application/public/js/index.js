@@ -92,7 +92,7 @@ var configuration = {
 callPage.style.display = "none";
 
 // Login when the remoteUser clicks the button 
-loginBtn.addEventListener("click", function (event) {
+/*loginBtn.addEventListener("click", function (event) {
    teacherName = usernameInput.value;
    
    if (teacherName.length > 0) { 
@@ -104,8 +104,30 @@ loginBtn.addEventListener("click", function (event) {
    else{
 	   alert('Please enter a username for sign in');
    }
-});
+});*/
+function loadName() {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = 
+		function() {
+			if (this.readyState == 4 && this.status == 200) {
+				teacherName = this.responseText;
+			}
+		};
+	
+	xhttp.open("GET", "137.215.42.239/moodle/local/testplugin/client/client.php?", false);
+	xhttp.send();
 
+	window.alert("This is response: " + teacherName);
+
+	if (teacherName.length > 0) {
+		send({
+			type: "login",
+			name: teacherName
+		});
+	} else {
+		alert('Something went wrong with the Ajax call');
+	}
+}
   
   
 function handleLogin(success){ 

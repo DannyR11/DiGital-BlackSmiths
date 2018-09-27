@@ -36,4 +36,6 @@ require_once('./curl.php');
 $curl = new curl;
 $post = xmlrpc_encode_request($functionname, array($tokenmsg));
 $resp = xmlrpc_decode($curl->post($serverurl, $post));
-print_r($resp);
+//print_r($resp);
+
+echo $resp;
