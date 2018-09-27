@@ -111,22 +111,22 @@ function loadName() {
 		function() {
 			if (this.readyState == 4 && this.status == 200) {
 				teacherName = xhttp.responseText;
+
+				window.alert("This is response: " + teacherName);
+				teacherName = "teacher";
+				if (teacherName.length > 0) {
+					send({
+						type: "login",
+						name: teacherName
+					});
+				} else {
+					alert('Something went wrong with the Ajax call');
+				}
 			}
 		};
 	
 	xhttp.open("GET", "https://137.215.42.239/moodle/local/testplugin/client/client.php", true);
 	xhttp.send();
-
-	window.alert("This is response: " + teacherName);
-	teacherName = "teacher";
-	if (teacherName.length > 0) {
-		send({
-			type: "login",
-			name: teacherName
-		});
-	} else {
-		alert('Something went wrong with the Ajax call');
-	}
 }
   
   
