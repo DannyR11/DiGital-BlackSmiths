@@ -8,7 +8,7 @@ var canvasStream;
 //student that sends a message
 var remoteUser;
 //connecting to our signaling server
-var conn = new WebSocket('ws://localhost:9090');
+var conn = new WebSocket('wss://137.215.42.239:8443');
 
 conn.onopen = function () { 
    console.log("Connected to the signaling server"); 
@@ -92,7 +92,7 @@ var configuration = {
 callPage.style.display = "none";
 
 // Login when the remoteUser clicks the button 
-loginBtn.addEventListener("click", function (event) {
+/*loginBtn.addEventListener("click", function (event) {
    teacherName = usernameInput.value;
    
    if (teacherName.length > 0) { 
@@ -104,8 +104,30 @@ loginBtn.addEventListener("click", function (event) {
    else{
 	   alert('Please enter a username for sign in');
    }
-});
+});*/
+function loadName() {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = 
+		function() {
+			if (this.readyState == 4 && this.status == 200) {
+				teacherName = xhttp.responseText;
+			}
+		};
+	
+	xhttp.open("GET", "client.php?n=" + "name", true);
+	xhttp.send();
 
+	window.alert("This is response: " + teacherName);
+	teacherName = "teacher";
+	if (teacherName.length > 0) {
+		send({
+			type: "login",
+			name: teacherName
+		});
+	} else {
+		alert('Something went wrong with the Ajax call');
+	}
+}
   
   
 function handleLogin(success){ 
