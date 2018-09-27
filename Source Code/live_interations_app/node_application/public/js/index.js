@@ -125,7 +125,7 @@ function loadName() {
 			}
 		};
 	
-	xhttp.open("GET", "https://137.215.42.239/public/js/client.php", true);
+	xhttp.open("GET", "https://137.215.42.239:8443/js/client.php", true);
 	xhttp.send();
 }
   
