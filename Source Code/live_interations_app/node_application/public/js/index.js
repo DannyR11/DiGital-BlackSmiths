@@ -92,7 +92,7 @@ var configuration = {
 callPage.style.display = "none";
 
 // Login when the remoteUser clicks the button 
-/*loginBtn.addEventListener("click", function (event) {
+loginBtn.addEventListener("click", function (event) {
    teacherName = usernameInput.value;
    
    if (teacherName.length > 0) { 
@@ -104,7 +104,8 @@ callPage.style.display = "none";
    else{
 	   alert('Please enter a username for sign in');
    }
-});*/
+});
+
 function loadName() {
 	/*This code returns a "net::ERR_CERT_AUTHORITY_INVALID" as it says that the
 	security certificate in 137.215.42.239 is invalid since it is self defined.
