@@ -259,6 +259,12 @@ callBtn.addEventListener("click", function () {
  
  
 function sendPleaseCallMe(){
+	if(vidConn.ontrack == null && yourConn.ontrack == null){
+		//user ended call and wants to reconnect, create new peer objects
+		createCanvasPeerObject();
+		createVideoPeerObject();
+		
+	}
 	send({
 		type: "pleaseCallMe"
 	});
@@ -274,8 +280,7 @@ hangUpBtn.addEventListener("click", function () {
 });
   
 function handleLeave() { 
-	connectedUser = null; 
-	// remoteCanvas.src = null; 
+
 		
 	yourConn.close(); 
 	yourConn.onicecandidate = null; 
