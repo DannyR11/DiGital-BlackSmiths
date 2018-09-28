@@ -106,7 +106,15 @@ callPage.style.display = "none";
    }
 });*/
 function loadName() {
-	var xhttp = new XMLHttpRequest();
+	/*This code returns a "net::ERR_CERT_AUTHORITY_INVALID" as it says that the
+	security certificate in 137.215.42.239 is invalid since it is self defined.
+
+	Getting around this we should probably use JSONP or XMlRPC for javascript.
+
+	Other than that, we could actually install this as a plugin inside moodle
+	and avoid this whole cross server data communication issues. However, this
+	root might now be premature.
+	/*var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = 
 		function() {
 			if (this.readyState == 4 && this.status == 200) {
@@ -125,8 +133,18 @@ function loadName() {
 			}
 		};
 	
-	xhttp.open("GET", "https://137.215.42.239:8443/moodle/local/testplugin/client/client.php", true);
-	xhttp.send();
+	xhttp.open("GET", "https://137.215.42.239/moodle/local/testplugin/client/client.php", true);
+	xhttp.send();*/
+
+	teacherName = "teacher";
+	if (teacherName.length > 0) {
+		send({
+			type: "login",
+			name: teacherName
+		});
+	} else {
+		alert('Something went wrong with the Ajax call');
+	}
 }
   
   
