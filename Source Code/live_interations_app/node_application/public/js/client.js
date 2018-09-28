@@ -92,7 +92,7 @@ var configuration = {
 	"iceServers": [{ "url": "stun:stun2.1.google.com:19302" }]
 }; 
 // Login when the user clicks the button 
-loginBtn.addEventListener("click", function (event) { 
+/*loginBtn.addEventListener("click", function (event) { 
    connectedUser = usernameInput.value;
 	
    if (connectedUser.length > 0) { 
@@ -102,7 +102,18 @@ loginBtn.addEventListener("click", function (event) {
       }); 
    }
 	
-});
+});*/
+
+function loadName() {
+	connectedUser = "student";
+	
+   if (connectedUser.length > 0) { 
+      send({ 
+			type: "login", 
+			name: connectedUser 
+      }); 
+   }
+}
 
 function handleLogin(success) { 
 	if (success === false) { 
