@@ -114,7 +114,8 @@ function loadName() {
 	Other than that, we could actually install this as a plugin inside moodle
 	and avoid this whole cross server data communication issues. However, this
 	root might now be premature.
-	/*var xhttp = new XMLHttpRequest();
+	*/
+	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = 
 		function() {
 			if (this.readyState == 4 && this.status == 200) {
@@ -134,7 +135,7 @@ function loadName() {
 		};
 	
 	xhttp.open("GET", "https://137.215.42.239/moodle/local/testplugin/client/client.php", true);
-	xhttp.send();*/
+	xhttp.send();
 
 	teacherName = "teacher";
 	if (teacherName.length > 0) {
