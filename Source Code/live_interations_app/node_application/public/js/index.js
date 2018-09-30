@@ -8,7 +8,7 @@ var canvasStream;
 //student that sends a message
 var remoteUser;
 //connecting to our signaling server
-var conn = new WebSocket('wss://localhost:8443');
+var conn = new WebSocket('wss://137.215.42.239:8443');
 
 conn.onopen = function () { 
    console.log("Connected to the signaling server."); 
@@ -135,7 +135,8 @@ function loadName() {
 			}
 		};
 	
-	xhttp.open("GET", "https://137.215.42.239/moodle/local/testplugin/client/client.php", true);
+	//xhttp.open("GET", "https://137.215.42.239/moodle/local/testplugin/client/client.php", true);
+	xhttp.open("GET", "https://137.215.42.239/js/test.php", true);
 	xhttp.send();
 
 	teacherName = "teacher";
