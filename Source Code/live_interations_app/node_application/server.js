@@ -49,7 +49,7 @@ request('https://137.215.42.239/js/test.php', function(error, response, body) {
 //test require 2
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 var request = require('request');
-request('https://137.215.42.239/moodle/local/testplugin/client/client.php', function(error, response, body) {
+request('https://137.215.42.239/moodle/local/testplugin/client/client.txt', function(error, response, body) {
 		console.log('error: ', error);
 		console.log('statusCode: ', response && response.statusCode);
 		console.log('body: ', body);
