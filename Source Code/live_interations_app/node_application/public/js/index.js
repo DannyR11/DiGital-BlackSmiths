@@ -297,19 +297,19 @@ hangUpBtn.addEventListener("click", function () {
 });
  
 function handleLeave(leaver) { 
-	if(leaver === teacherNamename){
-		//for each canvas peer object, set it to null and close connection
-		for(let obj of canvasPeerObjects){
-			obj.close();
-			obj.onicecandidate = null;
-			obj.ontrack = null;
+	if(leaver == teacherName){
+		//for each CANVAS peer object, set it to null and close connection
+		for(let peerObject of Object.keys(canvasPeerObjects)){
+			canvasPeerObjects[peerObject].close();
+			canvasPeerObjects[peerObject].onicecandidate = null;
+			canvasPeerObjects[peerObject].ontrack = null;
 		}
 		canvasPeerObjects = null;
-		//for each canvas peer object, set it to null and close connection
-		for(let obj of videoPeerObjects){
-			obj.close();
-			obj.onicecandidate = null;
-			obj.ontrack = null;
+		//for each VIDEO peer object, set it to null and close connection
+		for(let peerObject of Object.keys(videoPeerObjects)){
+			videoPeerObjects[peerObject].close();
+			videoPeerObjects[peerObject].onicecandidate = null;
+			videoPeerObjects[peerObject].ontrack = null;
 		}
 		videoPeerObjects = null;
 	}

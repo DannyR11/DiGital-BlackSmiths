@@ -185,40 +185,31 @@ wss.on('connection', function(connection) {
             break;
 			
 			case "teacherLeft": 
-				console.log("Disconnecting from", data.name); 
-				var conn = users[data.name];
-				users[data.name] = null;
-				conn.otherName = null; 
-					
-				//If all calls ended, Notify teacher that the other user so he can disconnect his peer connection 
-				if(conn != null) {
-				   sendTo(conn, { 
-					  type: "leave" 
-				  }); 
+				console.log("Teacher "+data.name+" just ended her class!");
+				var conn;
+				//teacher has left class, notify all students to end their sessions
+				for(let user of Object.keys(users)){
+					conn = users[user];
+					if(data.name != user){ //if user is not the teacher, because they take out their own garbage
+						users[user] = null; 
+						if(conn != null) {
+							sendTo(conn, { 
+								type: "leave"
+							}); 
+						}
+					}
 				}
 					
             break;
 			
 			case "studentLeft": 
-				console.log("Disconnecting from studentLeft", data.name); 
-				/*var conn = users[data.name]; 
-				users[data.name] = null;
-				//conn.otherName = null; 
-					
-				//If student ends call, Notify teacher only if last student left so that they can disconnect their peer connection 
-				/*if(allCallsEnded()){
-					if(conn != null) {
-					   sendTo(conn, { 
-						  type: "leave" 
-					  }); 
-					}
-				}*/					
-            break;
+				console.log("Student "+data.name+" has left class room");
+				var conn = users[data.name]; 
+				users[data.name] = null;					
+				break;
 			
 			case "pleaseCallMe": 
 				//for ex. UserA wants to call UserB 
-				
-					
 				//if UserB exists then send him the callback
 				var conn = users[data.target]; 
 					
