@@ -111,6 +111,8 @@ function handleName(name) {
    else{
 	   alert('Please enter a username for sign in');
    }
+
+   document.getElementById("name").innerHTML = teacherName;
 }
 
 function loadName() {
