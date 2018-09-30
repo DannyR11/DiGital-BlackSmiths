@@ -36,14 +36,25 @@ var wss = new WebSocketServer({server: httpsServer});
 var users = {};
 var userCount = 0;
 
-//test require
+/*test require
+result: fails due to the use of a self signed certificate
 var request = require('request');
 request('https://137.215.42.239/js/test.php', function(error, response, body) {
 		console.log('error: ', error);
 		console.log('statusCode: ', response && response.statusCode);
 		console.log('body: ', body);
 });
-  
+*/
+
+//test require 2
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+var request = require('request');
+request('https://137.215.42.239/js/test.php', function(error, response, body) {
+		console.log('error: ', error);
+		console.log('statusCode: ', response && response.statusCode);
+		console.log('body: ', body);
+});
+
 //when a user connects to our sever 
 wss.on('connection', function(connection) {
   	
