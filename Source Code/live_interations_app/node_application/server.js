@@ -24,14 +24,7 @@ app.use(express.static('public'));
 app.use('/scripts', express.static(`${__dirname}/node_modules/`));
 app.use('/client', express.static(`${__dirname}/public/client.html`));
 app.use(express.static(__dirname + '/public'));
-// Redirect all traffic to index.html
-//app.use((req, res) => res.sendFile(`${__dirname}/public/index.html`));
 
-/*app.listen(port, () => {
-  console.info('listening on %d', port);
-});*/
-
-//hello world!
 /*----------------------------Handling web sockets-----------------------------*/
 //require our websocket library 
 var WebSocketServer = require('ws').Server; 
@@ -45,9 +38,7 @@ var userCount = 0;
   
 //when a user connects to our sever 
 wss.on('connection', function(connection) {
-  
-	console.log("User connected");
-	
+  	
    //when server gets a message from a connected user 
 	connection.on('message', function(message) { 
 	
@@ -60,13 +51,11 @@ wss.on('connection', function(connection) {
 			console.log("Invalid JSON"); 
 			data = {}; 
 		}
-		console.log('Server got message type: ', data.type);
 		//switching type of the user message 
 		switch (data.type) { 
 			//when a user tries to login
 			case "login": 
-				console.log("User logged in", data.name); 
-				
+			
 				//if anyone is logged in with this username then refuse
 				if(users[data.name]){
 					sendTo(connection,{ 
@@ -89,10 +78,8 @@ wss.on('connection', function(connection) {
 				
 				break;	
 			case "videoOffer": 
-				//for ex. UserA wants to call UserB 
-				console.log("Sending video offer to: ", data.target);
-					
-				//if UserB exists then send him offer details 
+				/* for ex. ifUserA wants to call UserB 
+				if UserB exists then send him offer details */
 				var conn = users[data.target]; 
 					
 				if(conn != null){
@@ -108,8 +95,7 @@ wss.on('connection', function(connection) {
             break;
 
 			case "canvasOffer": 
-				//for ex. UserA wants to call UserB 
-				console.log("Sending canvas offer to: ", data.target);	
+				//for ex. UserA wants to call UserB 	
 				//if UserB exists then send him offer details 
 				var conn = users[data.target];
 				if(conn != null) { 
@@ -124,8 +110,7 @@ wss.on('connection', function(connection) {
 				
             break;
 						
-			case "videoAnswer": 
-				console.log("Sending video answer to: ", data.target); 
+			case "videoAnswer":  
 				//for ex. UserB answers UserA 
 				var conn = users[data.target]; 
 					
@@ -141,7 +126,6 @@ wss.on('connection', function(connection) {
 			break;
 			
 			case "canvasAnswer": 
-				console.log("Sending canvas answer to: ", data.target); 
 				//for ex. UserB answers UserA 
 				var conn = users[data.target]; 
 					
@@ -157,7 +141,6 @@ wss.on('connection', function(connection) {
             break; 
 				
 			case "videoCandidate": 
-				console.log("Sending video candidate to:",data.target); 
 				var conn = users[data.target];
 					
 				if(conn != null) { 
@@ -171,7 +154,6 @@ wss.on('connection', function(connection) {
             break;
 			
 			case "canvasCandidate": 
-				console.log("Sending canvas candidate to:",data.target); 
 				var conn = users[data.target];
 					
 				if(conn != null) { 
@@ -185,40 +167,29 @@ wss.on('connection', function(connection) {
             break;
 			
 			case "teacherLeft": 
-				console.log("Disconnecting from", data.name); 
-				var conn = users[data.name];
-				users[data.name] = null;
-				conn.otherName = null; 
-					
-				//If all calls ended, Notify teacher that the other user so he can disconnect his peer connection 
-				if(conn != null) {
-				   sendTo(conn, { 
-					  type: "leave" 
-				  }); 
+				var conn;
+				//teacher has left class, notify all students to end their sessions
+				for(let user of Object.keys(users)){
+					conn = users[user];
+					if(data.name != user){ //if user is not the teacher, because they take out their own garbage
+						users[user] = null; 
+						if(conn != null) {
+							sendTo(conn, { 
+								type: "leave"
+							}); 
+						}
+					}
 				}
 					
             break;
 			
 			case "studentLeft": 
-				console.log("Disconnecting from studentLeft", data.name); 
-				/*var conn = users[data.name]; 
-				users[data.name] = null;
-				//conn.otherName = null; 
-					
-				//If student ends call, Notify teacher only if last student left so that they can disconnect their peer connection 
-				/*if(allCallsEnded()){
-					if(conn != null) {
-					   sendTo(conn, { 
-						  type: "leave" 
-					  }); 
-					}
-				}*/					
-            break;
+				var conn = users[data.name]; 
+				users[data.name] = null;					
+				break;
 			
 			case "pleaseCallMe": 
 				//for ex. UserA wants to call UserB 
-				
-					
 				//if UserB exists then send him the callback
 				var conn = users[data.target]; 
 					
@@ -228,11 +199,10 @@ wss.on('connection', function(connection) {
 					sendTo(conn, { 
 						type: "pleaseCallMe", 
 						name: data.name 
-					});
-					console.log("Sent callback to: ", data.target);					
+					});				
 				}
 				else{
-					console.log('Error sending callback to: ', data.target);
+
 				}
             break;
 				
@@ -252,8 +222,7 @@ wss.on('connection', function(connection) {
 	connection.on("close", function() {
 		if(connection.name) {
 			delete users[connection.name];
-			if(connection.otherName){
-				console.log("Disconnecting from ", connection.otherName); 
+			if(connection.otherName){ 
 				var conn = users[connection.otherName]; 
 				//conn.otherName = null;
 				
@@ -267,7 +236,7 @@ wss.on('connection', function(connection) {
 		
 	});  
 	
-	connection.send("Hello world");  
+	connection.send("wss connection live!");  
 });
   
 function sendTo(connection, message) { 

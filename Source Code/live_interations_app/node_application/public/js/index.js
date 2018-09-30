@@ -16,8 +16,6 @@ conn.onopen = function () {
   
 //when we got a message from a signaling server 
 conn.onmessage = function (msg) { 
-   console.log("Got message", msg.data);
-	
 	var data = JSON.parse(msg.data);
 	//get name of user that sent us a message
 	remoteUser = data.name;
@@ -114,7 +112,7 @@ function loadName() {
 
 	Other than that, we could actually install this as a plugin inside moodle
 	and avoid this whole cross server data communication issues. However, this
-	root might now be premature.
+	route might now be premature.
 	*/
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = 
@@ -158,7 +156,7 @@ function handleLogin(success){
 		loginPage.style.display = "none"; 
 		callPage.style.display = "block";
 		
-		navigator.mediaDevices.getUserMedia({video:true, audio: false})
+		navigator.mediaDevices.getUserMedia({video:true, audio: true})
 			.then(function(stream){
 				videoStream = stream;
 				localVideo.srcObject = videoStream;
@@ -186,15 +184,13 @@ function captureAndSendCanvas(){
 	};
 	
 	canvasStream = localCanvas.captureStream();
-	//localVideo.srcObject = canvasStream;
-	console.log('sending canvas streams');
+
 	canvasStream.getTracks().forEach(function(track) {
 		canvasPeerObjects[remoteUser].addTrack(track, canvasStream);
 	});
 }
 
 function sendVideoStreams(){
-	console.log('Creating peer objects for: ', remoteUser);
 	videoPeerObjects[remoteUser] = new RTCPeerConnection(configuration);
 	videoPeerObjects[remoteUser].onicecandidate = function (event) { 
 		if (event.candidate) { 
@@ -202,11 +198,9 @@ function sendVideoStreams(){
 				type: "videoCandidate", 
 				candidate: event.candidate,
 				target: remoteUser
-			});
-			console.log('Sending videoCandidate from teacher');			
+			});		
 		} 
 	};
-	console.log('sending video streams');
 	videoStream.getTracks().forEach(function(track) {
 		videoPeerObjects[remoteUser].addTrack(track, videoStream);
 	});
@@ -229,9 +223,8 @@ function handlePleaseCallMe() {
 				target: remoteUser
 			}); 
 			canvasPeerObjects[remoteUser].setLocalDescription(offer); 
-			console.log('Sent offers to: ', remoteUser);
 		}, function (error) { 
-			alert("Error when creating canvas an offer"); 
+			console.log("Error when creating canvas an offer"); 
 		});
 		
 	}
@@ -250,7 +243,6 @@ function createVideoOffer(){
 			target: remoteUser
 		});
 		videoPeerObjects[remoteUser].setLocalDescription(offer); 
-		console.log('Sent video offer to ws');
 	}, function(error){
 		alert("Error when creating video offer");
 	});
@@ -283,7 +275,6 @@ function handleCanvasCandidate(candidate) {
 
 //when we got an ice candidate from a remote remoteUser 
 function handleVideoCandidate(candidate) { 
-	console.log("Setting video ice candidate: ", remoteUser);
 	videoPeerObjects[remoteUser].addIceCandidate(new RTCIceCandidate(candidate)); 
 };
    
@@ -298,19 +289,19 @@ hangUpBtn.addEventListener("click", function () {
 });
  
 function handleLeave(leaver) { 
-	if(leaver === teacherNamename){
-		//for each canvas peer object, set it to null and close connection
-		for(let obj of canvasPeerObjects){
-			obj.close();
-			obj.onicecandidate = null;
-			obj.ontrack = null;
+	if(leaver == teacherName){
+		//for each CANVAS peer object, set it to null and close connection
+		for(let peerObject of Object.keys(canvasPeerObjects)){
+			canvasPeerObjects[peerObject].close();
+			canvasPeerObjects[peerObject].onicecandidate = null;
+			canvasPeerObjects[peerObject].ontrack = null;
 		}
 		canvasPeerObjects = null;
-		//for each canvas peer object, set it to null and close connection
-		for(let obj of videoPeerObjects){
-			obj.close();
-			obj.onicecandidate = null;
-			obj.ontrack = null;
+		//for each VIDEO peer object, set it to null and close connection
+		for(let peerObject of Object.keys(videoPeerObjects)){
+			videoPeerObjects[peerObject].close();
+			videoPeerObjects[peerObject].onicecandidate = null;
+			videoPeerObjects[peerObject].ontrack = null;
 		}
 		videoPeerObjects = null;
 	}
