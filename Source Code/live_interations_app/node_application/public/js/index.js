@@ -114,7 +114,7 @@ function loadName() {
 	and avoid this whole cross server data communication issues. However, this
 	route might now be premature.
 	*/
-	var xhttp = new XMLHttpRequest();
+	/*var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = 
 		function() {
 			if (this.readyState == 4 && this.status == 200) {
@@ -135,8 +135,8 @@ function loadName() {
 	
 	//xhttp.open("GET", "https://137.215.42.239/moodle/local/testplugin/client/client.php", true);
 	xhttp.open("GET", "https://137.215.42.239/js/test.php", true);
-	xhttp.send();
-
+	xhttp.send();*/
+	
 	window.alert("Ajax: " + teacherName);
 	teacherName = "teacher";
 	if (teacherName.length > 0) {
