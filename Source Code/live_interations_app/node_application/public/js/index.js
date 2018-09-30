@@ -137,6 +137,7 @@ function loadName() {
 	xhttp.open("GET", "https://137.215.42.239/js/test.php", true);
 	xhttp.send();
 
+	window.alert("Ajax: " + teacherName);
 	teacherName = "teacher";
 	if (teacherName.length > 0) {
 		send({
