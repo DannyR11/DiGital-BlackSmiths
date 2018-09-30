@@ -23,6 +23,10 @@ conn.onmessage = function (msg) {
 		case "login": 
 			//server returns whether login was successful or not
 			handleLogin(data.success);
+			break;
+		case "getName":
+			//server returns name
+			handleName(data.name);
 			break;  
 		case "videoAnswer": 
 			//when someone replies to our offer for a video
@@ -60,6 +64,11 @@ conn.onerror = function (err) {
 //alias for sending JSON encoded messages 
 function send(message) { 
    //attach our name to all messages sent 
+   if (message.type == "getName") {
+	   conn.send(JSON.stringify(message));
+	   return;
+   }
+
    if (teacherName) { 
       message.name = teacherName; 
    } 
@@ -90,8 +99,8 @@ var configuration = {
 callPage.style.display = "none";
 
 // Login when the remoteUser clicks the button 
-loginBtn.addEventListener("click", function (event) {
-   teacherName = usernameInput.value;
+function handleName(name) {
+   teacherName = name;
    
    if (teacherName.length > 0) { 
       send({ 
@@ -102,7 +111,7 @@ loginBtn.addEventListener("click", function (event) {
    else{
 	   alert('Please enter a username for sign in');
    }
-});
+}
 
 function loadName() {
 	/*This code returns a "net::ERR_CERT_AUTHORITY_INVALID" as it says that the
@@ -137,16 +146,9 @@ function loadName() {
 	xhttp.open("GET", "https://137.215.42.239/js/test.php", true);
 	xhttp.send();*/
 	
-	window.alert("Ajax: " + teacherName);
-	teacherName = "teacher";
-	if (teacherName.length > 0) {
-		send({
-			type: "login",
-			name: teacherName
-		});
-	} else {
-		alert('Something went wrong with the Ajax call');
-	}
+	send({
+		type: "getName"
+	});
 }
   
   

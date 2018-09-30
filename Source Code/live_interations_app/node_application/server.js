@@ -2,6 +2,7 @@
 const express = require('express');
 var fs = require('fs');
 var https = require('https');
+var request = require('request');
 var privateKey  = fs.readFileSync('https/privateKey.key', 'utf8');
 var certificate = fs.readFileSync('https/certificate.crt', 'utf8');
 
@@ -36,24 +37,6 @@ var wss = new WebSocketServer({server: httpsServer});
 var users = {};
 var userCount = 0;
 
-/*test require
-result: fails due to the use of a self signed certificate
-var request = require('request');
-request('https://137.215.42.239/js/test.php', function(error, response, body) {
-		console.log('error: ', error);
-		console.log('statusCode: ', response && response.statusCode);
-		console.log('body: ', body);
-});
-*/
-
-//test require 2
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-var request = require('request');
-request('https://137.215.42.239/moodle/local/testplugin/client/client.php', function(error, response, body) {
-		console.log('error: ', error);
-		console.log('statusCode: ', response && response.statusCode);
-		console.log('body: ', body);
-});
 
 //when a user connects to our sever 
 wss.on('connection', function(connection) {
@@ -223,7 +206,26 @@ wss.on('connection', function(connection) {
 				else{
 
 				}
-            break;
+			break;
+			
+			case "getName":   
+				var userName = "";
+				
+				process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+				request('https://137.215.42.239/moodle/local/testplugin/client/client.php', function(error, response, body) {
+					console.log('error: ', error);
+					console.log('statusCode: ', response && response.statusCode);
+					//console.log('body: ', body);
+					userName = body;
+				});
+
+				sendTo(connection,{ 
+					type: "getName", 
+					success: true,
+					name: userName
+				});
+				
+			break;
 				
 			default: 
 				sendTo(connection, { 
