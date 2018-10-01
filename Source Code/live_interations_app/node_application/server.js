@@ -261,9 +261,7 @@ wss.on('connection', function(connection) {
 });
   
 function sendTo(connection, message) {
-	console.log("In server's 'sendTo' function: " + message);
 	connection.send(JSON.stringify(message));
-	console.log("After stringify: " + JSON.stringify(message));
 }
 
 function allCallsEnded(){

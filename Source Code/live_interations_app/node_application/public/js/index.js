@@ -16,6 +16,11 @@ conn.onopen = function () {
   
 //when we got a message from a signaling server 
 conn.onmessage = function (msg) { 
+
+	if (msg == "wss connection live!") {
+		//ignore
+		return;
+	}
 	var data = JSON.parse(msg.data);
 	//get name of user that sent us a message
 	remoteUser = data.name;

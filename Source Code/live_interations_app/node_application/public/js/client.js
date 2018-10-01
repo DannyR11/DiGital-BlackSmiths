@@ -11,6 +11,11 @@ conn.onopen = function () {
   
 //when we got a message from a signaling server 
 conn.onmessage = function (msg) { 
+
+	if (msg == "wss connection live!") {
+		//ignore
+		return;
+	}
 	console.log("Got message", msg.data);
 	
 	var data = JSON.parse(msg.data); 
