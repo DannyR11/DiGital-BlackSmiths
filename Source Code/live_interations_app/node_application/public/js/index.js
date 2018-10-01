@@ -22,6 +22,9 @@ conn.onmessage = function (msg) {
 		return;
 	}
 	var data = JSON.parse(msg.data);
+
+	console.log("Got message", msg.data);
+
 	//get name of user that sent us a message
 	remoteUser = data.name;
 	switch(data.type) { 
