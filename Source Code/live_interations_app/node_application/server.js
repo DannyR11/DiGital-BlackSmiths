@@ -260,13 +260,15 @@ wss.on('connection', function(connection) {
 	connection.send("wss connection live!");  
 });
   
-function sendTo(connection, message) { 
-   connection.send(JSON.stringify(message)); 
+function sendTo(connection, message) {
+	console.log("In server's 'sendTo' function: " + message);
+	connection.send(JSON.stringify(message));
+	console.log("After stringify: " + JSON.stringify(message));
 }
 
 function allCallsEnded(){
 	if(userCount <= 0)
 		return true;
 	else
-		return false
+		return false;
 }
