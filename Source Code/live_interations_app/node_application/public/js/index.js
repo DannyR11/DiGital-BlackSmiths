@@ -105,7 +105,7 @@ callPage.style.display = "none";
 
 function handleName(name) {
    teacherName = name;
-   console.log("Inside handleName, name: " + name);
+   
    if (teacherName.length > 0) { 
       send({ 
          type: "login", 
