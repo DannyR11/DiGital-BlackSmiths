@@ -12,7 +12,7 @@ conn.onopen = function () {
 //when we got a message from a signaling server 
 conn.onmessage = function (msg) { 
 
-	if (msg == "wss connection live!") {
+	if (msg === "wss connection live!") {
 		//ignore
 		return;
 	}

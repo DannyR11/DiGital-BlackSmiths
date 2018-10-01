@@ -16,7 +16,7 @@ conn.onopen = function () {
   
 //when we got a message from a signaling server 
 conn.onmessage = function (msg) { 
-
+	console.log(typeof msg);
 	if (msg == "wss connection live!") {
 		//ignore
 		return;
