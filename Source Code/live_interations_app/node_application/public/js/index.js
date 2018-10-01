@@ -119,7 +119,7 @@ function handleName(name) {
 	   alert('Please enter a username for sign in');
    }
 
-   document.getElementById("name").innerHTML = teacherName;
+   document.getElementById("name").innerHTML = "Teacher: " + teacherName;
 }
 
 function loadName() {
