@@ -208,7 +208,7 @@ wss.on('connection', function(connection) {
 				}
 			break;
 			
-			case "getName":   
+			case "getNameS":   
 				var userName = "";
 
 				process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";

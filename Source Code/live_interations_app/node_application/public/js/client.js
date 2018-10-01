@@ -119,7 +119,7 @@ function handleName(name) {
 
 function loadName() {
 	send({
-		type: "getName"
+		type: "getNameS"
 	});
 }
 

@@ -105,7 +105,7 @@ callPage.style.display = "none";
 
 function handleName(name) {
    teacherName = name;
-   
+
    if (teacherName.length > 0) { 
       send({ 
          type: "login", 
@@ -121,7 +121,7 @@ function handleName(name) {
 
 function loadName() {
 	send({
-		type: "getName"
+		type: "getNameS"
 	});
 }
   
