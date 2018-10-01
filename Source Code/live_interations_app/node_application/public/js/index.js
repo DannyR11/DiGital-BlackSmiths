@@ -32,6 +32,7 @@ conn.onmessage = function (msg) {
 		case "getName":
 			//server returns name
 			handleName(data.name);
+			console.log("In the case statement: " + data.name);
 			break;  
 		case "videoAnswer": 
 			//when someone replies to our offer for a video

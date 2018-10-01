@@ -210,7 +210,7 @@ wss.on('connection', function(connection) {
 			
 			case "getName":   
 				var userName = "";
-				
+				console.log("Server case statement");
 				process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 				request('https://137.215.42.239/moodle/local/testplugin/client/client.php', function(error, response, body) {
 					console.log('error: ', error);
