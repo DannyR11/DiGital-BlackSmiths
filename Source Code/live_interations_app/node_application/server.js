@@ -209,22 +209,19 @@ wss.on('connection', function(connection) {
 			break;
 			
 			case "getName":   
-				var userName = "";
+				//var userName = "";
 
 				process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 				request('https://137.215.42.239/moodle/local/testplugin/client/client.php', function(error, response, body) {
 					console.log('error: ', error);
 					console.log('statusCode: ', response && response.statusCode);
-					userName = body.toString();
-				});
+					//userName = body.toString(); it seems that I cannot copy the body for later use
 
-				console.log(typeof userName);
-				console.log("userName: " + userName);
-
-				sendTo(connection,{ 
-					type: "getName", 
-					success: true,
-					name: userName
+					sendTo(connection,{ 
+						type: "getName", 
+						success: true,
+						name: body
+					});
 				});
 				
 			break;
