@@ -215,9 +215,7 @@ wss.on('connection', function(connection) {
 				request('https://137.215.42.239/moodle/local/testplugin/client/client.php', function(error, response, body) {
 					console.log('error: ', error);
 					console.log('statusCode: ', response && response.statusCode);
-					console.log('body: ', body);
-					console.log(typeof body);
-					userName = body;
+					userName = body.toString();
 				});
 
 				console.log(typeof userName);
