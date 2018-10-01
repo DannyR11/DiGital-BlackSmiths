@@ -24,6 +24,10 @@ conn.onmessage = function (msg) {
 			//console.log('Hanfling video offer');
 			handleVideoOffer(data.offer); 
 			break;
+		case "getName":
+			//server returns name
+			handleName(data.name);
+			break; 
 		case "canvasOffer": 
 			handleCanvasOffer(data.offer); 
 			break;			
@@ -91,28 +95,27 @@ callPage.style.display = "none";
 var configuration = { 
 	"iceServers": [{ "url": "stun:stun2.1.google.com:19302" }]
 }; 
-// Login when the user clicks the button 
-/*loginBtn.addEventListener("click", function (event) { 
-   connectedUser = usernameInput.value;
+ 
+function handleName(name) {
+	teacherName = name;
 	
-   if (connectedUser.length > 0) { 
-      send({ 
-			type: "login", 
-			name: connectedUser 
-      }); 
-   }
-	
-});*/
+	if (teacherName.length > 0) { 
+	   send({ 
+		  type: "login", 
+		  name: teacherName 
+	   }); 
+	}
+	else{
+		alert('Please enter a username for sign in');
+	}
+ 
+	document.getElementById("name").innerHTML = teacherName;
+ }
 
 function loadName() {
-	connectedUser = "student";
-	
-   if (connectedUser.length > 0) { 
-      send({ 
-			type: "login", 
-			name: connectedUser 
-      }); 
-   }
+	send({
+		type: "getName"
+	});
 }
 
 function handleLogin(success) { 

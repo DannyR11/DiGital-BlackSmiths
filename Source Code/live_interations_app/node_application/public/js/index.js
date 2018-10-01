@@ -98,7 +98,6 @@ var configuration = {
 //do not display the call page when we start
 callPage.style.display = "none";
 
-// Login when the remoteUser clicks the button 
 function handleName(name) {
    teacherName = name;
    
