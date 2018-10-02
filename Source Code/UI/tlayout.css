@@ -1,0 +1,27 @@
+#VideoDivTeach{
+  height:30vh;
+  border-style: solid;
+  border-width: 1px;
+  border-color: grey;
+  border-radius: 8px;
+  margin-left: 1.5vw;
+  margin-right: 3vw;
+}
+
+#chatAreaTeach{
+  height:60vh;
+  border-style: solid;
+  border-width: 1px;
+  border-color: grey;
+  border-radius: 8px;
+  margin-left: 3vw;
+
+}
+
+#WhiteboardAreaTeach{
+  height:85vh;
+  border-style: solid;
+  border-width: 1px;
+  border-color: grey;
+  border-radius: 8px;
+}

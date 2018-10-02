@@ -1,28 +1,9 @@
-#centeredNav {
-        float:none;
-        display:inline-block;
-        vertical-align: top;
-
-}
-
-.navbar-brand {
-	padding: 0;
-}
-.navbar-brand img {
-
-  height: 50px;
-  width: 50px;
-  display: inline-block;
-}
-.nav {
-	overflow: auto;
-}
 body, html {
     height: 100%;
 }
 .image
 {
-	background-image: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url("/home/lainey/Documents/WindowsSF/301/backdrop.jpg");
+	background-image: linear-gradient(rgba(255,255,255,.65), rgba(255,255,255,.65)), url("C:/Users/mphaga/Pictures/folder/strips.jpeg");
 
    
     height: 100vh;
@@ -32,43 +13,111 @@ body, html {
     background-repeat: no-repeat;
     background-size: cover; 
 }
-
-
-#formDiv{
-	background-color: white;
-	padding: 20px;
-	border-style: solid;
-	border-width: 1px;
-	border-color: grey;
-	border-radius: 8px;
-	left: 28%;
+#streamingArea{
+  background-color: white;
+  height:85vh;
+  border-style: solid;
+  border-width: 0.5px;
+  border-color: #CD5C5C;
+  border-radius: 4px;
+  margin-left: 2vw;
+  margin-right: 2vw;
 }
 
-#requestButton{
-  position: absolute;
-  top: 15;
-  left:35;
-  padding-left: 35;
-}
-
-#RequestDiv{
- /* padding-left: 50;
+#VideoDiv{
+  background-color: white;
+  height:30vh;
   border-style: solid;
   border-width: 1px;
-  border-color: green;
-  border-radius: 8px;*/
-
-  display:table-cell;
-  align-content:center;
-  vertical-align:middle; 
+  border-color: #CD5C5C;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 0.5vw;
+  margin-right: 0.5vw;
+  border-radius: 4px;
 
 }
-#classroom {
-  padding-right: 35;
-  margin-left: 20;
+
+#chatArea{
+  background-color: white;
+  height:60vh;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #CD5C5C;
+  border-radius: 4px;
+  margin-left: 2vw;
+  margin-right: 2vw;
 }
 
-#exClasses{
-  padding-left: 10;
+#VideoDivBelow{
+  height:30vh;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #CD5C5C;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-top: 1vw;
+  margin-bottom: 0.5vw;
+  margin-left: 2vw;
+  margin-right: 2vw;
+  border-radius: 4px;
+}
 
+#VideoDivSide{
+  height:30vh;
+  border-style: solid;
+  border-width: 1px;
+  border-color: grey;
+  border-radius: 8px;
+  margin-left: 2vw;
+  margin-right: 5vw;
+}
+
+#chatAreaAdj{
+  height:60vh;
+  border-style: solid;
+  border-width: 1px;
+  border-color: grey;
+  border-radius: 8px;
+  margin-left: 5vw;
+
+}
+
+
+#WhiteboardArea{
+  height:85vh;
+  border-style: solid;
+  border-width: 1px;
+  border-color: grey;
+  border-radius: 8px;
+}
+
+#VideoDivTeach{
+  height:30vh;
+  border-style: solid;
+  border-width: 1px;
+  border-color: grey;
+  border-radius: 8px;
+  margin-left: 1.5vw;
+  margin-right: 3vw;
+}
+
+#chatAreaTeach{
+  height:60vh;
+  border-style: solid;
+  border-width: 1px;
+  border-color: grey;
+  border-radius: 8px;
+  margin-left: 3vw;
+
+}
+
+#WhiteboardAreaTeach{
+  height:85vh;
+  border-style: solid;
+  border-width: 1px;
+  border-color: grey;
+  border-radius: 8px;
 }
