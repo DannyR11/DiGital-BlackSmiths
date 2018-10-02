@@ -102,19 +102,19 @@ var configuration = {
 }; 
  
 function handleName(name) {
-	teacherName = name;
+	studentName = name;
 	
-	if (teacherName.length > 0) { 
+	if (studentName.length > 0) { 
 	   send({ 
 		  type: "login", 
-		  name: teacherName 
+		  name: studentName 
 	   }); 
 	}
 	else{
 		alert('Please enter a username for sign in');
 	}
  
-	document.getElementById("name").innerHTML = "Teacher: " + teacherName;
+	document.getElementById("name").innerHTML = "Student: " + studentName;
  }
 
 function loadName() {

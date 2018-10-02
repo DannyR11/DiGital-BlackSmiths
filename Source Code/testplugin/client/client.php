@@ -20,7 +20,7 @@
 // 5- Run this script directly from your browser: you should see 'Hello, FIRSTNAME'
 
 /// SETUP - NEED TO BE CHANGED
-$token = '50cb0573aa8a26901ec9162974dc4453';
+$token = '50cb0573aa8a26901ec9162974dc4453'; //this is the manager's token
 $domainname = 'http://137.215.42.239/moodle';
 
 /// FUNCTION NAME
@@ -39,3 +39,9 @@ $resp = xmlrpc_decode($curl->post($serverurl, $post));
 //print_r($resp);
 
 echo $resp;
+
+/*
+Use this token to call another function that obtains the token of the logged in user,
+return it, use it for the call, and then return appropriate name.
+The incoming request should specify which function should be used
+*/
