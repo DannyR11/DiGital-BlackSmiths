@@ -1,0 +1,28 @@
+#VideoDivSide{
+  height:30vh;
+  border-style: solid;
+  border-width: 1px;
+  border-color: grey;
+  border-radius: 8px;
+  margin-left: 2vw;
+  margin-right: 5vw;
+}
+
+#chatAreaAdj{
+  height:60vh;
+  border-style: solid;
+  border-width: 1px;
+  border-color: grey;
+  border-radius: 8px;
+  margin-left: 5vw;
+
+}
+
+
+#WhiteboardArea{
+  height:85vh;
+  border-style: solid;
+  border-width: 1px;
+  border-color: grey;
+  border-radius: 8px;
+}
