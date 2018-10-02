@@ -44,7 +44,8 @@ define('MOD_THUTONG_GRADELOWEST', 1);
 define('MOD_THUTONG_GRADELATEST', 2);
 define('MOD_THUTONG_GRADEAVERAGE', 3);
 define('MOD_THUTONG_GRADENONE', 4);
-
+define('THUTONG_EVENT_TYPE_OPEN', 'open');
+define('THUTONG_EVENT_TYPE_CLOSE', 'close');
 
 ////////////////////////////////////////////////////////////////////////////////
 // Moodle core API                                                            //
@@ -670,4 +671,175 @@ function thutong_extend_navigation(navigation_node $thutongnode, stdclass $cours
  * @param navigation_node $thutongnode {@link navigation_node}
  */
 function thutong_extend_settings_navigation(settings_navigation $settingsnav, navigation_node $thutongnode=null) {
+}
+////////////////////////////////////////////////////////////////////////////////
+// Calendar API                                                             //
+////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * This function receives a calendar event and returns the action associated with it, or null if there is none.
+ *
+ * This is used by block_myoverview in order to display the event appropriately. If null is returned then the event
+ * is not displayed on the block.
+ *
+ * @param calendar_event $event
+ * @param \core_calendar\action_factory $factory
+ * @return \core_calendar\local\event\entities\action_interface|null
+ */
+function mod_thutong_core_calendar_provide_event_action(calendar_event $event,
+                                                       \core_calendar\action_factory $factory) {
+    global $DB, $CFG, $USER;
+    require_once($CFG->dirroot . '/mod/thutong/locallib.php');
+
+    $cm = get_fast_modinfo($event->courseid)->instances['thutong'][$event->instance];
+    $record = $DB->get_record('thutong_attempt', array('id' => $cm->instance), '*', MUST_EXIST) ;
+
+	$courseid = $event->courseid;
+    $modulename = $event->modulename;
+    $instanceid = $event->instance;
+
+    $coursemodule = get_fast_modinfo($courseid)->instances[$modulename][$instanceid];
+    $context = context_module::instance($coursemodule->id);
+	
+	if( has_capability('mod/thutong:preview',$context) ){
+		$livesession = 'start' ;
+	}else{
+		$livesession = 'join' ;
+	}
+    return $factory->create_instance(
+        get_string('join', 'thutong'),
+        //new \moodle_url('/mod/thutong/view.php', ['id' => $cm->id]),
+		new \moodle_url('/mod/thutong/view.php', array('view'=>$livesession,'id'=>$cm->id)),
+        1,
+        is_accessible( $record )
+    );
+}
+
+/**
+ * This function calculates the minimum and maximum cutoff values for the timestart of
+ * the given event.
+ *
+ * It will return an array with two values, the first being the minimum cutoff value and
+ * the second being the maximum cutoff value. Either or both values can be null, which
+ * indicates there is no minimum or maximum, respectively.
+ *
+ * If a cutoff is required then the function must return an array containing the cutoff
+ * timestamp and error string to display to the user if the cutoff value is violated.
+ *
+ * A minimum and maximum cutoff return value will look like:
+ * [
+ *     [1505704373, 'The due date must be after the start date'],
+ *     [1506741172, 'The due date must be before the cutoff date']
+ * ]
+ *
+ * @param calendar_event $event The calendar event to get the time range for
+ * @param stdClass $instance The module instance to get the range from
+ * @return array
+ */
+function mod_thutong_core_calendar_get_valid_event_timestart_range(\calendar_event $event, \stdClass $instance) {
+    $mindate = null;
+    $maxdate = null;
+
+    if ($event->eventtype == THUTONG_EVENT_TYPE_OPEN) {
+        // The start time of the open event can't be equal to or after the
+        // close time of the lesson activity.
+        if (!empty($instance->deadline)) {					// $instance->timeclose
+            $maxdate = [
+                $instance->deadline,						// $instance->timeclose
+                get_string('openafterclose', 'thutong')
+            ];
+        }
+    } else if ($event->eventtype == THUTONG_EVENT_TYPE_CLOSE) {
+        // The start time of the close event can't be equal to or earlier than the
+        // open time of the lesson activity.
+		
+        if (!empty($instance->available)) { 				// $instance->timeopen
+            $mindate = [
+                $instance->available,						// $instance->timeopen
+                get_string('closebeforeopen', 'thutong')
+            ];
+        }
+    }
+
+    return [$mindate, $maxdate];
+}
+
+/**
+ * This function will update the lesson module according to the
+ * event that has been modified.
+ *
+ * It will set the available or deadline value of the lesson instance
+ * according to the type of event provided.
+ *
+ * @throws \moodle_exception
+ * @param \calendar_event $event
+ * @param stdClass $lesson The module instance to get the range from
+ */
+function mod_thutong_core_calendar_event_timestart_updated(\calendar_event $event, \stdClass $lesson) {
+    global $DB;
+
+    if (empty($event->instance) || $event->modulename != 'thutong') {
+        return;
+    }
+
+    if ($event->instance != $lesson->id) {
+        return;
+    }
+
+    if (!in_array($event->eventtype, [LESSON_EVENT_TYPE_OPEN, LESSON_EVENT_TYPE_CLOSE])) {
+        return;
+    }
+
+    $courseid = $event->courseid;
+    $modulename = $event->modulename;
+    $instanceid = $event->instance;
+    $modified = false;
+
+    $coursemodule = get_fast_modinfo($courseid)->instances[$modulename][$instanceid];
+    $context = context_module::instance($coursemodule->id);
+
+    // The user does not have the capability to modify this activity.
+    if (!has_capability('moodle/course:manageactivities', $context)) {
+        return;
+    }
+
+	$newdata = new stdClass();
+	$newdata->id = $lesson->id ;
+	
+    if ($event->eventtype == LESSON_EVENT_TYPE_OPEN) {
+        // If the event is for the lesson activity opening then we should
+        // set the start time of the lesson activity to be the new start
+        // time of the event.
+        if ($lesson->available != $event->timestart) {
+            $lesson->available = $event->timestart;
+            $lesson->timemodified = time();
+			$modified = true;
+			
+			//***********
+			$newdata->time = $lesson->available ;
+			$newdata->timemodified = $lesson->timemodified ;
+            
+        }
+    } else if ($event->eventtype == LESSON_EVENT_TYPE_CLOSE) {
+        // If the event is for the lesson activity closing then we should
+        // set the end time of the lesson activity to be the new start
+        // time of the event.
+        if ($lesson->deadline != $event->timestart) {
+            $lesson->deadline = $event->timestart;
+            $modified = true;
+        }
+    }
+	
+	
+	
+	
+	$newdata->duration = $lesson->duration ;
+	
+
+    if ($modified) {
+        $lesson->timemodified = time();
+        $DB->update_record('thutong_attempt', $newdata);
+        $event = \core\event\course_module_updated::create_from_cm($coursemodule, $context);
+        $event->trigger();
+    }
 }
