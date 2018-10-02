@@ -88,12 +88,12 @@ function send(message) {
 //UI selectors block 
 //*******************
  
-var loginPage = document.querySelector('#loginPage'); 
-var usernameInput = document.querySelector('#usernameInput'); 
-var loginBtn = document.querySelector('#loginBtn'); 
+//var loginPage = document.querySelector('#loginPage'); 
+//var usernameInput = document.querySelector('#usernameInput'); 
+//var loginBtn = document.querySelector('#loginBtn'); 
 
-var callPage = document.querySelector('#callPage'); 
-var hangUpBtn = document.querySelector('#hangUpBtn');
+//var callPage = document.querySelector('#callPage'); 
+var leaveCLassRoom = document.querySelector('#leaveCLassRoom');
   
 var localVideo = document.querySelector('#localVideo'); 
 var localCanvas = document.querySelector('#lccanvas2');
@@ -104,7 +104,7 @@ var configuration = {
 	"iceServers": [{ "url": "stun:stun2.1.google.com:19302" }]
 };
 //do not display the call page when we start
-callPage.style.display = "none";
+//callPage.style.display = "none";
 
 function handleName(name) {
    teacherName = name;
@@ -133,8 +133,8 @@ function handleLogin(success){
 	if(success === false) { 
 		alert("Ooops...try a different username"); 
 	}else { 
-		loginPage.style.display = "none"; 
-		callPage.style.display = "block";
+		/*loginPage.style.display = "none"; 
+		callPage.style.display = "block";*/
 		
 		navigator.mediaDevices.getUserMedia({video:true, audio: true})
 			.then(function(stream){
@@ -259,7 +259,7 @@ function handleVideoCandidate(candidate) {
 };
    
 //We want to end our call! 
-hangUpBtn.addEventListener("click", function () { 
+leaveClassRoom.addEventListener("click", function () { 
 
    send({ 
       type: "teacherLeft"
