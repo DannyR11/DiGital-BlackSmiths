@@ -21,7 +21,7 @@
 
 /// SETUP - NEED TO BE CHANGED
 $token = '50cb0573aa8a26901ec9162974dc4453'; //this is the manager's token
-$domainname = 'http://137.215.42.239/moodle';
+$domainname = 'https://137.215.42.239/moodle';
 
 /// FUNCTION NAME
 $functionname = 'local_testplugin_obtain_token';
