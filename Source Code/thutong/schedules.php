@@ -96,7 +96,7 @@ switch ($showschedule){
 		echo $renderer->header($moduleinstance, $cm, $mode, null, get_string('schedules', MOD_THUTONG_LANG));
 		//echo '<iframe height="600" width="1200" src="https://docs.moodle.org"> Your browser does not diplay iFrames</iframe>';
 		echo $schedulerenderer->render_createsession($moduleinstance,$cm);
-		if( !$forminput->time == 0 ){
+		if( !$forminput->time == 0 && ($forminput->time - time()) > 0 ){
 			$newdate = date( 'l jS \of F Y \@ h:i A' , $forminput->time) ;
 			echo '<div style="border: 2px solid green;border-radius: 5px;text-align: center;color: blue;">';
 			echo '<h2> New Session Scheduled </h2>';
@@ -105,7 +105,15 @@ switch ($showschedule){
 			echo '<p style="border: border-box;border-radius: 10px;background-color: yellow;">'. $forminput->decription . '</p>' ;
 			echo '</div>';
 			$schedule = new mod_thutong_basic_schedule();
+			
+			//Check if it already exist in database
 			$lastinsertid = $schedule->add_new_schedule( $forminput , $moduleinstance , $cm ) ;
+		}else if( !$forminput->time == 0 && $forminput->time < time() ){
+			$newdate = date( 'l jS \of F Y \@ h:i A' , $forminput->time) ;
+			echo '<div style="border: 2px solid red;border-radius: 5px;text-align: center;color: blue;">';
+			echo '<h2> Sorry the date has past: </h2>';
+			echo '<p style="border: border-box;border-radius: 10px;background-color: red;">'. $newdate . '</p>' ;
+			echo '</div>';
 		}
 		//echo '<form action="'. new moodle_url( MOD_THUTONG_URL . '/schedules.php').'">First name:<br><input type="text" name="firstname" value="Mickey"><br>Last name:<br><input type="text" name="lastname" value="Mouse"><br><br><input type="submit" value="Submit"></form>'; 
 		// Finish the page

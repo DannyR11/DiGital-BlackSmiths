@@ -237,9 +237,11 @@ class mod_thutong_basic_schedule extends  mod_thutong_base_schedule {
 	public function add_new_schedule($data , $moduleinstance , $cm ){
 		global $USER ;
 		global $DB ;
+		//require_once($CFG->dirroot . '/mod/thutong/locallib.php');
+		require_once(dirname(__FILE__).'/locallib.php');
 		
 		//Update other data fields
-		$data->courseid = $cm->id ;
+		$data->courseid = $moduleinstance->course ;
 		$data->thutongid = $moduleinstance->id ;
 		$data->userid = $USER->id ;
 		$data->status = 0 ;
@@ -250,8 +252,18 @@ class mod_thutong_basic_schedule extends  mod_thutong_base_schedule {
 		//Insert into the database
 		$lastinsertid = $DB->insert_record('thutong_attempt', $data, false);
 		
-		//Update the calendar
+		$lastinsert = $DB->get_record('thutong_attempt', 
+			array('timecreated'=>$data->timecreated , 'time'=>$data->time ) 
+		);
 		
+		//Create a calendar event for this schedule 
+		create_schedule_event( $lastinsert );
+		
+		//Update the calendar
 		return $lastinsertid ;
+	}
+	
+	public function check_ifexist( $data, $moduleinstance , $cm ){
+		
 	}
 }

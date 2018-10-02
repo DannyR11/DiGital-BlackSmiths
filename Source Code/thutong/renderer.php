@@ -133,12 +133,17 @@ class mod_thutong_renderer extends plugin_renderer_base {
 		$htmltable->data[]=$htr;
 		
 		foreach($rows as $row){
+			if( ($row->time - time())/60 + ($row->duration/60 ) < 0   ){
+				//dont show the schedules that have expired
+				continue;
+			}
 			$htr = new html_table_row();
 			//set up descrption cell
 			$cells = array();
 			foreach($fields as $field){
+				
 				if( $field == 'button' && has_capability('mod/thutong:preview',$modulecontext) ){
-					$cell = new html_table_cell($this->render_deletebutton($moduleinstance,$cm));
+					$cell = new html_table_cell($this->render_deletebutton($moduleinstance,$cm,$row));
 				}else if( $field == 'time'){
 					//Check if time has past 
 					if( $row->{$field} < time() ){
@@ -147,13 +152,13 @@ class mod_thutong_renderer extends plugin_renderer_base {
 							//You can/should go live now 
 							$cell = new html_table_cell( 
 								'<h2 style="color:red;"> LIVE </h2> ' 
-								. $this->render_startbutton($moduleinstance,$cm)
+								. $this->render_startbutton($moduleinstance,$cm,$row)
 							);
 						}else{
 							//session is currently live
 							$cell = new html_table_cell( 
 								'<h2 style="color:red;"> LIVE </h2> ' 
-								. $this->render_joinbutton($moduleinstance,$cm)
+								. $this->render_joinbutton($moduleinstance,$cm,$row)
 							);
 						}
 							
@@ -180,6 +185,11 @@ class mod_thutong_renderer extends plugin_renderer_base {
 		
 	}
 	
+	public function render_empty_section_html($sectiontitle) {
+		global $CFG;
+		return $this->output->heading(get_string('nodataavailable',MOD_THUTONG_LANG),3);
+	}
+	
 	function show_view_footer($moduleinstance,$cm,$formdata,$showreport){
 		// print's a popup link to your custom page
 		$link = new moodle_url(MOD_THUTONG_URL . '/reports.php',array('report'=>'menu','id'=>$cm->id,'n'=>$moduleinstance->id));
@@ -201,7 +211,7 @@ class mod_thutong_renderer extends plugin_renderer_base {
 		return html_writer::div( $this->render($excel),MOD_THUTONG_CLASS  . '_actionbuttons');
 	}
 	
-	public function render_joinbutton($moduleinstance,$cm){
+	public function render_joinbutton($moduleinstance,$cm,$record){
 		global $USER ;
 		$basic = new single_button(
 			new moodle_url(MOD_THUTONG_URL . '/view.php',array('view'=>'join','id'=>$cm->id,'n'=>$moduleinstance->id)), 
@@ -212,7 +222,7 @@ class mod_thutong_renderer extends plugin_renderer_base {
 		return $ret;
 	}
 	
-	public function render_startbutton($moduleinstance,$cm){
+	public function render_startbutton($moduleinstance,$cm,$record){
 		global $USER ;
 		$basic = new single_button(
 			new moodle_url(MOD_THUTONG_URL . '/view.php',array('view'=>'start','id'=>$cm->id,'n'=>$moduleinstance->id)), 
@@ -223,12 +233,15 @@ class mod_thutong_renderer extends plugin_renderer_base {
 		return $ret;
 	}
 	
-	public function render_deletebutton($moduleinstance,$cm){
+	
+	public function render_deletebutton($moduleinstance,$cm,$record){
 		global $USER ;
 		$basic = new single_button(
 			new moodle_url(
 				MOD_THUTONG_URL . '/view.php',
-				array('view'=>'delete','id'=>$cm->id,'n'=>$moduleinstance->id)
+				array('view'=>'delete','id'=>$cm->id,'n'=>$moduleinstance->id,
+					'time'=>$record->time, 'duration'=>$record->duration,'decription'=>$record->decription
+				)
 			), get_string('delete',MOD_THUTONG_LANG), 'get');
 
 		$ret = html_writer::div($this->render($basic) .'<br />'  ,MOD_THUTONG_CLASS  . '_deletebuttons');
@@ -481,13 +494,13 @@ class mod_thutong_schedule_renderer extends plugin_renderer_base {
 							//You can/should go live now 
 							$cell = new html_table_cell( 
 								'<h2 style="color:red;"> LIVE </h2> ' 
-								. $this->render_startbutton($moduleinstance,$cm)
+								. $this->render_startbutton($moduleinstance,$cm,$row)
 							);
 						}else{
 							//session is currently live
 							$cell = new html_table_cell( 
 								'<h2 style="color:red;"> LIVE </h2> ' 
-								. $this->render_joinbutton($moduleinstance,$cm)
+								. $this->render_joinbutton($moduleinstance,$cm,$row)
 							);
 						}
 							
@@ -535,7 +548,7 @@ class mod_thutong_schedule_renderer extends plugin_renderer_base {
 		return html_writer::div( $this->render($excel),MOD_THUTONG_CLASS  . '_actionbuttons');
 	}
 	
-	public function render_joinbutton($moduleinstance,$cm){
+	public function render_joinbutton($moduleinstance,$cm,$record){
 		global $USER ;
 		$basic = new single_button(
 			new moodle_url(MOD_THUTONG_URL . '/view.php',array('view'=>'join','id'=>$cm->id,'n'=>$moduleinstance->id)), 
@@ -546,7 +559,7 @@ class mod_thutong_schedule_renderer extends plugin_renderer_base {
 		return $ret;
 	}
 	
-	public function render_startbutton($moduleinstance,$cm){
+	public function render_startbutton($moduleinstance,$cm,$record){
 		global $USER ;
 		$basic = new single_button(
 			new moodle_url(MOD_THUTONG_URL . '/view.php',array('view'=>'start','id'=>$cm->id,'n'=>$moduleinstance->id)), 
@@ -556,13 +569,16 @@ class mod_thutong_schedule_renderer extends plugin_renderer_base {
 
 		return $ret;
 	}
-	
+	//Input from the input boxes
+
 	public function render_deletebutton($moduleinstance,$cm,$record){
 		global $USER ;
 		$basic = new single_button(
 			new moodle_url(
 				MOD_THUTONG_URL . '/view.php',
-				array('view'=>'delete','id'=>$cm->id,'n'=>$moduleinstance->id,'rec'=>$record)
+				array('view'=>'delete','id'=>$cm->id,'n'=>$moduleinstance->id,
+					'time'=>$record->time, 'duration'=>$record->duration,'decription'=>$record->decription
+				)
 			), get_string('delete',MOD_THUTONG_LANG), 'get');
 
 		$ret = html_writer::div($this->render($basic) .'<br />'  ,MOD_THUTONG_CLASS  . '_deletebuttons');

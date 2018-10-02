@@ -29,7 +29,9 @@
 
 require_once(dirname(dirname(dirname(__FILE__))).'/config.php');
 require_once(dirname(__FILE__).'/lib.php');
+require_once(dirname(__FILE__).'/locallib.php');
 require_once(dirname(__FILE__).'/scheduleclasses.php');
+
 
 
 
@@ -38,6 +40,11 @@ $n  = optional_param('n', 0, PARAM_INT);  // thutong instance ID - it should be 
 $showschedule = optional_param('schedule', 'menu', PARAM_TEXT); // schedule type
 $showiframe = optional_param('view', 'no', PARAM_TEXT); // schedule type
 
+//Input from the input boxes
+$recordtodelete = new stdClass();
+$recordtodelete->time = optional_param('time', 0, PARAM_INT);
+$recordtodelete->duration = optional_param('duration', 0, PARAM_INT);
+$recordtodelete->decription = optional_param('description', 'description', PARAM_TEXT);
 
 //paging details
 $paging = new stdClass();
@@ -112,7 +119,7 @@ $opts['someinstancesetting'] = $someinstancesetting;
 
 
 //this inits the M.mod_thutong thingy, after the page has loaded.
-$PAGE->requires->js_init_call('M.mod_thutong.helper.init', array($opts),false,$jsmodule);
+//$PAGE->requires->js_init_call('M.mod_thutong.helper.init', array($opts),false,$jsmodule);
 
 //this loads any external JS libraries we need to call
 //$PAGE->requires->js("/mod/thutong/js/somejs.js");
@@ -144,11 +151,13 @@ switch($showiframe){
 		}
 		//$liveurl = 'localhost:8080' . $USER->id ;
 		$liveurl = "https://137.215.42.239:8443/client" ; 
-		echo '<iframe height="600" width="1000" src="'. $liveurl .'"> Your browser does not diplay iFrames</iframe>';
+		echo '<iframe height="600" width="1000" src="'. $liveurl .'"> Your browser does not diplay iFrames</iframe>';;
 		echo $renderer->footer();
 		return;
 	case 'delete':
 		//call some methods to delete schedule from database ;
+		
+		delete_schedule_event( $recordtodelete );
 		break;
 	default:
 		break;
@@ -172,24 +181,11 @@ if(has_capability('mod/thutong:preview',$modulecontext)){
 
 echo $renderer->show_intro($moduleinstance,$cm);
 
-//if we have too many attempts, lets report that.
-if($moduleinstance->maxattempts > 0){
-	$attempts =  $DB->get_records(MOD_THUTONG_USERTABLE,array('userid'=>$USER->id, MOD_THUTONG_MODNAME.'id'=>$moduleinstance->id));
-	if($attempts && count($attempts)<$moduleinstance->maxattempts){
-		echo get_string("exceededattempts",MOD_THUTONG_LANG,$moduleinstance->maxattempts);
-	}
-}
-
-//Here we output the basicview as it is from the database
-//echo $extraheader;
+// Output the schedule as is from the database
 echo $pagingbar;
 echo $renderer->render_section_html($basicviewheading, $basicview->fetch_name(), $basicview->fetch_head(), $basicviewrows, $basicview->fetch_fields(),$moduleinstance,$cm,$modulecontext);
 echo $pagingbar;
 //echo $renderer->show_view_footer($moduleinstance,$cm,$formdata,$showschedule);
-
-//This is specfic to our renderer
-//echo $renderer->show_something($someadminsetting);
-//echo $renderer->show_something($someinstancesetting);
 
 // Finish the page
 echo $renderer->footer();
