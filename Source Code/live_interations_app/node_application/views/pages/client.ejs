@@ -1,86 +1,62 @@
 <!DOCTYPE html>
-<html> 
- 
-  <head> 
-		<title>Virtual classroom Thutong</title>
-		<link rel = "stylesheet" href = "scripts/bootstrap/dist/css/bootstrap.min.css"/>
-		
-  </head>
-	
-  <style>
-	
-    body { 
-        background: #eee; 
-        padding: 5% 0; 
-    } 
-  
-    video { 
-        background: black; 
-        border: 1px solid gray; 
-    }
-  
-    .call-page { 
-        position: relative; 
-        display: block; 
-        margin: 0 auto; 
-        width: 500px; 
-        height: 500px; 
-    top: -100px;
-    } 
-  
-    #remoteVideo { 
-      width: 150px; 
-      height: 150px; 
-      position: relative; 
-      top: 150px; 
-      right: 150px;
-    }
-  
-    #remoteCanvas { 
-        width: 500px; 
-        height: 500px;
-    }
-  
-  </style>
-    
-    <script>
-            var userData = {id: 0, firstName: "NULL"};
-            
-            userData.id = "<%= user.userid %>";
-            userData.firstName = "<%= user.firstName %>";
-    </script>
+<html>
+<head>
+  <title>
+    Student Classroom Beneath
+  </title>
+  <!--Layout dependencies-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/inlayout.css">
+    <!--Literallycanvas dependencies-->
+    <link rel = "stylesheet" href = "scripts/bootstrap/dist/css/bootstrap.min.css"/>
 
-  <body onload="loadName(userData);">
-	
-    <div id = "loginPage" class = "container text-center"> 
-      <!--<div class = "row"> 
-        <div class = "col-md-4 col-md-offset-4">
-          <h2>Virtual classroom Thutong. Please sign in</h2> 
-          <label for = "usernameInput" class = "sr-only">Login</label> 
-          <input type = "email" id = "usernameInput" class = "form-control formgroup" placeholder = "Login" required = "" autofocus = ""> 
-          <button id = "loginBtn" class = "btn btn-lg btn-primary btnblock"> Sign in </button>	
-        </div> 
-      </div>-->  	
-    </div>
-    <div id="teacherName" style="width: 120px; height: 25px; background-color: green; float: right; margin-right: 450px;">
-      <div id="name">
+</head>
+
+<script>
+  var userData = {id: 0, firstName: "NULL"};
+  
+  userData.id = "<%= user.userid %>";
+  userData.firstName = "<%= user.firstName %>";
+</script>
+
+<body onload="loadName(userData);">
+  <div class="image"> 
+  <br>
+  <div class="container-fluid">
+    <div class="row" style="text-align: center;">
+      <div class="col-sm-8" id="localCanvas">
       </div>
+      
+      <video class="col-sm-3" id="localVideo" autoplay>
+          Video Area
+        
+      </video>
+      
+    
     </div>
-	
-    <div id="callPage" class = "call-page"> 
-      <video id = "remoteVideo" autoplay></video> 
-      <video id = "remoteCanvas" autoplay></video>
-	  
-	  <div class = "row text-center"> 
-      <div class = "col-md-12"> 
-        <input id = "callToUsernameInput" type = "text" placeholder = "username to call" /> 
-        <button id = "callBtn" class = "btn-success btn">Call</button> 
-        <button id = "hangUpBtn" class = "btn-danger btn">Hang Up</button> 
-      </div>	
-    </div>
-	
-	
-	  <script src = "/js/client.js"></script>
-  </body>
-	
-</html>	
+    
+    <br>
+    <button type="button" id="leaveClassRoom" class="btn btn-danger center-block">Leave Classroom</button>
+    <div id="teacherName" class="btn btn-danger center-block">
+        <div id="name">
+        </div>
+      </div>
+  </div>
+
+
+  </div>
+
+  <script>
+		LC.init(
+			document.getElementById('localCanvas'),
+			{imageURLPrefix: 'scripts/literallycanvas/img'}
+		);
+	</script>
+	<script src = "js/client.js"></script>
+</body>
+</html>
