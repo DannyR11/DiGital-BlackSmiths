@@ -136,6 +136,7 @@ function handleLogin(success) {
 		console.log('Here we are');*/
 		createCanvasPeerObject();
 		createVideoPeerObject();
+		sendPleaseCallMe();
    } 
 };
   
