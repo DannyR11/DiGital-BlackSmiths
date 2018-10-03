@@ -3,7 +3,7 @@ body, html {
 }
 .image
 {
-	background-image: linear-gradient(rgba(255,255,255,.65), rgba(255,255,255,.65)), url("C:/Users/mphaga/Pictures/folder/strips.jpeg");
+	background-image: linear-gradient(rgba(255,255,255,.65), rgba(255,255,255,.65)), url("../images/strips.jpeg");
 
    
     height: 100vh;
