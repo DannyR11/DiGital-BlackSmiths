@@ -59,7 +59,6 @@ app.get('/', function(req, res) {
 app.get('/client', function(req, res) {
 	var user = {"userid": getParameterByName('id',req.url), "firstName":getParameterByName('name',req.url)};
 
-	console.log(req.body.data);
 	res.render('pages/client', {
 		user: user
 	});
