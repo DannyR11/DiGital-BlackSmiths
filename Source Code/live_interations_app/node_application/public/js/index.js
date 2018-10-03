@@ -8,7 +8,7 @@ var canvasStream;
 //student that sends a message
 var remoteUser;
 //connecting to our signaling server
-var conn = new WebSocket('wss://localhost:8443');
+var conn = new WebSocket('wss://137.215.42.239:8443');
 
 conn.onopen = function () { 
    console.log("Connected to the signaling server."); 
@@ -141,7 +141,7 @@ function handleLogin(success){
 		/*loginPage.style.display = "none"; 
 		callPage.style.display = "block";*/
 		
-		navigator.mediaDevices.getUserMedia({video:true, audio: true})
+		navigator.mediaDevices.getUserMedia({video:true, audio: false})
 			.then(function(stream){
 				videoStream = stream;
 				localVideo.srcObject = videoStream;
