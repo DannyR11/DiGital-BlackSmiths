@@ -36,7 +36,7 @@ app.set('view engine', 'ejs');
 
 //index page
 app.get('/', function(req, res) {
-	var user = {"userid": 2, "firstName":"Lesego"};
+	var user = {"userid": req.body.data.id, "firstName":req.body.data.firstName};
 
 	console.log(req.body.data);
 	res.render('pages/index', {
@@ -47,9 +47,9 @@ app.get('/', function(req, res) {
 
 //client page
 app.get('/client', function(req, res) {
-	var user = {"userid": 2, "firstName":"Lesego"};
+	var user = {"userid": req.body.data.id, "firstName":req.body.data.firstName};
 
-
+	console.log(req.body.data);
 	res.render('pages/client', {
 		user: user
 	});
