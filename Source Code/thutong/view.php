@@ -139,10 +139,7 @@ switch($showiframe){
 			echo $renderer->notabsheader();
 		}
 		//$liveurl = 'localhost:8080/client' . $USER->id ;
-		$liveurl =  "https://137.215.42.239:8443" ;
-		
-		$userId = $USER->id;
-		
+		$liveurl =  'https://137.215.42.239:8443?id=' . $USER->id . '&name=' . $USER->firstName;
 
 		echo '<iframe height="600" width="1000" src="'. $liveurl .'"> Your browser does not diplay iFrames</iframe>';
 		echo $renderer->footer();
@@ -154,7 +151,8 @@ switch($showiframe){
 			echo $renderer->notabsheader();
 		}
 		//$liveurl = 'localhost:8080' . $USER->id ;
-		$liveurl = "https://137.215.42.239:8443/client" ; 
+
+		$liveurl = "https://137.215.42.239:8443/client?id=" . $USER->id . '&name=' . $USER->firstName; 
 		echo '<iframe height="600" width="1000" src="'. $liveurl .'"> Your browser does not diplay iFrames</iframe>';;
 		echo $renderer->footer();
 		return;
