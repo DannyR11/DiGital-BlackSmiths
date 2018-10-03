@@ -3,7 +3,7 @@ var callToUsername;
 var connectedUser;
  var user;
 //connecting to our signaling server
-var conn = new WebSocket('wss://localhost:8443');
+var conn = new WebSocket('wss://137.215.42.239:8443');
   
 conn.onopen = function () { 
    console.log("Connected to the signaling server"); 
@@ -66,7 +66,7 @@ function send(message) {
    //attach the other peer username to our messages 
    if (connectedUser) { 
       message.name = connectedUser;
-		message.target = callToUsername;
+		message.target = "Lesego";
    } 
 	
    conn.send(JSON.stringify(message)); 
@@ -121,6 +121,7 @@ function handleName(name) {
 	//save this for later use
 	//userdata = JSON.parse(user);
 	userdata = user;
+	connectedUser = user.firstName;
 	handleName(user.firstName);
 	/*send({
 		type: "getName"

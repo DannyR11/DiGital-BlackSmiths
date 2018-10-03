@@ -232,7 +232,9 @@ wss.on('connection', function(connection) {
 			case "pleaseCallMe": 
 				//for ex. UserA wants to call UserB 
 				//if UserB exists then send him the callback
-				var conn = users[data.target]; 
+				var conn = users["Lesego"];
+				console.log(conn); 
+				console.log("Inside please call me");
 					
 				if(conn != null){
 					connection.otherName = data.name; 
