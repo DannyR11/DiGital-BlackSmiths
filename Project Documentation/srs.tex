@@ -1,0 +1,217 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{graphicx}
+\graphicspath{ {C:/Users/mphaga/Documents/srs/} }
+\usepackage{hyperref}
+\hypersetup{      
+    urlcolor=blue
+}
+\urlstyle{same}
+\begin{document}
+	\begin{titlepage}
+		\begin{figure}[t]
+			\includegraphics[scale=0.5, height=2cm, width=10cm]{ThutongLogo.png}
+		\end{figure}
+		\centering
+		\textbf{\LARGE Digital BlackSmiths: Thutong LMS}
+		\newline
+		\rule{\textwidth}{1.6pt}\\[\baselineskip]
+		Testing Policy Document\\
+		\vspace*{0.5cm}
+		\large Group Members: \vspace*{0.3cm}
+			{\\Fiwa Lekhulani\\Daniel Rocha\\Lebogang Ntatleng\\Lesego Mabe\\Tlou Lebelo}
+		\rule{\textwidth}{1.6pt}\\[\baselineskip]
+		\vspace*{\fill}
+	\end{titlepage}
+	\pagenumbering{roman}
+	\pagebreak
+	
+	\section*{Introduction}
+	The purpose of this document is to provide a detailed description of the requirements for the “Thutong Learning Management System” software system. It will show the purpose and the complete system declaration for its development. 
+		\\This document is intended to serve as a guide for the development effort of the system by the development team.
+		
+	\section{System Overview}
+		\subsection*{Purpose}
+		Thutong LMS is an online platform to assist school learners with their academics as stipulated by the South African Curriculum in the form of lessons, quizzes and virtual classrooms and tutoring. It will provide a platform and highlight opportunities available to them in the context to jobs, scholarships and bursaries.
+		\subsection*{Project Scope}
+			\begin{description}
+				\item The “Thutong Learning Management System” is a web based learning management system which helps students using the South African curriculum (CAPS) find additional learning material on the subjects they
+desire, facilitate learning in a fun and innovative manner, to improve the academic results of the learners using the system. The system should be mobile friendly and provide useful and interactive academic media.
+				\item The system will provide academic content on each subject presented in the South African curriculum in the form of slides and pdf presentations, video presentations of the content, and interactive quizzes that are graded by the system. 
+				\item It will have leaderboards to foster
+competition, and badges to reward students for their labour.
+				\item Additionally the system will provide virtual classrooms and tutoring sessions to provide live interaction and additional help and explanation  with topics an educator has identified that students struggle with.
+			\end{description}
+			
+		\subsection*{Definitions, Acronyms and Abbreviations}
+			\begin{table}
+				\begin{center}
+					\begin{tabular}{|p{5cm}|p{10cm}|}
+					\hline
+					Term & Definition \\
+					\hline
+					User & This is someone who interacts with the system, of these there are three types: an administrator, a student, a guest user and an expert consultant. \\
+					\hline
+					Administrator & This is the authoritative figure that will be responsible for managing the LMS website, including all the responsibilities accompanying this role.
+The role will be performed by Mr Vincent Rakgoale, the managing director of the Thutong Learning Centre.
+\\ \hline
+Student & This is a user who is interested in using the academic material provided in the LMS website, including videos, academic slides. This user can participate in quizzes and receive grading. The user can also appear on the leaderboard and receive badges for their academic performance.
+\\ \hline
+Expert Consultant & This is a user who may upload academic content and formulate quizzes. They can use discussion boards to interact with students for the  purposes of explaining questions the students may have on their respective courses.
+\\ \hline
+Sponsors & Sponsor may include companies, institutions, organisations, businesspersons, and entrepreneurs who are willing to financially contribute to the Thutong LMS website
+\\ \hline
+LMS & Learning management system; a software system that is used for the administration, documentation, tracking, reporting and delivery of education courses or training programs.
+\\ \hline
+Moodle & Moodle is a free and open source learning management system (LMS) written in PHP and distributed under the GNU General Public Licence.
+\\ \hline
+ISP & Internet Service Provider; an entity such a Vodacom, Telkom or MTN that provides Internet connection services to clients.
+\\ \hline
+Modern Internet Browser & Recent versions of the major Internet web browsers which include: Google Chrome, Opera, Microsoft Edge, Firefox and Safari.
+\\ \hline
+Virtual Classroom & Platform to host interactive sessions for additional live teaching using live streaming of video and whiteboard canvas.
+\\ \hline
+					\end{tabular}
+				\end{center}
+			\end{table}					
+		
+		%\subsection*{Domain Model}
+	
+	\section{Functional Requirements}
+		\subsection*{Users}
+		\underline{Students}
+			\begin{enumerate}
+				\item "The system must allow new users to register if they are new to the website."
+				\item  "The system must allow users to register using social media accounts."
+				\item The system must allow users to register using Facebooks accounts."
+				\item "The system must allow users to register using Google accounts."
+				\item “The system must allow users registered via social media to choose their own passwords.”
+				\item “The system must allow new users to register using their email.”
+				\begin{itemize}
+					\item “The system must obtain a new user’s email addresses for registration.”
+					\item  “The system must obtain a new user’s username for registration.”
+					\item “The system must obtain a new user’s password for registration.”
+					\item “The system must obtain a new user’s province for registration.”
+					\item “The system must obtain a new user’s grade for registration.”
+				\item “The system must obtain a new user’s date of birth for registration.”
+				\end{itemize}
+				
+				\item "The system must allow registered users to login so that they can browse the content." [5]
+				\begin{itemize}
+					\item “The system must allow registered users to login using social media accounts.”
+					\item “The system must allow registered users to login using Google accounts.”
+					\item “The system must allow registered users to login using Facebook accounts.”
+					\item “The system must allow users to login using usernames and passwords.”
+				\end{itemize}				 
+			\item "The system must allow registered users to reset passwords in case they have lost or forgotten
+them."
+			\item "The system must allow logged in users to search for academic content using various criteria."
+			\item "The system must allow logged in users to watch academic videos."
+			\item “The system must allow logged in users to read academic documents.”
+			\item “The system must allow logged in users to do academic quizzes.”
+			\item “The system must allow students to ask expert consultants and other students questions pertaining
+to the work in discussion boards after each lesson.”
+			\item “The system must allow students to comment on video lessons to ask questions and answer
+questions on the lesson.”
+			\item  "The system must allow students to redo quizzes."\\ the first try should be the one taken the measure performance levels.
+			\item "The system must allow students to view their academic progress."
+			\item "The system must keep a record of the recent activities and resource accesses of its students."
+			\end{enumerate}
+		\subsection*{Subsystems}
+		\subsection*{Specific Requirements}	
+		
+	\section{Non-Functional Requirements}
+		\subsubsection*{Performance Requirements}
+			\begin{enumerate}
+				\item "The system must perform efficiently and fast despite the number of users."
+				\begin{itemize}
+					\item  "The system must limit each web page to a fixed number of database queries."
+					\item "They system must limit the amount of RAM each page requires to generate."
+					\item "The system must limit the amount of external calls."
+				\end{itemize}
+				\item "The system must be able to work efficiently despite the content linked to in the database."
+			\end{enumerate}
+			\subsubsection*{Quality Requirements}
+				\begin{enumerate}
+					\item  "The system must be available ninety-nine percent of the time." \\\\
+					\begin{scriptsize}Both hardware and software faults would need to be considered in order to get measures of reliability, mean time to failure (MTTF), and availability. We have set for an availability of ninety nine percent, which means that our system must have an annual downtime of forty four to eighty seven hours.\\ 
+
+Since the site has not been up, we cannot actively measure these performance parameters. We can however make sure to use tools that will continually monitor the uptime of our site and notify the relevant individuals when the site is down. Using the monitoring service, TOODLE (http://toodle.org), we would be able to check the uptime of our site in various intervals using a robot. If something wrong is detected, an email will be sent with the issue details as well as a printscreen of the site; this being done every month. The tool will also be able to check the uptime of the database.\\
+
+Usage of these statistics (provided from the tool mentioned above) whilst the website is live, will allow us to take note of the system's uptime as well as calculate our MTTF (mean time to failure), MTTR (mean time to repair) and our availability. 
+\end{scriptsize}
+
+				\end{enumerate}
+				
+		\subsubsection*{Safety Requirements}
+			\begin{enumerate}
+				\item  "The system must save test progress before the test is submitted by the user in case of a submission failure or loss of internet connection." 
+				\begin{itemize}
+					\item  "The system must save test progress whilst the user is taking the test."
+					\item "The system must display that the question has been saved after it is edited."
+					\item "The system must save the question answer in a cache database."
+				\end{itemize}
+				\item  "The system must retrieve saved test progress in the case of a submission failure or loss of Internet connection."
+				\begin{itemize}
+					\item  "The system must retrieve the question answer from the cache database."
+					\item "The system must display the question answer on the question."
+					\item  "The system must display that the question has been retrieved."
+				\end{itemize}
+			\end{enumerate}
+
+		\subsubsection*{Security Requirements}
+			\begin{enumerate}
+				\item  "The system must identify the user using their email and password before gaining access to the website and accessing user profiles amongst other features."
+				\begin{itemize}
+					\item "The system must capture and check the authenticity of the email."
+					\item  "The system must allow the user to enter their email."
+					\item "The system must check for an email match in the database."
+					\item "The system must take note of an incorrect email."
+					\item "The system must alert the user of an incorrect email."
+					\item "The system must increment the login attempts."
+					\item "The system must alert the administrator if the login attempts have met the threshold."
+				\end{itemize}
+				\item "The system must check if the capture and check the if the password matches the account linked to the email."
+					\begin{itemize}
+						 \item "The system must allow the user to enter their password."
+						\item "The system must check for a password match in the database using the email."
+						\item "The system must use the email to isolate the relevant password in the database."
+						\item "The system must check if the password matches the selected one in the database."
+					\end{itemize}
+				\item "The system must alert the user of an incorrect email and password combination."
+				\begin{itemize}
+					\item "The system must increment the login attempts."
+					\item "The system must alert the administrator if the login attempts have met the threshold."
+					\item "The system must alert the owner of the account of a login attempt."
+				\end{itemize}
+			\end{enumerate}
+		\subsection*{Interfaces}
+			\subsubsection*{User Interfaces}
+				\begin{description}
+					\item All users will interact with a web interface in the form of a website. This will require users to be logged in using a username and password combination.
+					\item Users will have access to this interface using modern web browsers on either mobile or desktop platforms. It will allow them to access quizzes which will have questions answerable through various means of interaction, including typing in the answers or selecting options made available. The interface will also allow users to view academic videos and view academic documents or slides. The later being downloadable for later use.
+				\end{description}
+
+
+			%\subsubsection*{Hardware Interfaces}
+			%	\begin{description}
+			%		\item 
+			%	\end{description}
+			
+			\subsubsection*{Software Interfaces}
+				\begin{description}
+					\item Virtual classroom uses WebRTC and Node JS to facilitate the virtual classroom functionality
+				\end{description}
+			\subsubsection*{Communications Interface}
+				Communication will take place only from the server to the mobile or desktop browser on the user’s end.
+\\This communication requires only an Internet connection between the two points of which the client will have to take of themselves through their own ISP. 
+				
+		\subsection*{Architectural Styles}
+			\begin{figure}
+			\includegraphics[scale=0.5, height=12cm, width=15cm]						{arc.png}
+			\end{figure}
+			\newpage
+			
+		\subsection*{System Configuration}	
+		
+	
+\end{document}
