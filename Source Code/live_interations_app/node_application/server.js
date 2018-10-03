@@ -34,11 +34,21 @@ app.set('view engine', 'ejs');
 
 //use res.render to load up an ejs view file
 
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
 //index page
 app.get('/', function(req, res) {
-	var user = {"userid": req.body.data.id, "firstName":req.body.data.firstName};
+	var user = {"userid": getParameterByName('id',req.url), "firstName":getParameterByName('name',req.url)};
 
-	console.log(req.body.data);
+	//console.log("id: " + getParameterByName('id',req.url));
 	res.render('pages/index', {
 		user: user
 	});
@@ -47,7 +57,7 @@ app.get('/', function(req, res) {
 
 //client page
 app.get('/client', function(req, res) {
-	var user = {"userid": req.body.data.id, "firstName":req.body.data.firstName};
+	var user = {"userid": getParameterByName('id',req.url), "firstName":getParameterByName('name',req.url)};
 
 	console.log(req.body.data);
 	res.render('pages/client', {
