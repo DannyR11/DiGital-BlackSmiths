@@ -165,7 +165,6 @@ function createVideoPeerObject(){
 function createCanvasPeerObject(){
 	
 	yourConn = new RTCPeerConnection(configuration);
-	console.log('Here')
 	yourConn.onicecandidate = function (event) {
 		console.log('Inside');
 		if (event.candidate) { 
