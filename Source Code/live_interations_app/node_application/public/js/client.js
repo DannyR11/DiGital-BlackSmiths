@@ -76,20 +76,18 @@ function send(message) {
 //UI selectors block 
 //******
  
-var loginPage = document.querySelector('#loginPage'); 
-var usernameInput = document.querySelector('#usernameInput'); 
-var loginBtn = document.querySelector('#loginBtn'); 
+//var loginPage = document.querySelector('#loginPage'); 
+//var usernameInput = document.querySelector('#usernameInput'); 
+//var loginBtn = document.querySelector('#loginBtn'); 
 
-var callPage = document.querySelector('#callPage'); 
-var callToUsernameInput = document.querySelector('#callToUsernameInput');
-var callBtn = document.querySelector('#callBtn'); 
+//var callPage = document.querySelector('#callPage'); 
+//var callToUsernameInput = document.querySelector('#callToUsernameInput');
+//var callBtn = document.querySelector('#callBtn'); 
 
-var hangUpBtn = document.querySelector('#hangUpBtn');
+var leaveClassRoom = document.querySelector('#leaveClassRoom');
   
-var remoteVideo = document.querySelector('#remoteVideo'); 
-var remoteCanvas = document.querySelector('#remoteCanvas');
-remoteCanvas.width = 500;
-remoteCanvas.height = 500;
+var remoteVideo = document.querySelector('#localVideo'); 
+var remoteCanvas = document.querySelector('#localCanvas');
 
 var yourConn; 
 var vidConn;
@@ -98,7 +96,7 @@ var stream;
 
 var userdata;
   
-callPage.style.display = "none";
+//callPage.style.display = "none";
 var configuration = { 
 	"iceServers": [{ "url": "stun:stun2.1.google.com:19302" }]
 }; 
@@ -133,9 +131,9 @@ function handleLogin(success) {
 	if (success === false) { 
 		alert("Ooops...try a different username"); 
 	} else { 
-		loginPage.style.display = "none"; 
+		/*loginPage.style.display = "none"; 
 		callPage.style.display = "block";
-		console.log('Here we are');
+		console.log('Here we are');*/
 		createCanvasPeerObject();
 		createVideoPeerObject();
    } 
@@ -270,7 +268,7 @@ function createCanvasOffer(){
 	});
 }
 
-callBtn.addEventListener("click", function () { 
+/*callBtn.addEventListener("click", function () { 
    callToUsername = callToUsernameInput.value;
 	
    if (callToUsername.length > 0) { 	
@@ -280,7 +278,7 @@ callBtn.addEventListener("click", function () {
 		sendPleaseCallMe();
 		
 	} 
-});
+});*/
  
  
 function sendPleaseCallMe(){
@@ -296,7 +294,7 @@ function sendPleaseCallMe(){
 }
 
 //hang up 
-hangUpBtn.addEventListener("click", function () { 
+leaveClassRoom.addEventListener("click", function () { 
 	send({ 
 		type: "studentLeft" 
 	});  

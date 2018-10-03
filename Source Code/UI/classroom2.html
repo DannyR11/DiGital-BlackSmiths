@@ -11,15 +11,9 @@
   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/css/inlayout.css">
+    <link rel="stylesheet" type="text/css" href="css/inlayout.css">
     <!--Literallycanvas dependencies-->
     <link rel = "stylesheet" href = "scripts/bootstrap/dist/css/bootstrap.min.css"/>
-		<!-- dependency: React.js -->
-		<script src="//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-with-addons.js"></script>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js"></script>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
-		<script src="scripts/literallycanvas/js/literallycanvas.js"></script>
-		<link href="scripts/literallycanvas/css/literallycanvas.css" rel="stylesheet">
 </head>
 
 <body onload="loadName();">
@@ -27,9 +21,9 @@
   <br>
   <div class="container-fluid">
     <div class="row" style="text-align: center;">
-      <div class="col-sm-8" id="localCanvas">
+      <video class="col-sm-8" id="localCanvas">
         Whitebard Canvas area
-      </div>
+      </video>
     
 
       <div class="col-sm-3" id="chatArea">
@@ -54,12 +48,6 @@
 
   </div>
 
-  <script>
-		LC.init(
-			document.getElementById('localCanvas'),
-			{imageURLPrefix: 'scripts/literallycanvas/img'}
-		);
-	</script>
 	<script src = "/js/index.js"></script>
 </body>
 </html>
