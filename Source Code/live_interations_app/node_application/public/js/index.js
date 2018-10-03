@@ -141,7 +141,7 @@ function handleLogin(success){
 		/*loginPage.style.display = "none"; 
 		callPage.style.display = "block";*/
 		
-		navigator.mediaDevices.getUserMedia({video:true, audio: false})
+		navigator.mediaDevices.getUserMedia({video:true, audio: true})
 			.then(function(stream){
 				videoStream = stream;
 				console.log("Something inside index");
@@ -267,6 +267,7 @@ function handleVideoCandidate(candidate) {
 //We want to end our call! 
 leaveClassRoom.addEventListener("click", function () { 
 
+	localVideo.srcObject = null;
    send({ 
       type: "teacherLeft"
    });  
