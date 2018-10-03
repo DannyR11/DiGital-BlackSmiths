@@ -1,3 +1,3 @@
 <?php
-    echo "I don't give af";
+    echo "Hello world!";
 ?>

@@ -19,13 +19,43 @@ httpsServer.listen(httpsPort, () => {
 
 
 // Set public folder as root
-app.use(express.static('public'));
+//app.use(express.static('public'));
 
 // Provide access to node_modules folder from the client-side
 app.use('/scripts', express.static(`${__dirname}/node_modules/`));
-app.use('/client', express.static(`${__dirname}/public/client.html`));
-app.use(express.static(__dirname + '/public'));
+app.use('/css',  express.static(`${__dirname}/public/css/`));
+app.use('/js',  express.static(`${__dirname}/public/js/`));
+//app.use('/client', express.static(`${__dirname}/public/client.html`));
+//app.use(express.static(__dirname + '/public'));
 
+//ejs testing
+//set the view engine to ejs
+app.set('view engine', 'ejs');
+
+//use res.render to load up an ejs view file
+
+//index page
+app.get('/', function(req, res) {
+	var user = {"userid": 2, "firstName":"Lesego"};
+
+	console.log(req.body.data);
+	res.render('pages/index', {
+		user: user
+	});
+	
+});
+
+//client page
+app.get('/client', function(req, res) {
+	var user = {"userid": 2, "firstName":"Lesego"};
+
+
+	res.render('pages/client', {
+		user: user
+	});
+});
+
+//app.listen(8443);
 /*----------------------------Handling web sockets-----------------------------*/
 //require our websocket library 
 var WebSocketServer = require('ws').Server; 

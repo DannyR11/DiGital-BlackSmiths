@@ -32,7 +32,7 @@ require_once(dirname(__FILE__).'/lib.php');
 require_once(dirname(__FILE__).'/locallib.php');
 require_once(dirname(__FILE__).'/scheduleclasses.php');
 
-
+global $USER;
 
 
 $id = optional_param('id', 0, PARAM_INT); // course_module ID, or
@@ -140,6 +140,10 @@ switch($showiframe){
 		}
 		//$liveurl = 'localhost:8080/client' . $USER->id ;
 		$liveurl =  "https://137.215.42.239:8443" ;
+		
+		$userId = $USER->id;
+		
+
 		echo '<iframe height="600" width="1000" src="'. $liveurl .'"> Your browser does not diplay iFrames</iframe>';
 		echo $renderer->footer();
 		return;

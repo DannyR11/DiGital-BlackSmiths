@@ -8,7 +8,7 @@ var canvasStream;
 //student that sends a message
 var remoteUser;
 //connecting to our signaling server
-var conn = new WebSocket('wss://137.215.42.239:8443');
+var conn = new WebSocket('wss://localhost:8443');
 
 conn.onopen = function () { 
    console.log("Connected to the signaling server."); 
@@ -98,6 +98,7 @@ var leaveCLassRoom = document.querySelector('#leaveCLassRoom');
 var localVideo = document.querySelector('#localVideo'); 
 var localCanvas = document.querySelector('#lccanvas2');
 var remoteUser;
+var userdata;
   
 //set a stun server for the peer connections
 var configuration = { 
@@ -122,10 +123,14 @@ function handleName(name) {
    document.getElementById("name").innerHTML = "Teacher: " + teacherName;
 }
 
-function loadName() {
-	send({
+function loadName(user) {
+	//save this for later use
+	//userdata = JSON.parse(user);
+	userdata = user;
+	handleName(user.firstName);
+	/*send({
 		type: "getName"
-	});
+	});*/
 }
   
   

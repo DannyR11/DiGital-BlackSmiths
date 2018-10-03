@@ -3,7 +3,7 @@ var callToUsername;
 var connectedUser;
  var user;
 //connecting to our signaling server
-var conn = new WebSocket('wss://137.215.42.239:8443');
+var conn = new WebSocket('wss://localhost:8443');
   
 conn.onopen = function () { 
    console.log("Connected to the signaling server"); 
@@ -95,6 +95,8 @@ var yourConn;
 var vidConn;
 var vidStream;
 var stream;
+
+var userdata;
   
 callPage.style.display = "none";
 var configuration = { 
@@ -117,10 +119,14 @@ function handleName(name) {
 	document.getElementById("name").innerHTML = "Student: " + studentName;
  }
 
-function loadName() {
-	send({
+ function loadName(user) {
+	//save this for later use
+	//userdata = JSON.parse(user);
+	userdata = user;
+	handleName(user.firstName);
+	/*send({
 		type: "getName"
-	});
+	});*/
 }
 
 function handleLogin(success) { 
